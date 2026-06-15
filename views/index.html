@@ -1,11 +1,127 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>نظام المزامنة وحالة الاتصال</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <h1>Educational platform graduation project</h1>
+<body class="bg-gray-50 p-8 flex flex-col items-center justify-start min-h-screen relative overflow-x-hidden">
+
+  <div id="status-bar" class="w-full max-w-5xl bg-white border border-emerald-400 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-4 shadow-sm transition-all duration-300">
+    
+    <div class="flex items-center gap-3">
+      <button onclick="triggerSync()" class="bg-teal-700 hover:bg-teal-800 text-white font-medium px-4 py-2 rounded-xl flex items-center gap-2 shadow-sm transition-all active:scale-95">
+        <i class="fa-solid fa-arrows-rotate text-sm"></i>
+        <span>المزامنة الآن</span>
+      </button>
+
+      <button id="toggle-connection-btn" onclick="toggleConnection()" class="bg-white hover:bg-gray-50 border border-gray-200 text-gray-700 font-medium px-4 py-2 rounded-xl flex items-center gap-2 shadow-sm transition-all active:scale-95">
+        <i id="toggle-icon" class="fa-solid fa-toggle-off text-orange-500"></i>
+        <span id="toggle-text">محاكاة عدم الاتصال</span>
+      </button>
+    </div>
+
+    <div class="flex items-center gap-4">
+      <div id="status-details" class="text-gray-500 text-sm font-medium flex items-center gap-1">
+        <span class="text-gray-700">✓ متزامن</span>
+      </div>
+
+      <div id="status-badge" class="bg-emerald-50 text-emerald-700 border border-emerald-200 px-4 py-1.5 rounded-full text-sm font-semibold flex items-center gap-2 transition-all">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span id="badge-text">متصل</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="toast-container" class="fixed top-5 left-5 z-50 flex flex-col gap-3 pointer-events-none"></div>
+
+  <script>
+    // الحالة الافتراضية للنظام
+    let isConnected = true;
+
+    // دالة التبديل بين الاتصال وعدم الاتصال
+    function toggleConnection() {
+      isConnected = !isConnected;
+      
+      const statusBar = document.getElementById('status-bar');
+      const toggleBtn = document.getElementById('toggle-connection-btn');
+      const toggleIcon = document.getElementById('toggle-icon');
+      const toggleText = document.getElementById('toggle-text');
+      const statusDetails = document.getElementById('status-details');
+      const statusBadge = document.getElementById('status-badge');
+      const badgeText = document.getElementById('badge-text');
+
+      if (!isConnected) {
+        // 1. الانتقال إلى وضع (غير متصل) - الصورة الأولى
+        statusBar.className = "w-full max-w-5xl bg-white border border-teal-200 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-4 shadow-sm transition-all duration-300";
+        
+        toggleIcon.className = "fa-solid fa-chart-simple text-blue-500";
+        toggleText.innerText = "العودة للاتصال";
+        
+        statusDetails.innerHTML = `⏳ يحفظ محلياً - في قائمة الانتظار: <span class="font-bold text-gray-800 mr-1">0</span>`;
+        
+        statusBadge.className = "bg-red-50 text-red-700 border border-red-200 px-4 py-1.5 rounded-full text-sm font-semibold flex items-center gap-2 transition-all";
+        statusBadge.querySelector('span').className = "w-2 h-2 rounded-full bg-red-500";
+        badgeText.innerText = "غير متصل";
+
+        // إشعار الانتقال لوضع عدم الاتصال (اللون البرتقالي)
+        showToast("تم التبديل إلى وضع عدم الاتصال", "يتم حفظ البيانات محلياً", "border-amber-500");
+
+      } else {
+        // 2. العودة لوضع (متصل) - الصورة الثانية
+        statusBar.className = "w-full max-w-5xl bg-white border border-emerald-400 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-4 shadow-sm transition-all duration-300";
+        
+        toggleIcon.className = "fa-solid fa-toggle-off text-orange-500";
+        toggleText.innerText = "محاكاة عدم الاتصال";
+        
+        statusDetails.innerHTML = `✓ متزامن`;
+        
+        statusBadge.className = "bg-emerald-50 text-emerald-700 border border-emerald-200 px-4 py-1.5 rounded-full text-sm font-semibold flex items-center gap-2 transition-all";
+        statusBadge.querySelector('span').className = "w-2 h-2 rounded-full bg-emerald-500 animate-pulse";
+        badgeText.innerText = "متصل";
+
+        // إشعار جاري المزامنة عند العودة (اللون الأخضر)
+        showToast("تم التبديل إلى وضع الاتصال", "جاري المزامنة...", "border-emerald-500");
+      }
+    }
+
+    // دالة الضغط على زر المزامنة الآن
+    function triggerSync() {
+      // إشعار تمت المزامنة بنجاح (اللون الأخضر)
+      showToast("تمت المزامنة", "لا توجد عناصر معلقة", "border-emerald-500");
+    }
+
+    // دالة توليد الإشعارات السريعة وتأثير حركتها وتدميرها تلقائياً بعد 3 ثواني
+    function showToast(title, subtitle, borderColorClass) {
+      const container = document.getElementById('toast-container');
+      
+      // بناء الهيكل الهيكلي للإشعار المطابق لتصميمك
+      const toast = document.createElement('div');
+      toast.className = `pointer-events-auto bg-white rounded-2xl shadow-xl border-l-[6px] ${borderColorClass} p-4 w-72 transform translate-x-[-120%] opacity-0 transition-all duration-500 ease-out flex flex-col gap-1`;
+      
+      toast.innerHTML = `
+        <h4 class="text-slate-800 font-bold text-lg text-right">${title}</h4>
+        <p class="text-slate-500 text-sm text-right font-medium">${subtitle}</p>
+      `;
+      
+      container.appendChild(toast);
+
+      // تشغيل حركة الدخول (Slide In)
+      setTimeout(() => {
+        toast.classList.remove('translate-x-[-120%]', 'opacity-0');
+      }, 50);
+
+      // تشغيل حركة الخروج التلقائي بعد 3 ثواني ثم حذفه تماماً من الصفحة
+      setTimeout(() => {
+        toast.classList.add('translate-x-[-120%]', 'opacity-0');
+        setTimeout(() => {
+          toast.remove();
+        }, 500);
+      }, 3500);
+    }
+  </script>
 </body>
 </html>

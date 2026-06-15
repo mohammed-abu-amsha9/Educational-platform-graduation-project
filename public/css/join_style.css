@@ -1,0 +1,41 @@
+body {
+    font-family: "Cairo", sans-serif;
+}
+
+/* تخصيص شكل السكرول بار */
+.custom-scrollbar::-webkit-scrollbar {
+    height: 6px;
+    /* التحكم في سُمك السكرول الأفقي */
+}
+
+/* خلفية المجرى (Track) */
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    /* لون رمادي خفيف جداً */
+    border-radius: 10px;
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-track {
+    background: #1e293b;
+    /* لون يتناسب مع dark:bg-slate-800 */
+}
+
+/* المقبض المتحرك (Thumb) */
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    /* لون المقبض */
+    border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+    /* عند تمرير الماوس فوقه */
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #475569;
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #64748b;
+}
