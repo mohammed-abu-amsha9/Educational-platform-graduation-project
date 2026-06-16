@@ -4,11 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>منصة صمود التعليمية - تسجيل الدخول</title>
-    <link rel="stylesheet" href="../public/css/output.css">
+    <link rel="stylesheet" href="../public/css/output.css" />
     <script src="../public/js/vite.config.ts"></script>
     <link
       rel="stylesheet"
       href="../public/fontawesome-free-7.2.0-web/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
     />
     <style>
       body {
@@ -17,10 +23,14 @@
       .gradient-panel {
         background: linear-gradient(
           135deg,
-          #0f5e52 0%,
-          #0a4a40 60%,
-          #073a32 100%
+          #18a792 0%,
+          #067f6d 60%,
+          #045649 100%
         );
+      }
+      /* ستايل مخصص للوحة الجراديانت في الوضع الداكن لتصبح أعمق وأجمل */
+      .dark .gradient-panel {
+        background: linear-gradient(135deg);
       }
       .blob {
         position: absolute;
@@ -34,15 +44,29 @@
         }
       }
     </style>
+    <script>
+      // كود فحص الثيم المحفوظ مسبقاً لمنع وميض الشاشة البيضاء عند التحميل
+      // يعني لما اكون في الموقع والوضع ليلي واعمل تسجيل خروج يبقلى محافظ على الثيم والعكس كذلك
+      if (
+        localStorage.getItem("theme") === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
   </head>
-  <body class="min-h-screen flex items-center justify-center bg-slate-100 p-4">
+  <body
+    class="min-h-screen flex items-center justify-center bg-slate-100 dark:bg-slate-950 p-4 transition-colors duration-200 relative"
+  >
     <div
-      class="w-full max-w-5xl bg-white rounded-3xl shadow-xl overflow-hidden grid md:grid-cols-2 min-h-[640px]"
+      class="w-full max-w-5xl bg-white dark:bg-slate-900 rounded-3xl shadow-xl border border-transparent dark:border-slate-800/60 overflow-hidden grid md:grid-cols-2 min-h-[640px] transition-colors duration-200"
       dir="ltr"
     >
-      <!-- Right side: Branding -->
       <div
-        class="gradient-panel relative text-white p-6 sm:p-8 md:p-12 flex flex-col order-2 md:order-2 overflow-hidden min-h-[360px] md:min-h-0"
+        class="gradient-panel relative text-white p-6 sm:p-8 md:p-12 flex flex-col order-2 md:order-2 overflow-hidden min-h-[360px] md:min-h-0 transition-colors duration-200"
         dir="rtl"
       >
         <div class="blob w-72 h-72 -top-20 -right-20"></div>
@@ -50,7 +74,7 @@
 
         <div class="relative z-10 flex items-center mb-10">
           <div
-            class="w-12 h-12 rounded-2xl bg-white/10 backdrop-blur flex items-center justify-center font-extrabold text-xl"
+            class="w-12 h-12 rounded-2xl border border-teal-500 dark:border-teal-400 bg-white/10 backdrop-blur flex items-center justify-center font-extrabold text-xl"
           >
             ص
           </div>
@@ -165,33 +189,36 @@
           </div>
         </div>
       </div>
-      <!-- Left side: Form -->
+
       <div
-        class="p-6 sm:p-8 md:p-12 flex flex-col justify-center order-1 md:order-1"
+        class="p-6 sm:p-8 md:p-12 flex flex-col justify-center order-1 md:order-1 bg-white dark:bg-slate-800 transition-colors duration-200"
         dir="rtl"
       >
         <div class="mb-8">
           <h1
-            class="text-3xl font-extrabold text-gray-800 flex items-center justify-start gap-2"
+            class="text-3xl font-extrabold text-gray-800 dark:text-zinc-100 flex items-center justify-start gap-2"
           >
             أهلاً بعودتك <span>👋</span>
           </h1>
-          <p class="text-gray-400 mt-2">سجّل دخولك للمتابعة إلى المنصة</p>
+          <p class="text-gray-400 dark:text-zinc-400 mt-2">
+            سجّل دخولك للمتابعة إلى المنصة
+          </p>
         </div>
 
         <form class="space-y-5" action="admin/control_panel.html">
           <div>
-            <label class="block text-sm font-bold text-gray-700 mb-2"
+            <label
+              class="block text-md font-bold text-gray-700 dark:text-zinc-300 mb-2"
               >اسم المستخدم</label
             >
             <div class="relative">
               <input
                 type="text"
                 placeholder="أدخل اسم المستخدم"
-                class="w-full border border-gray-200 rounded-xl py-3 pr-4 pl-10 text-right focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-transparent text-sm"
+                class="w-full border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-600/40 text-gray-400 dark:text-zinc-100 rounded-xl py-3 pr-4 pl-10 text-right focus:outline-none focus:ring-2 focus:ring-emerald-600 dark:focus:ring-teal-500 focus:border-transparent text-sm transition-colors"
               />
               <span
-                class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+                class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-zinc-500"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -212,46 +239,40 @@
           </div>
 
           <div>
-            <label class="block text-sm font-bold text-gray-700 mb-2"
+            <label
+              class="block text-md font-bold text-gray-700 dark:text-zinc-300 mb-2"
               >كلمة المرور</label
             >
             <div class="relative">
               <input
                 id="password"
                 type="password"
-                placeholder="أدخل كلمة المرور"
-                class="w-full border border-gray-200 rounded-xl py-3 pr-4 pl-10 text-right focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-transparent text-sm"
+                placeholder="........."
+                class="w-full border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-600/40 text-slate-800 dark:text-zinc-100 rounded-xl py-3 pr-4 pl-10 text-right focus:outline-none focus:ring-2 focus:ring-emerald-600 dark:focus:ring-teal-500 focus:border-transparent text-sm transition-colors"
               />
+
               <button
+                id="toggle-password"
                 type="button"
-                onclick=""
-                class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+                onclick="
+                  const input = document.getElementById('password');
+                  const icon = document.getElementById('eye-icon');
+                  if (input.type === 'password') {
+                    input.type = 'text';
+                    icon.className = 'fa-solid fa-eye-slash text-base';
+                  } else {
+                    input.type = 'password';
+                    icon.className = 'fa-solid fa-eye text-base';
+                  }
+                "
+                class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-zinc-500 hover:text-slate-600 dark:hover:text-zinc-300"
               >
-                <svg
-                  id="eyeIcon"
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="w-5 h-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                  />
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                  />
-                </svg>
+                <i id="eye-icon" class="fa-solid fa-eye text-base"></i>
               </button>
             </div>
           </div>
 
-          <button 
+          <button
             type="submit"
             class="w-full bg-gradient-to-l from-emerald-700 to-teal-600 hover:from-emerald-800 hover:to-teal-700 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition shadow-lg shadow-emerald-700/20"
           >
@@ -274,5 +295,28 @@
         </form>
       </div>
     </div>
+
+    <script>
+      // كود تشغيل إظهار وإخفاء كلمة المرور
+      // الحصول على العناصر باستخدام الـ id الخاص بها
+      const passwordInput = document.getElementById("password");
+      const togglePasswordBtn = document.getElementById("toggle-password");
+      const eyeIcon = document.getElementById("eye-icon");
+
+      // إضافة حدث الضغط (Click) على الزر
+      togglePasswordBtn.addEventListener("click", () => {
+        // إذا كانت الكلمة مخفية (password)، نقوم بإظهارها (text)
+        if (passwordInput.type === "password") {
+          passwordInput.type = "text";
+          // تغيير الأيقونة إلى العين المشطوبة (مفتوحة/كاشفة)
+          eyeIcon.className = "fa-solid fa-eye-slash text-base";
+        } else {
+          // إذا كانت ظاهرة، نعيد إخفاءها
+          passwordInput.type = "password";
+          // إعادة الأيقونة إلى العين الطبيعية
+          eyeIcon.className = "fa-solid fa-eye text-base";
+        }
+      });
+    </script>
   </body>
 </html>
