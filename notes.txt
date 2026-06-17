@@ -1,0 +1,3 @@
+لتشغيل اكواد المكتبة وملف output.css
+في التيرمينال 
+<!-- npx @tailwindcss/cli -i ./public/css/style.css ./public/css/output.css --watch -->

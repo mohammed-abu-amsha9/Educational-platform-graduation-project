@@ -1,382 +1,233 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>منصة صمود - دليل الطلاب المطور</title>
-  <link rel="stylesheet" href="../public/css/output.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    body { font-family: 'Tajawal', sans-serif; }
-    .modal-backdrop { transition: opacity 0.25s ease-out; }
-    .modal-content { transition: transform 0.25s ease-out; }
-  </style>
-  <script>
-    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة المعلمين - منصة صمود</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* تحسينات إضافية للسكرول بار */
+        .custom-scroll::-webkit-scrollbar { width: 5px; }
+        .custom-scroll::-webkit-scrollbar-track { background: transparent; }
+        .custom-scroll::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+        .dark .custom-scroll::-webkit-scrollbar-thumb { background: #334155; }
+    </style>
 </head>
-<body class="bg-slate-50 dark:bg-slate-950 min-h-screen text-slate-800 dark:text-zinc-100 p-4 sm:p-6 transition-colors duration-200">
+<body class="bg-slate-50 dark:bg-slate-950 min-h-screen font-[sans-serif]">
 
-  <div class="max-w-7xl mx-auto space-y-6">
-    
-    <div class="bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800/80 rounded-2xl p-4 shadow-sm flex flex-col md:flex-row items-center justify-between gap-4">
-      
-      <button class="w-full md:w-auto bg-teal-700 hover:bg-teal-800 text-white font-bold px-5 py-2.5 rounded-xl flex items-center justify-center gap-2 transition-all shrink-0 shadow-sm">
-        <i class="fa-solid fa-plus text-sm"></i>
-        <span>إضافة طالب</span>
-      </button>
-
-      <div class="w-full flex flex-col sm:flex-row items-center gap-3 justify-end">
-        <select class="w-full sm:w-44 border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-800 text-sm rounded-xl py-2.5 px-3 focus:outline-none focus:ring-2 focus:ring-teal-600">
-          <option value="">جميع الحالات</option>
-          <option value="paid">مدفوع</option>
-          <option value="partial">جزئي</option>
-        </select>
-
-        <select class="w-full sm:w-48 border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-800 text-sm rounded-xl py-2.5 px-3 focus:outline-none focus:ring-2 focus:ring-teal-600">
-          <option value="">جميع الصفوف</option>
-          <option value="1">الصف الأول الثانوي</option>
-        </select>
-
-        <div class="relative w-full sm:w-72">
-          <input type="text" placeholder="ابحث باسم الطالب أو الرقم..." class="w-full border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-800 rounded-xl py-2.5 pr-3 pl-10 text-right text-sm focus:outline-none focus:ring-2 focus:ring-teal-600">
-          <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"><i class="fa-solid fa-magnifying-glass"></i></span>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800/80 rounded-2xl shadow-sm overflow-hidden">
-      <div class="overflow-x-auto">
-        <table class="w-full text-right border-collapse">
-          <thead>
-            <tr class="bg-slate-50/70 dark:bg-slate-800/40 border-b border-gray-100 dark:border-slate-800 text-xs font-bold text-gray-400 dark:text-zinc-400 tracking-wide">
-              <th class="p-4">الاسم</th>
-              <th class="p-4">رقم الطالب</th>
-              <th class="p-4">الصف</th>
-              <th class="p-4">الحضور</th>
-              <th class="p-4">الحالة المالية</th>
-              <th class="p-4">المتبقي</th>
-              <th class="p-4">الحساب</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-gray-100 dark:divide-slate-800/60 text-sm">
+    <div class="p-4 sm:p-8">
+        <div class="max-w-7xl mx-auto">
             
-            <tr onclick="openModal('mainStudentModal')" class="hover:bg-slate-50/50 dark:hover:bg-slate-800/20 cursor-pointer transition-colors">
-              <td class="p-4 flex items-center gap-3">
-                <div class="w-9 h-9 rounded-full bg-teal-50 dark:bg-teal-950/40 flex items-center justify-center text-teal-600 dark:text-teal-400 font-bold">م</div>
-                <div>
-                  <h4 class="font-bold text-slate-800 dark:text-zinc-200">مريم أحمد يوسف</h4>
-                  <p class="text-xs text-gray-400 dark:text-zinc-500 mt-0.5">أحمد يوسف</p>
-                </div>
-              </td>
-              <td class="p-4 font-mono text-xs text-gray-500 dark:text-zinc-400">STU-2024-001</td>
-              <td class="p-4 text-gray-600 dark:text-zinc-300">الصف الأول الثانوي</td>
-              <td class="p-4">
-                <div class="flex items-center gap-2">
-                  <span class="text-xs font-bold text-gray-500">96%</span>
-                  <div class="w-16 bg-gray-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
-                    <div class="bg-emerald-500 h-full rounded-full" style="width: 96%"></div>
-                  </div>
-                </div>
-              </td>
-              <td class="p-4">
-                <span class="px-2.5 py-1 text-xs font-bold rounded-lg bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400">مدفوع</span>
-              </td>
-              <td class="p-4 font-bold text-slate-700 dark:text-zinc-300">₪ 0</td>
-              <td class="p-4"><span class="px-2.5 py-1 text-xs font-bold rounded-lg bg-teal-50 dark:bg-teal-950/40 text-teal-600 dark:text-teal-400">نشط</span></td>
-            </tr>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <div class="lg:col-span-8 order-2 lg:order-1">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-lg font-black text-slate-800 dark:text-zinc-100 flex items-center gap-2">
+                            <span>قائمة المعلمين</span>
+                            <span class="bg-teal-100 dark:bg-teal-900/40 text-teal-700 dark:text-teal-400 text-xs px-2 py-1 rounded-full" id="teacherCount">5</span>
+                        </h2>
+                    </div>
 
-            <tr onclick="openModal('mainStudentModal')" class="hover:bg-slate-50/50 dark:hover:bg-slate-800/20 cursor-pointer transition-colors">
-              <td class="p-4 flex items-center gap-3">
-                <div class="w-9 h-9 rounded-full bg-teal-50 dark:bg-teal-950/40 flex items-center justify-center text-teal-600 dark:text-teal-400 font-bold">ي</div>
-                <div>
-                  <h4 class="font-bold text-slate-800 dark:text-zinc-200">يوسف عمر البكري</h4>
-                  <p class="text-xs text-gray-400 dark:text-zinc-500 mt-0.5">عمر البكري</p>
-                </div>
-              </td>
-              <td class="p-4 font-mono text-xs text-gray-500 dark:text-zinc-400">STU-2024-002</td>
-              <td class="p-4 text-gray-600 dark:text-zinc-300">الصف الأول الثانوي</td>
-              <td class="p-4">
-                <div class="flex items-center gap-2">
-                  <span class="text-xs font-bold text-gray-500">88%</span>
-                  <div class="w-16 bg-gray-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
-                    <div class="bg-amber-500 h-full rounded-full" style="width: 88%"></div>
-                  </div>
-                </div>
-              </td>
-              <td class="p-4">
-                <span class="px-2.5 py-1 text-xs font-bold rounded-lg bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400">جزئي</span>
-              </td>
-              <td class="p-4 font-bold text-slate-700 dark:text-zinc-300">₪ 300</td>
-              <td class="p-4"><span class="px-2.5 py-1 text-xs font-bold rounded-lg bg-teal-50 dark:bg-teal-950/40 text-teal-600 dark:text-teal-400">نشط</span></td>
-            </tr>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="teacherList">
+                        <div onclick="openViewModal('خالد النجار', 'T-1001', 'الرياضيات', '3 صفوف', '5 صلاحيات')" 
+                             class="group relative bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 p-5 rounded-2xl shadow-sm hover:shadow-md transition-all cursor-pointer">
+                            <span class="absolute top-4 left-4 bg-emerald-50 dark:bg-emerald-950/30 text-emerald-600 dark:text-emerald-400 text-[10px] font-bold px-2.5 py-1 rounded-full">نشط</span>
+                            <div class="flex items-center gap-4">
+                                <div class="w-14 h-14 rounded-full bg-teal-50 dark:bg-teal-950/40 flex items-center justify-center text-teal-600 dark:text-teal-400 font-black text-xl shadow-inner">خ</div>
+                                <div>
+                                    <h3 class="font-bold text-slate-800 dark:text-zinc-100 group-hover:text-teal-600 transition-colors">خالد النجار</h3>
+                                    <p class="text-xs text-gray-400 font-mono">T-1001</p>
+                                    <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-[11px] text-gray-500 dark:text-zinc-400">
+                                        <span><i class="fa-solid fa-book-open ml-1 text-teal-500"></i> الرياضيات</span>
+                                        <span><i class="fa-solid fa-school ml-1 text-blue-500"></i> 3 صفوف</span>
+                                        <span><i class="fa-solid fa-key ml-1 text-amber-500"></i> 5 صلاحيات</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-            <tr onclick="openModal('mainStudentModal')" class="hover:bg-slate-50/50 dark:hover:bg-slate-800/20 cursor-pointer transition-colors">
-              <td class="p-4 flex items-center gap-3">
-                <div class="w-9 h-9 rounded-full bg-teal-50 dark:bg-teal-950/40 flex items-center justify-center text-teal-600 dark:text-teal-400 font-bold">ل</div>
-                <div>
-                  <h4 class="font-bold text-slate-800 dark:text-zinc-200">ليلى حسن الناصر</h4>
-                  <p class="text-xs text-gray-400 dark:text-zinc-500 mt-0.5">حسن الناصر</p>
+                        <div onclick="openViewModal('سارة الدهان', 'T-1002', 'اللغة العربية', '4 صفوف', '3 صلاحيات')" 
+                             class="group relative bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 p-5 rounded-2xl shadow-sm hover:shadow-md transition-all cursor-pointer">
+                            <span class="absolute top-4 left-4 bg-emerald-50 dark:bg-emerald-950/30 text-emerald-600 dark:text-emerald-400 text-[10px] font-bold px-2.5 py-1 rounded-full">نشط</span>
+                            <div class="flex items-center gap-4">
+                                <div class="w-14 h-14 rounded-full bg-blue-50 dark:bg-blue-950/40 flex items-center justify-center text-blue-600 dark:text-blue-400 font-black text-xl">س</div>
+                                <div>
+                                    <h3 class="font-bold text-slate-800 dark:text-zinc-100">سارة الدهان</h3>
+                                    <p class="text-xs text-gray-400 font-mono">T-1002</p>
+                                    <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-[11px] text-gray-500 dark:text-zinc-400">
+                                        <span><i class="fa-solid fa-book-open ml-1 text-teal-500"></i> اللغة العربية</span>
+                                        <span><i class="fa-solid fa-school ml-1 text-blue-500"></i> 4 صفوف</span>
+                                        <span><i class="fa-solid fa-key ml-1 text-amber-500"></i> 3 صلاحيات</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </td>
-              <td class="p-4 font-mono text-xs text-gray-500 dark:text-zinc-400">STU-2024-003</td>
-              <td class="p-4 text-gray-600 dark:text-zinc-300">الصف الأول الثانوي</td>
-              <td class="p-4">
-                <div class="flex items-center gap-2">
-                  <span class="text-xs font-bold text-gray-500">99%</span>
-                  <div class="w-16 bg-gray-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
-                    <div class="bg-emerald-500 h-full rounded-full" style="width: 99%"></div>
-                  </div>
+
+                <div class="lg:col-span-4 order-1 lg:order-2">
+                    <div class="bg-white dark:bg-slate-900 border border-teal-100 dark:border-slate-800 rounded-3xl p-6 shadow-xl sticky top-8">
+                        <div class="flex items-center gap-2 mb-6">
+                            <div class="w-8 h-8 bg-blue-50 dark:bg-blue-950/40 rounded-lg flex items-center justify-center text-blue-600 dark:text-blue-400">
+                                <i class="fa-solid fa-plus text-sm"></i>
+                            </div>
+                            <h2 class="text-sm font-black text-slate-800 dark:text-zinc-100">تسجيل معلم جديد</h2>
+                        </div>
+
+                        <form class="space-y-4" onsubmit="event.preventDefault();">
+                            <div>
+                                <label class="block text-[11px] font-black text-slate-500 mb-1.5 uppercase">اسم المعلم</label>
+                                <input type="text" placeholder="الاسم الكامل" class="w-full border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-800/50 rounded-xl py-2.5 px-4 text-sm outline-none focus:ring-2 focus:ring-teal-600 transition-all dark:text-zinc-100">
+                            </div>
+
+                            <div>
+                                <label class="block text-[11px] font-black text-slate-500 mb-1.5 uppercase">رقم الموظف</label>
+                                <input type="text" placeholder="ID-000" class="w-full border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-800/50 rounded-xl py-2.5 px-4 text-sm outline-none focus:ring-2 focus:ring-teal-600 transition-all font-mono">
+                            </div>
+
+                            <div>
+                                <label class="block text-[11px] font-black text-slate-500 mb-1.5 uppercase">المادة</label>
+                                <select class="w-full border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-800/50 rounded-xl py-2.5 px-4 text-sm outline-none focus:ring-2 focus:ring-teal-600 cursor-pointer">
+                                    <option>الرياضيات</option>
+                                    <option>اللغة العربية</option>
+                                    <option>العلوم</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-[11px] font-black text-slate-500 mb-1.5 uppercase">الصفوف المسندة</label>
+                                <div class="border border-gray-100 dark:border-slate-800 rounded-xl p-3 max-h-32 overflow-y-auto space-y-2 text-xs custom-scroll bg-slate-50/50 dark:bg-slate-800/30">
+                                    <label class="flex items-center justify-between"><span class="text-gray-600 dark:text-zinc-300">الصف الأول الإعدادي</span> <input type="checkbox" class="accent-teal-600"></label>
+                                    <label class="flex items-center justify-between"><span class="text-gray-600 dark:text-zinc-300">الصف الثاني الإعدادي</span> <input type="checkbox" class="accent-teal-600"></label>
+                                    <label class="flex items-center justify-between"><span class="text-gray-600 dark:text-zinc-300">الصف الثالث الإعدادي</span> <input type="checkbox" class="accent-teal-600"></label>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-[11px] font-black text-slate-500 mb-1.5 uppercase">الصلاحيات</label>
+                                <div class="border border-gray-100 dark:border-slate-800 rounded-xl p-3 max-h-32 overflow-y-auto space-y-2 text-xs custom-scroll bg-slate-50/50 dark:bg-slate-800/30">
+                                    <label class="flex items-center justify-between"><span class="text-gray-600 dark:text-zinc-300">تسجيل الحضور</span> <input type="checkbox" checked class="accent-blue-600"></label>
+                                    <label class="flex items-center justify-between"><span class="text-gray-600 dark:text-zinc-300">رفع ملفات</span> <input type="checkbox" checked class="accent-blue-600"></label>
+                                </div>
+                            </div>
+
+                            <button class="w-full bg-teal-700 hover:bg-teal-800 text-white font-bold py-3 rounded-xl shadow-lg shadow-teal-700/20 transition-all flex items-center justify-center gap-2 mt-4">
+                                <i class="fa-solid fa-save"></i>
+                                <span>حفظ المعلم</span>
+                            </button>
+                        </form>
+                    </div>
                 </div>
-              </td>
-              <td class="p-4">
-                <span class="px-2.5 py-1 text-xs font-bold rounded-lg bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400">مدفوع</span>
-              </td>
-              <td class="p-4 font-bold text-slate-700 dark:text-zinc-300">₪ 0</td>
-              <td class="p-4"><span class="px-2.5 py-1 text-xs font-bold rounded-lg bg-teal-50 dark:bg-teal-950/40 text-teal-600 dark:text-teal-400">نشط</span></td>
-            </tr>
 
-            <tr onclick="openModal('mainStudentModal')" class="hover:bg-slate-50/50 dark:hover:bg-slate-800/20 cursor-pointer transition-colors">
-              <td class="p-4 flex items-center gap-3">
-                <div class="w-9 h-9 rounded-full bg-teal-50 dark:bg-teal-950/40 flex items-center justify-center text-teal-600 dark:text-teal-400 font-bold">م</div>
-                <div>
-                  <h4 class="font-bold text-slate-800 dark:text-zinc-200">محمد سامي العلي</h4>
-                  <p class="text-xs text-gray-400 dark:text-zinc-500 mt-0.5">سامي العلي</p>
-                </div>
-              </td>
-              <td class="p-4 font-mono text-xs text-gray-500 dark:text-zinc-400">STU-2024-004</td>
-              <td class="p-4 text-gray-600 dark:text-zinc-300">الصف الأول الثانوي</td>
-              <td class="p-4">
-                <div class="flex items-center gap-2">
-                  <span class="text-xs font-bold text-gray-500">75%</span>
-                  <div class="w-16 bg-gray-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
-                    <div class="bg-amber-500 h-full rounded-full" style="width: 75%"></div>
-                  </div>
-                </div>
-              </td>
-              <td class="p-4">
-                <span class="px-2.5 py-1 text-xs font-bold rounded-lg bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400">جزئي</span>
-              </td>
-              <td class="p-4 font-bold text-slate-700 dark:text-zinc-300">₪ 500</td>
-              <td class="p-4"><span class="px-2.5 py-1 text-xs font-bold rounded-lg bg-teal-50 dark:bg-teal-950/40 text-teal-600 dark:text-teal-400">نشط</span></td>
-            </tr>
-
-            <tr onclick="openModal('mainStudentModal')" class="hover:bg-slate-50/50 dark:hover:bg-slate-800/20 cursor-pointer transition-colors">
-              <td class="p-4 flex items-center gap-3">
-                <div class="w-9 h-9 rounded-full bg-teal-50 dark:bg-teal-950/40 flex items-center justify-center text-teal-600 dark:text-teal-400 font-bold">ف</div>
-                <div>
-                  <h4 class="font-bold text-slate-800 dark:text-zinc-200">فاطمة زياد طليمات</h4>
-                  <p class="text-xs text-gray-400 dark:text-zinc-500 mt-0.5">زياد طليمات</p>
-                </div>
-              </td>
-              <td class="p-4 font-mono text-xs text-gray-500 dark:text-zinc-400">STU-2024-005</td>
-              <td class="p-4 text-gray-600 dark:text-zinc-300">الصف الأول الثانوي</td>
-              <td class="p-4">
-                <div class="flex items-center gap-2">
-                  <span class="text-xs font-bold text-gray-500">91%</span>
-                  <div class="w-16 bg-gray-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
-                    <div class="bg-emerald-500 h-full rounded-full" style="width: 91%"></div>
-                  </div>
-                </div>
-              </td>
-              <td class="p-4">
-                <span class="px-2.5 py-1 text-xs font-bold rounded-lg bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400">مدفوع</span>
-              </td>
-              <td class="p-4 font-bold text-slate-700 dark:text-zinc-300">₪ 0</td>
-              <td class="p-4"><span class="px-2.5 py-1 text-xs font-bold rounded-lg bg-teal-50 dark:bg-teal-950/40 text-teal-600 dark:text-teal-400">نشط</span></td>
-            </tr>
-
-            <tr onclick="openModal('mainStudentModal')" class="hover:bg-slate-50/50 dark:hover:bg-slate-800/20 cursor-pointer transition-colors">
-              <td class="p-4 flex items-center gap-3">
-                <div class="w-9 h-9 rounded-full bg-teal-50 dark:bg-teal-950/40 flex items-center justify-center text-teal-600 dark:text-teal-400 font-bold">أ</div>
-                <div>
-                  <h4 class="font-bold text-slate-800 dark:text-zinc-200">أحمد عبد الرحمن السعدي</h4>
-                  <p class="text-xs text-gray-400 dark:text-zinc-500 mt-0.5">عبد الرحمن السعدي</p>
-                </div>
-              </td>
-              <td class="p-4 font-mono text-xs text-gray-500 dark:text-zinc-400">STU-2024-006</td>
-              <td class="p-4 text-gray-600 dark:text-zinc-300">الصف الأول الثانوي</td>
-              <td class="p-4">
-                <div class="flex items-center gap-2">
-                  <span class="text-xs font-bold text-gray-500">82%</span>
-                  <div class="w-16 bg-gray-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
-                    <div class="bg-amber-500 h-full rounded-full" style="width: 82%"></div>
-                  </div>
-                </div>
-              </td>
-              <td class="p-4">
-                <span class="px-2.5 py-1 text-xs font-bold rounded-lg bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400">جزئي</span>
-              </td>
-              <td class="p-4 font-bold text-slate-700 dark:text-zinc-300">₪ 200</td>
-              <td class="p-4"><span class="px-2.5 py-1 text-xs font-bold rounded-lg bg-teal-50 dark:bg-teal-950/40 text-teal-600 dark:text-teal-400">نشط</span></td>
-            </tr>
-
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-  </div>
-
-  <div id="mainStudentModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
-    <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm" onclick="closeModal('mainStudentModal')"></div>
-    <div class="bg-white dark:bg-slate-900 rounded-3xl w-full max-w-3xl shadow-2xl overflow-hidden relative z-10 p-6 border border-transparent dark:border-slate-800">
-      
-      <div class="flex items-start justify-between border-b border-gray-100 dark:border-slate-800 pb-4 mb-6">
-        <button onclick="closeModal('mainStudentModal')" class="text-gray-400 hover:text-gray-600 dark:hover:text-zinc-300 text-lg"><i class="fa-solid fa-xmark"></i></button>
-        <h2 class="text-lg font-bold text-teal-700 dark:text-teal-400">ملف الطالب التفصيلي</h2>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
-        <div class="md:col-span-1 border border-gray-100 dark:border-slate-800 rounded-2xl p-4 flex flex-col items-center text-center bg-slate-50/30 dark:bg-slate-800/10">
-          <div class="w-16 h-16 rounded-full bg-teal-50 dark:bg-teal-950/40 flex items-center justify-center text-teal-600 dark:text-teal-400 font-black text-xl mb-3">م</div>
-          <h3 class="font-bold text-base text-slate-800 dark:text-zinc-100">ملف الطالب المختار</h3>
-          <p class="text-xs font-mono text-gray-400 mt-1">STU-2024-XXX</p>
-          <div class="mt-4">
-            <p class="text-xs text-gray-400 font-bold">المعدل العام الحالي</p>
-            <p class="text-3xl font-black text-teal-600 dark:text-teal-400 mt-1">92%</p>
-          </div>
-        </div>
-
-        <div class="md:col-span-2 space-y-4">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div class="bg-slate-50/50 dark:bg-slate-800/30 p-3 rounded-xl border border-gray-100/50 dark:border-slate-800/50">
-              <p class="text-xs text-gray-400 font-medium">اسم ولي الأمر المسجل</p>
-              <p class="text-sm font-bold text-slate-700 dark:text-zinc-200 mt-1">أحمد يوسف</p>
             </div>
-            <div class="bg-slate-50/50 dark:bg-slate-800/30 p-3 rounded-xl border border-gray-100/50 dark:border-slate-800/50">
-              <p class="text-xs text-gray-400 font-medium">رقم التواصل الشخصي</p>
-              <p class="text-sm font-bold text-slate-700 dark:text-zinc-200 mt-1 font-mono">0599111001</p>
+        </div>
+    </div>
+
+    <div id="viewModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" onclick="closeModal('viewModal')"></div>
+        <div class="bg-white dark:bg-slate-900 rounded-3xl w-full max-w-md shadow-2xl relative z-10 p-6 border border-transparent dark:border-slate-800 transform transition-all scale-95 opacity-0 duration-300" id="viewContent">
+            <div class="flex justify-between items-start mb-6">
+                <h2 class="text-lg font-black text-teal-700">ملف المعلم</h2>
+                <button onclick="closeModal('viewModal')" class="text-gray-400 hover:text-rose-500 transition-colors"><i class="fa-solid fa-circle-xmark text-xl"></i></button>
             </div>
-          </div>
-          <div class="border border-gray-100 dark:border-slate-800/80 rounded-xl p-3">
-            <h4 class="text-xs font-bold text-gray-400 mb-2">سجل درجات الطالب والاختبارات الأخيره</h4>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-              <div class="flex justify-between items-center p-2 bg-gray-50 dark:bg-slate-800/40 rounded-lg"><span>اختبار الرياضيات - الفصل الأول</span> <span class="font-bold text-emerald-600">5/5</span></div>
-              <div class="flex justify-between items-center p-2 bg-gray-50 dark:bg-slate-800/40 rounded-lg"><span>اختبار اللغة الإنجليزية - القواعد</span> <span class="font-bold text-emerald-600">4/4</span></div>
+            
+            <div class="flex flex-col items-center text-center mb-6">
+                <div id="vAvatar" class="w-20 h-20 rounded-full bg-teal-50 dark:bg-teal-950/40 flex items-center justify-center text-teal-600 font-black text-3xl mb-3 shadow-inner">خ</div>
+                <h3 id="vName" class="text-xl font-black text-slate-800 dark:text-zinc-100">خالد النجار</h3>
+                <span id="vId" class="text-xs font-mono text-gray-400 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded mt-1">T-1001</span>
             </div>
-          </div>
+
+            <div class="grid grid-cols-1 gap-3 mb-8">
+                <div class="flex justify-between p-3 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-gray-100 dark:border-slate-800">
+                    <span class="text-gray-400 text-xs">المادة المدرّسة</span>
+                    <span id="vSubject" class="text-sm font-bold text-slate-700 dark:text-zinc-200">الرياضيات</span>
+                </div>
+                <div class="flex justify-between p-3 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-gray-100 dark:border-slate-800">
+                    <span class="text-gray-400 text-xs">الصفوف</span>
+                    <span id="vClasses" class="text-sm font-bold text-slate-700 dark:text-zinc-200">3 صفوف</span>
+                </div>
+                <div class="flex justify-between p-3 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-gray-100 dark:border-slate-800">
+                    <span class="text-gray-400 text-xs">الصلاحيات</span>
+                    <span id="vPerms" class="text-sm font-bold text-slate-700 dark:text-zinc-200">5 صلاحيات</span>
+                </div>
+            </div>
+
+            <div class="flex gap-3">
+                <button onclick="switchModal('viewModal', 'editModal')" class="flex-1 bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 rounded-2xl flex items-center justify-center gap-2 transition-all">
+                    <i class="fa-solid fa-pen-to-square"></i> تعديل
+                </button>
+                <button onclick="switchModal('viewModal', 'deleteModal')" class="flex-1 bg-rose-500 hover:bg-rose-600 text-white font-bold py-3 rounded-2xl flex items-center justify-center gap-2 transition-all">
+                    <i class="fa-solid fa-trash-can"></i> حذف
+                </button>
+            </div>
         </div>
-      </div>
-
-      <div class="flex flex-wrap items-center justify-center md:justify-end gap-2 mt-8 pt-4 border-t border-gray-100 dark:border-slate-800">
-        <button onclick="closeModal('mainStudentModal')" class="px-4 py-2 text-xs font-bold text-gray-500 bg-gray-100 dark:bg-slate-800 rounded-xl hover:bg-gray-200 transition">إغلاق</button>
-        <button onclick="switchModal('mainStudentModal', 'editDataModal')" class="px-4 py-2 text-xs font-bold text-white bg-amber-500 hover:bg-amber-600 rounded-xl transition flex items-center gap-1">✏️ تعديل البيانات</button>
-        <button onclick="switchModal('mainStudentModal', 'editClassModal')" class="px-4 py-2 text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-xl transition flex items-center gap-1">📚 تعديل الصف</button>
-        <button onclick="switchModal('mainStudentModal', 'editFeesModal')" class="px-4 py-2 text-xs font-bold text-white bg-teal-600 hover:bg-teal-700 rounded-xl transition flex items-center gap-1">💰 تعديل الرسوم</button>
-        <button onclick="switchModal('mainStudentModal', 'editParentModal')" class="px-4 py-2 text-xs font-bold text-white bg-orange-500 hover:bg-orange-600 rounded-xl transition flex items-center gap-1">👪 تعديل ولي الأمر</button>
-      </div>
-
     </div>
-  </div>
 
-  <div id="editDataModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
-    <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm" onclick="closeModal('editDataModal')"></div>
-    <div class="bg-white dark:bg-slate-900 rounded-3xl w-full max-w-md shadow-2xl overflow-hidden relative z-10 p-6 border dark:border-slate-800">
-      <h3 class="text-base font-bold text-amber-600 mb-4">✏️ تعديل البيانات الأساسية</h3>
-      <form class="space-y-4" onsubmit="event.preventDefault(); closeModal('editDataModal');">
-        <div>
-          <label class="block text-xs font-bold text-gray-500 mb-1">اسم الطالب رباعي</label>
-          <input type="text" value="مريم أحمد يوسف" class="w-full border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-800 rounded-xl py-2 px-3 text-sm outline-none">
+    <div id="editModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="closeModal('editModal')"></div>
+        <div class="bg-white dark:bg-slate-900 rounded-3xl w-full max-w-md shadow-2xl relative z-10 p-6">
+            <h2 class="text-lg font-black text-amber-600 mb-6 flex items-center gap-2">
+                <i class="fa-solid fa-pen-to-square"></i> تعديل بيانات المعلم
+            </h2>
+            <div class="space-y-4">
+                <input type="text" id="editNameInput" class="w-full border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-800 rounded-xl py-3 px-4 text-sm outline-none focus:ring-2 focus:ring-amber-500">
+                <button onclick="closeModal('editModal')" class="w-full bg-teal-700 text-white font-bold py-3 rounded-xl mt-4">حفظ التغييرات</button>
+            </div>
         </div>
-        <div class="flex justify-end gap-2">
-          <button type="button" onclick="switchModal('editDataModal', 'mainStudentModal')" class="px-4 py-2 text-xs font-bold text-gray-400 bg-gray-100 dark:bg-slate-800 rounded-xl">رجوع</button>
-          <button type="submit" class="px-4 py-2 text-xs font-bold text-white bg-amber-500 rounded-xl">حفظ</button>
-        </div>
-      </form>
     </div>
-  </div>
 
-  <div id="editClassModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
-    <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm" onclick="closeModal('editClassModal')"></div>
-    <div class="bg-white dark:bg-slate-900 rounded-3xl w-full max-w-md shadow-2xl overflow-hidden relative z-10 p-6 border dark:border-slate-800">
-      <h3 class="text-base font-bold text-blue-600 mb-4">📚 نقل وتعديل الصف</h3>
-      <form class="space-y-4" onsubmit="event.preventDefault(); closeModal('editClassModal');">
-        <div>
-          <label class="block text-xs font-bold text-gray-500 mb-1">اختر الصف الدراسي الجديد</label>
-          <select class="w-full border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-800 rounded-xl py-2 px-3 text-sm outline-none">
-            <option>الصف الأول الثانوي</option>
-            <option>الصف الثاني الثانوي</option>
-          </select>
+    <div id="deleteModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="closeModal('deleteModal')"></div>
+        <div class="bg-white dark:bg-slate-900 rounded-3xl w-full max-w-xs shadow-2xl relative z-10 p-6 text-center">
+            <div class="w-16 h-16 bg-rose-50 dark:bg-rose-950 text-rose-500 rounded-full flex items-center justify-center text-3xl mx-auto mb-4">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+            <h3 class="text-lg font-black text-slate-800 dark:text-zinc-100 mb-2">حذف المعلم؟</h3>
+            <p class="text-xs text-gray-400 mb-6 leading-relaxed">أنت على وشك حذف بيانات هذا المعلم نهائياً من النظام، هل تريد الاستمرار؟</p>
+            <div class="flex gap-2">
+                <button onclick="closeModal('deleteModal')" class="flex-1 py-3 text-sm font-bold text-gray-500 bg-slate-100 dark:bg-slate-800 rounded-xl">تراجع</button>
+                <button onclick="alert('تم الحذف'); closeModal('deleteModal')" class="flex-1 py-3 text-sm font-bold text-white bg-rose-500 rounded-xl">نعم، احذف</button>
+            </div>
         </div>
-        <div class="flex justify-end gap-2">
-          <button type="button" onclick="switchModal('editClassModal', 'mainStudentModal')" class="px-4 py-2 text-xs font-bold text-gray-400 bg-gray-100 dark:bg-slate-800 rounded-xl">رجوع</button>
-          <button type="submit" class="px-4 py-2 text-xs font-bold text-white bg-blue-600 rounded-xl">تحديث</button>
-        </div>
-      </form>
     </div>
-  </div>
 
-  <div id="editFeesModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
-    <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm" onclick="closeModal('editFeesModal')"></div>
-    <div class="bg-white dark:bg-slate-900 rounded-3xl w-full max-w-md shadow-2xl overflow-hidden relative z-10 p-6 border dark:border-slate-800">
-      <h3 class="text-base font-bold text-teal-600 mb-4">💰 إدارة وتعديل الرسوم المدرسية</h3>
-      <form class="space-y-4" onsubmit="event.preventDefault(); closeModal('editFeesModal');">
-        <div class="grid grid-cols-2 gap-3">
-          <div>
-            <label class="block text-xs font-bold text-gray-500 mb-1">إجمالي الرسوم</label>
-            <input type="number" value="800" class="w-full border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-800 rounded-xl py-2 px-3 text-sm outline-none">
-          </div>
-          <div>
-            <label class="block text-xs font-bold text-gray-500 mb-1">المدفوع</label>
-            <input type="number" value="800" class="w-full border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-800 rounded-xl py-2 px-3 text-sm outline-none">
-          </div>
-        </div>
-        <div class="flex justify-end gap-2">
-          <button type="button" onclick="switchModal('editFeesModal', 'mainStudentModal')" class="px-4 py-2 text-xs font-bold text-gray-400 bg-gray-100 dark:bg-slate-800 rounded-xl">رجوع</button>
-          <button type="submit" class="px-4 py-2 text-xs font-bold text-white bg-teal-600 rounded-xl">حفظ</button>
-        </div>
-      </form>
-    </div>
-  </div>
+    <script>
+        // دالة فتح المودال وتعبئته بالبيانات
+        function openViewModal(name, id, subject, classes, perms) {
+            document.getElementById('vName').innerText = name;
+            document.getElementById('vId').innerText = id;
+            document.getElementById('vSubject').innerText = subject;
+            document.getElementById('vClasses').innerText = classes;
+            document.getElementById('vPerms').innerText = perms;
+            document.getElementById('vAvatar').innerText = name.charAt(0);
+            document.getElementById('editNameInput').value = name;
 
-  <div id="editParentModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
-    <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm" onclick="closeModal('editParentModal')"></div>
-    <div class="bg-white dark:bg-slate-900 rounded-3xl w-full max-w-md shadow-2xl overflow-hidden relative z-10 p-6 border dark:border-slate-800">
-      <h3 class="text-base font-bold text-orange-500 mb-4">👪 تعديل بيانات ولي الأمر</h3>
-      <form class="space-y-4" onsubmit="event.preventDefault(); closeModal('editParentModal');">
-        <div>
-          <label class="block text-xs font-bold text-gray-500 mb-1">اسم ولي الأمر</label>
-          <input type="text" value="أحمد يوسف" class="w-full border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-800 rounded-xl py-2 px-3 text-sm outline-none">
-        </div>
-        <div class="flex justify-end gap-2">
-          <button type="button" onclick="switchModal('editParentModal', 'mainStudentModal')" class="px-4 py-2 text-xs font-bold text-gray-400 bg-gray-100 dark:bg-slate-800 rounded-xl">رجوع</button>
-          <button type="submit" class="px-4 py-2 text-xs font-bold text-white bg-orange-500 rounded-xl">تحديث</button>
-        </div>
-      </form>
-    </div>
-  </div>
+            const modal = document.getElementById('viewModal');
+            const content = document.getElementById('viewContent');
+            
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                content.classList.remove('scale-95', 'opacity-0');
+            }, 10);
+        }
 
-  <script>
-    function openModal(modalId) {
-      const modal = document.getElementById(modalId);
-      if (modal) {
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-        document.body.style.overflow = 'hidden';
-      }
-    }
+        // دالة إغلاق المودال مع تأثير أنيميشن
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modalId === 'viewModal') {
+                document.getElementById('viewContent').classList.add('scale-95', 'opacity-0');
+                setTimeout(() => modal.classList.add('hidden'), 300);
+            } else {
+                modal.classList.add('hidden');
+            }
+        }
 
-    function closeModal(modalId) {
-      const modal = document.getElementById(modalId);
-      if (modal) {
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
-        document.body.style.overflow = 'auto';
-      }
-    }
-
-    function switchModal(currentModalId, targetModalId) {
-      closeModal(currentModalId);
-      setTimeout(() => {
-        openModal(targetModalId);
-      }, 150);
-    }
-  </script>
+        // دالة التنقل بين المودالات (مثلاً من العرض للتعديل)
+        function switchModal(currentId, nextId) {
+            document.getElementById(currentId).classList.add('hidden');
+            document.getElementById(nextId).classList.remove('hidden');
+        }
+    </script>
 </body>
 </html>

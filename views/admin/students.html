@@ -4,11 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>منصة صمود - لوحة تحكم الإدارة - الطلاب</title>
-    <link rel="stylesheet" href="/public/css/output.css" />
-    <script src="/public/js/vite.config.ts"></script>
+    <link rel="stylesheet" href="../../public/css/output.css" />
     <link
       rel="stylesheet"
-      href="/public/fontawesome-free-7.2.0-web/css/all.min.css"
+      href="../../public/fontawesome-free-7.2.0-web/css/all.min.css"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,7 +15,7 @@
       href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/public/css/join_style.css" />
+    <link rel="stylesheet" href="../../public/css/join_style.css" />
   </head>
   <body class="bg-gray-50 text-gray-850 dark:bg-slate-950 dark:text-zinc-100">
     <header
@@ -1330,55 +1329,6 @@
         </div>
       </div>
 
-      <div
-        id="editParentModal"
-        class="fixed inset-0 z-50 hidden flex items-center justify-center p-4"
-      >
-        <div
-          class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm"
-          onclick="closeModal('editParentModal')"
-        ></div>
-        <div
-          class="bg-white dark:bg-slate-900 rounded-3xl w-full max-w-md shadow-2xl overflow-hidden relative z-10 p-6 border border-emerald-400 dark:border-slate-400"
-        >
-          <h3 class="text-base font-bold text-orange-500 mb-4">
-            👪 تعديل بيانات ولي الأمر
-          </h3>
-          <form
-            class="space-y-4"
-            onsubmit="
-              event.preventDefault();
-              closeModal('editParentModal');
-            "
-          >
-            <div>
-              <label class="block text-xs font-bold text-gray-500 mb-1"
-                >اسم ولي الأمر</label
-              >
-              <input
-                type="text"
-                value="أحمد يوسف"
-                class="w-full border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-800 rounded-xl py-2 px-3 text-sm outline-none"
-              />
-            </div>
-            <div class="flex justify-end gap-2">
-              <button
-                type="button"
-                onclick="switchModal('editParentModal', 'mainStudentModal')"
-                class="px-4 py-2 text-xs font-bold text-gray-400 bg-gray-100 dark:bg-slate-800 rounded-xl"
-              >
-                رجوع
-              </button>
-              <button
-                type="submit"
-                class="px-4 py-2 text-xs font-bold text-white bg-orange-500 rounded-xl"
-              >
-                تحديث
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
     </main>
     <footer
       class="w-full bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800/80 py-5"
