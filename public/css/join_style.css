@@ -85,3 +85,40 @@ body {
         scrollbar-color: #475569 #0f172a;
     }
 }
+
+/* 1. الوزن العادي (Regular) */
+@font-face {
+    font-family: 'Cairo';
+    src: url('./Cairo/static/Cairo-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* 2. الوزن شبه العريض (SemiBold) */
+@font-face {
+    font-family: 'Cairo';
+    src: url('../../public/Cairo/static/Cairo-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+/* 3. الوزن العريض (Bold) */
+@font-face {
+    font-family: 'Cairo';
+    src: url('../../public/Cairo/static/Cairo-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* 4. الوزن الأسود العريض جداً (Black) */
+@font-face {
+    font-family: 'Cairo';
+    src: url('../../public/Cairo/static/Cairo-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+/* تطبيق الخط كخط افتراضي للموقع بالكامل */
+body {
+    font-family: 'Cairo', sans-serif;
+}
