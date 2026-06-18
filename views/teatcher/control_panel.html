@@ -189,42 +189,42 @@
     </header>
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div
-          class="card-flat p-4 mb-6 rounded-2xl sm:p-6 border bg-gradient-to-l from-blue-50 to-teal-50 dark:from-blue-900/20 dark:to-teal-900/20 border-blue-200 dark:border-gray-200/60"
-          dir="rtl"
-        >
-          <div class="flex items-center justify-start gap-4">
-            <div
-              class="flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 bg-blue-600 dark:bg-blue-500 rounded-2xl text-white text-xl sm:text-2xl font-bold shrink-0 shadow-md shadow-blue-600/10"
-            >
-              خ
-            </div>
+      <div
+        class="card-flat p-4 mb-6 rounded-2xl sm:p-6 border bg-gradient-to-l from-blue-50 to-teal-50 dark:from-blue-900/20 dark:to-teal-900/20 border-blue-200 dark:border-gray-200/60"
+        dir="rtl"
+      >
+        <div class="flex items-center justify-start gap-4">
+          <div
+            class="flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 bg-blue-600 dark:bg-blue-500 rounded-2xl text-white text-xl sm:text-2xl font-bold shrink-0 shadow-md shadow-blue-600/10"
+          >
+            خ
+          </div>
 
-            <div class="flex flex-col gap-0.5 min-w-0">
-              <h2
-                class="text-slate-800 dark:text-zinc-100 text-lg sm:text-xl font-bold tracking-tight truncate"
+          <div class="flex flex-col gap-0.5 min-w-0">
+            <h2
+              class="text-slate-800 dark:text-zinc-100 text-lg sm:text-xl font-bold tracking-tight truncate"
+            >
+              أهلاً، خالد النجار
+            </h2>
+            <p
+              class="text-slate-500 dark:text-zinc-400 text-xs sm:text-sm font-medium flex items-center gap-1.5 whitespace-nowrap"
+            >
+              <span>معلم الرياضيات</span>
+              <span class="text-slate-300 dark:text-slate-700">•</span>
+              <span class="font-mono text-slate-400 dark:text-zinc-500"
+                >T-1001</span
               >
-                أهلاً، خالد النجار
-              </h2>
-              <p
-                class="text-slate-500 dark:text-zinc-400 text-xs sm:text-sm font-medium flex items-center gap-1.5 whitespace-nowrap"
-              >
-                <span>معلم الرياضيات</span>
-                <span class="text-slate-300 dark:text-slate-700">•</span>
-                <span class="font-mono text-slate-400 dark:text-zinc-500"
-                  >T-1001</span
-                >
-              </p>
-            </div>
+            </p>
           </div>
         </div>
+      </div>
 
       <div
         class="bg-white border border-gray-200/60 rounded-2xl p-2.5 shadow-sm dark:bg-slate-800 dark:border-slate-800"
       >
         <!-- أضفنا كلاس custom-scrollbar هنا وتأكدنا من وجود flex-row -->
         <div
-          class="flex flex-row items-center gap-2 overflow-x-auto custom-scrollbar "
+          class="flex flex-row items-center gap-2 overflow-x-auto custom-scrollbar"
         >
           <a
             href="control_panel.html"
@@ -238,9 +238,7 @@
             href="attendance.html"
             class="flex items-center justify-center sm:justify-start gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold transition whitespace-nowrap dark:text-zinc-100 text-gray-600 hover:text-teal-700"
           >
-            <i
-              class="fa-solid fa-user-check text-base "
-            ></i>
+            <i class="fa-solid fa-user-check text-base"></i>
             <span>الحضور</span>
           </a>
 
@@ -248,9 +246,7 @@
             href="questions.html"
             class="flex items-center justify-center sm:justify-start gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold transition whitespace-nowrap dark:text-zinc-100 text-gray-600 hover:text-teal-700"
           >
-            <i
-              class="fa-solid fa-clipboard-question text-base "
-            ></i>
+            <i class="fa-solid fa-clipboard-question text-base"></i>
             <span>بنك الأسألة</span>
           </a>
 
@@ -258,23 +254,37 @@
             href="test_generator.html"
             class="flex items-center justify-center sm:justify-start gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold transition whitespace-nowrap dark:text-zinc-100 text-gray-600 hover:text-teal-700"
           >
-            <i
-              class="fa-solid fa-file-pen text-base "
-            ></i>
+            <i class="fa-solid fa-file-pen text-base"></i>
             <span>مولد الإختبارات</span>
+          </a>
+
+          <a
+            href="exams_manage.html"
+            class="flex items-center justify-center sm:justify-start gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold transition whitespace-nowrap dark:text-zinc-100 text-gray-600 hover:text-teal-700"
+          >
+            <i class="fa-solid fa-file-waveform text-base"></i>
+            <span>رصد الاختبارات</span>
+          </a>
+
+          <a
+            href="tasks_manage.html"
+            class="flex items-center justify-center sm:justify-start gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold transition whitespace-nowrap dark:text-zinc-100 text-gray-600 hover:text-teal-700"
+          >
+            <i class="fa-solid fa-file-signature text-base"></i>
+            <span>رفع الواجبات وتصحيحها</span>
           </a>
 
           <a
             href="chats.html"
             class="flex items-center justify-center sm:justify-start gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold transition whitespace-nowrap dark:text-zinc-100 text-gray-600 hover:text-teal-700"
           >
-            <i
-              class="fa-solid fa-envelope text-base "
-            ></i>
+            <i class="fa-solid fa-envelope text-base"></i>
             <span>صندوق المراسلة</span>
           </a>
         </div>
       </div>
+
+      
     </main>
 
     <script>
