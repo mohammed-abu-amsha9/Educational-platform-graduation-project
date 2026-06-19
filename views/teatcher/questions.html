@@ -288,7 +288,7 @@
 
       <div class="my-6 mx-auto space-y-6" dir="rtl">
         <div
-          class="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 p-6 rounded-3xl shadow-sm flex flex-col md:flex-row items-center justify-between gap-4 transition-all"
+          class="bg-white dark:bg-slate-900 border border-gray-100 hover:border-emerald-400 dark:border-slate-800/80 p-6 rounded-3xl shadow-sm flex flex-col md:flex-row items-center justify-between gap-4 transition-all"
         >
           <div
             class="w-full md:w-auto flex flex-col sm:flex-row items-center gap-4 flex-1 justify-start"
@@ -718,148 +718,170 @@
         </div>
       </div>
     </main>
-  </body>
-  <script>
-    // استهداف كل الأزرار التي تحمل كلاس theme-toggle
-    const themeToggleBtns = document.querySelectorAll(".theme-toggle");
-    const htmlElement = document.documentElement;
+    <footer
+      class="w-full bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800/80 py-5"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 flex items-center justify-center dir-rtl"
+      >
+        <p
+          class="text-xs sm:text-sm font-medium text-slate-500 dark:text-zinc-400 text-center tracking-wide"
+        >
+          منصة صمود التعليمية - نظام التعلم الهجين - © 2026 جميع الحقوق محفوظة
+        </p>
+      </div>
+    </footer>
+    <script>
+      // استهداف كل الأزرار التي تحمل كلاس theme-toggle
+      const themeToggleBtns = document.querySelectorAll(".theme-toggle");
+      const htmlElement = document.documentElement;
 
-    // دالة موحدة لتحديث الأيقونات في شاشة الكمبيوتر وشاشة الموبايل معاً
-    function updateThemeUI(isDark) {
-      themeToggleBtns.forEach((btn) => {
-        const icon = btn.querySelector(".theme-icon");
-        if (icon) {
-          if (isDark) {
-            icon.classList.remove("fa-regular", "fa-moon");
-            icon.classList.add("fa-solid", "fa-sun", "text-amber-400");
-          } else {
-            icon.classList.remove("fa-solid", "fa-sun", "text-amber-400");
-            icon.classList.add("fa-regular", "fa-moon");
+      // دالة موحدة لتحديث الأيقونات في شاشة الكمبيوتر وشاشة الموبايل معاً
+      function updateThemeUI(isDark) {
+        themeToggleBtns.forEach((btn) => {
+          const icon = btn.querySelector(".theme-icon");
+          if (icon) {
+            if (isDark) {
+              icon.classList.remove("fa-regular", "fa-moon");
+              icon.classList.add("fa-solid", "fa-sun", "text-amber-400");
+            } else {
+              icon.classList.remove("fa-solid", "fa-sun", "text-amber-400");
+              icon.classList.add("fa-regular", "fa-moon");
+            }
           }
+        });
+      }
+
+      // 1. فحص الـ LocalStorage عند تحميل الصفحة
+      const currentTheme = localStorage.getItem("theme");
+      if (currentTheme === "dark") {
+        htmlElement.classList.add("dark");
+        updateThemeUI(true);
+      } else {
+        htmlElement.classList.remove("dark");
+        updateThemeUI(false);
+      }
+
+      // 2. تفعيل التبديل عند الضغط على أي زر (سواءً بالكمبيوتر أو بالموبايل)
+      themeToggleBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const isDark = htmlElement.classList.toggle("dark");
+
+          // حفظ الخيار وتحديث واجهة الأزرار فوراً
+          localStorage.setItem("theme", isDark ? "dark" : "light");
+          updateThemeUI(isDark);
+        });
+      });
+    </script>
+    <script>
+      const menuBtn = document.getElementById("mobile-menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      menuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+    </script>
+    <script>
+      const userMenuBtn = document.getElementById("user-menu-btn");
+      const userDropdown = document.getElementById("user-dropdown");
+
+      // عند الضغط على الزر: اظهر أو اخفي القائمة
+      userMenuBtn.addEventListener("click", (e) => {
+        e.stopPropagation(); // يمنع انتشار الضغطة حتى لا يتنفذ أمر الإغلاق فوراً
+        userDropdown.classList.toggle("hidden");
+      });
+
+      // إغلاق القائمة تلقائياً إذا ضغط المستخدم في أي مكان خارجها
+      document.addEventListener("click", (e) => {
+        if (
+          !userDropdown.contains(e.target) &&
+          !userMenuBtn.contains(e.target)
+        ) {
+          userDropdown.classList.add("hidden");
         }
       });
-    }
+    </script>
+    <script>
+      const mobileUserMenuBtn = document.getElementById("mobile-user-menu-btn");
+      const mobileUserDropdown = document.getElementById(
+        "mobile-user-dropdown",
+      );
+      const mobileArrow = document.getElementById("mobile-arrow");
 
-    // 1. فحص الـ LocalStorage عند تحميل الصفحة
-    const currentTheme = localStorage.getItem("theme");
-    if (currentTheme === "dark") {
-      htmlElement.classList.add("dark");
-      updateThemeUI(true);
-    } else {
-      htmlElement.classList.remove("dark");
-      updateThemeUI(false);
-    }
+      mobileUserMenuBtn.addEventListener("click", () => {
+        // إظهار أو إخفاء القائمة المنسدلة
+        mobileUserDropdown.classList.toggle("hidden");
 
-    // 2. تفعيل التبديل عند الضغط على أي زر (سواءً بالكمبيوتر أو بالموبايل)
-    themeToggleBtns.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const isDark = htmlElement.classList.toggle("dark");
-
-        // حفظ الخيار وتحديث واجهة الأزرار فوراً
-        localStorage.setItem("theme", isDark ? "dark" : "light");
-        updateThemeUI(isDark);
+        // تدوير السهم الصغير بزاوية 180 درجة لإعطاء حركة تفاعلية
+        mobileArrow.classList.toggle("rotate-180");
       });
-    });
-  </script>
-  <script>
-    const menuBtn = document.getElementById("mobile-menu-btn");
-    const mobileMenu = document.getElementById("mobile-menu");
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // --- 1) إدارة مودال الإضافة (Create Modal) ---
+        const createModal = document.getElementById("questionModal");
+        const openCreateBtn = document.getElementById("openModalBtn");
+        const closeCreateBtn = document.getElementById("closeModalBtn");
+        const closeCreateCross = document.getElementById("closeModalCross");
 
-    menuBtn.addEventListener("click", () => {
-      mobileMenu.classList.toggle("hidden");
-    });
-  </script>
-  <script>
-    const userMenuBtn = document.getElementById("user-menu-btn");
-    const userDropdown = document.getElementById("user-dropdown");
+        const createTypeSelect = document.getElementById("questionTypeSelect");
+        const createMcqSection = document.getElementById("mcqSection");
+        const createTfSection = document.getElementById("tfSection");
 
-    // عند الضغط على الزر: اظهر أو اخفي القائمة
-    userMenuBtn.addEventListener("click", (e) => {
-      e.stopPropagation(); // يمنع انتشار الضغطة حتى لا يتنفذ أمر الإغلاق فوراً
-      userDropdown.classList.toggle("hidden");
-    });
-
-    // إغلاق القائمة تلقائياً إذا ضغط المستخدم في أي مكان خارجها
-    document.addEventListener("click", (e) => {
-      if (!userDropdown.contains(e.target) && !userMenuBtn.contains(e.target)) {
-        userDropdown.classList.add("hidden");
-      }
-    });
-  </script>
-  <script>
-    const mobileUserMenuBtn = document.getElementById("mobile-user-menu-btn");
-    const mobileUserDropdown = document.getElementById("mobile-user-dropdown");
-    const mobileArrow = document.getElementById("mobile-arrow");
-
-    mobileUserMenuBtn.addEventListener("click", () => {
-      // إظهار أو إخفاء القائمة المنسدلة
-      mobileUserDropdown.classList.toggle("hidden");
-
-      // تدوير السهم الصغير بزاوية 180 درجة لإعطاء حركة تفاعلية
-      mobileArrow.classList.toggle("rotate-180");
-    });
-  </script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      // --- 1) إدارة مودال الإضافة (Create Modal) ---
-      const createModal = document.getElementById("questionModal");
-      const openCreateBtn = document.getElementById("openModalBtn");
-      const closeCreateBtn = document.getElementById("closeModalBtn");
-      const closeCreateCross = document.getElementById("closeModalCross");
-
-      const createTypeSelect = document.getElementById("questionTypeSelect");
-      const createMcqSection = document.getElementById("mcqSection");
-      const createTfSection = document.getElementById("tfSection");
-
-      openCreateBtn.addEventListener("click", () =>
-        createModal.classList.remove("hidden"),
-      );
-      [closeCreateBtn, closeCreateCross].forEach((btn) =>
-        btn.addEventListener("click", () =>
-          createModal.classList.add("hidden"),
-        ),
-      );
-
-      function toggleCreateSections() {
-        const val = createTypeSelect.value;
-        [createMcqSection, createTfSection].forEach((s) =>
-          s.classList.add("hidden"),
+        openCreateBtn.addEventListener("click", () =>
+          createModal.classList.remove("hidden"),
         );
-        if (val === "mcq") createMcqSection.classList.remove("hidden");
-        if (val === "tf") createTfSection.classList.remove("hidden");
-      }
-      createTypeSelect.addEventListener("change", toggleCreateSections);
-      toggleCreateSections();
-
-      // --- 2) إدارة مودال التعديل المنفصل (Edit Modal) ---
-      const editModal = document.getElementById("editQuestionModal");
-      const openEditButtons = document.querySelectorAll(".openEditModalBtn");
-      const closeEditBtn = document.getElementById("closeEditBtn");
-      const closeEditCross = document.getElementById("closeEditCross");
-
-      const editTypeSelect = document.getElementById("editQuestionTypeSelect");
-      const editMcqSection = document.getElementById("editMcqSection");
-      const editTfSection = document.getElementById("editTfSection");
-
-      openEditButtons.forEach((btn) => {
-        btn.addEventListener("click", () =>
-          editModal.classList.remove("hidden"),
+        [closeCreateBtn, closeCreateCross].forEach((btn) =>
+          btn.addEventListener("click", () =>
+            createModal.classList.add("hidden"),
+          ),
         );
+
+        function toggleCreateSections() {
+          const val = createTypeSelect.value;
+          [createMcqSection, createTfSection].forEach((s) =>
+            s.classList.add("hidden"),
+          );
+          if (val === "mcq") createMcqSection.classList.remove("hidden");
+          if (val === "tf") createTfSection.classList.remove("hidden");
+        }
+        createTypeSelect.addEventListener("change", toggleCreateSections);
+        toggleCreateSections();
+
+        // --- 2) إدارة مودال التعديل المنفصل (Edit Modal) ---
+        const editModal = document.getElementById("editQuestionModal");
+        const openEditButtons = document.querySelectorAll(".openEditModalBtn");
+        const closeEditBtn = document.getElementById("closeEditBtn");
+        const closeEditCross = document.getElementById("closeEditCross");
+
+        const editTypeSelect = document.getElementById(
+          "editQuestionTypeSelect",
+        );
+        const editMcqSection = document.getElementById("editMcqSection");
+        const editTfSection = document.getElementById("editTfSection");
+
+        openEditButtons.forEach((btn) => {
+          btn.addEventListener("click", () =>
+            editModal.classList.remove("hidden"),
+          );
+        });
+        [closeEditBtn, closeEditCross].forEach((btn) =>
+          btn.addEventListener("click", () =>
+            editModal.classList.add("hidden"),
+          ),
+        );
+
+        function toggleEditSections() {
+          const val = editTypeSelect.value;
+          [editMcqSection, editTfSection].forEach((s) =>
+            s.classList.add("hidden"),
+          );
+          if (val === "mcq") editMcqSection.classList.remove("hidden");
+          if (val === "tf") editTfSection.classList.remove("hidden");
+        }
+        editTypeSelect.addEventListener("change", toggleEditSections);
+        toggleEditSections();
       });
-      [closeEditBtn, closeEditCross].forEach((btn) =>
-        btn.addEventListener("click", () => editModal.classList.add("hidden")),
-      );
-
-      function toggleEditSections() {
-        const val = editTypeSelect.value;
-        [editMcqSection, editTfSection].forEach((s) =>
-          s.classList.add("hidden"),
-        );
-        if (val === "mcq") editMcqSection.classList.remove("hidden");
-        if (val === "tf") editTfSection.classList.remove("hidden");
-      }
-      editTypeSelect.addEventListener("change", toggleEditSections);
-      toggleEditSections();
-    });
-  </script>
+    </script>
+  </body>
 </html>

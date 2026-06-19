@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>منصة صمود - لوحة بوابة المعلم - الواجبات وتصحيحها</title>
+    <title>منصة صمود - لوحة بوابة المعلم - رفع الواجبات وتصحيحها</title>
     <link rel="stylesheet" href="../../public/css/output.css" />
     <link
       rel="stylesheet"
@@ -316,6 +316,7 @@
                   .getElementById('createSection')
                   .classList.remove('hidden');
                 document.getElementById('trackSection').classList.add('hidden');
+
                 /* 2. تفعيل شكل هذا الزر */
                 this.classList.add(
                   'bg-white',
@@ -324,17 +325,21 @@
                   'shadow-sm',
                 );
                 this.classList.remove('text-gray-500');
-                /* 3. إلغاء تفعيل الزر الآخر */
-                const otherTab = document.getElementById('mainTabTrack');
-                otherTab.classList.remove(
-                  'bg-white',
-                  'dark:bg-slate-900',
-                  'text-teal-600',
-                  'shadow-sm',
-                );
-                otherTab.classList.add('text-gray-500');
+
+                /* 3. إلغاء تفعيل الزر الآخر مباشرة */
+                document
+                  .getElementById('mainTabTrack')
+                  .classList.remove(
+                    'bg-white',
+                    'dark:bg-slate-900',
+                    'text-teal-600',
+                    'shadow-sm',
+                  );
+                document
+                  .getElementById('mainTabTrack')
+                  .classList.add('text-gray-500');
               "
-              class="text-xs font-bold px-4 py-2 rounded-xl cursor-pointer transition-all bg-white dark:bg-slate-900 text-teal-600 shadow-sm flex-1 sm:flex-none"
+              class="text-xs font-bold px-4 py-2 rounded-xl cursor-pointer bg-white dark:bg-slate-900 text-teal-600 shadow-sm transition-all"
             >
               <i class="fa-solid fa-plus-circle ml-1"></i> إنشاء واجب جديد
             </button>
@@ -349,6 +354,7 @@
                 document
                   .getElementById('createSection')
                   .classList.add('hidden');
+
                 /* 2. تفعيل شكل هذا الزر */
                 this.classList.add(
                   'bg-white',
@@ -357,19 +363,24 @@
                   'shadow-sm',
                 );
                 this.classList.remove('text-gray-500');
-                /* 3. إلغاء تفعيل الزر الآخر */
-                const otherTab = document.getElementById('mainTabCreate');
-                otherTab.classList.remove(
-                  'bg-white',
-                  'dark:bg-slate-900',
-                  'text-teal-600',
-                  'shadow-sm',
-                );
-                otherTab.classList.add('text-gray-500');
+
+                /* 3. إلغاء تفعيل الزر الآخر مباشرة */
+                document
+                  .getElementById('mainTabCreate')
+                  .classList.remove(
+                    'bg-white',
+                    'dark:bg-slate-900',
+                    'text-teal-600',
+                    'shadow-sm',
+                  );
+                document
+                  .getElementById('mainTabCreate')
+                  .classList.add('text-gray-500');
               "
-              class="text-xs font-bold px-4 py-2 rounded-xl cursor-pointer transition-all text-gray-500 flex-1 sm:flex-none"
+              class="text-xs font-bold px-4 py-2 rounded-xl cursor-pointer text-gray-500 transition-all"
             >
-              <i class="fa-solid fa-graduation-cap ml-1"></i> تصحيح ملفات الطلاب
+              <i class="fa-solid fa-graduation-cap ml-1"></i> تصحيح ومتابعة
+              الواجبات
             </button>
           </div>
         </div>
@@ -687,7 +698,7 @@
           >
 
           <div
-            class="inline-block align-bottom bg-white dark:bg-slate-900 border border-gray-100 hover:border-emerald-400 dark:border-slate-800/80 rounded-3xl text-right overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full  text-xs relative z-50"
+            class="inline-block align-bottom bg-white dark:bg-slate-900 border border-gray-100 hover:border-emerald-400 dark:border-slate-800/80 rounded-3xl text-right overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full text-xs relative z-50"
           >
             <div
               class="bg-gray-50 dark:bg-slate-950/60 px-6 py-4 border-b border-gray-100 dark:border-slate-800 flex items-center justify-between"
@@ -806,7 +817,19 @@
         </div>
       </div>
     </main>
-
+    <footer
+      class="w-full bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800/80 py-5"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 flex items-center justify-center dir-rtl"
+      >
+        <p
+          class="text-xs sm:text-sm font-medium text-slate-500 dark:text-zinc-400 text-center tracking-wide"
+        >
+          منصة صمود التعليمية - نظام التعلم الهجين - © 2026 جميع الحقوق محفوظة
+        </p>
+      </div>
+    </footer>
     <script>
       // استهداف كل الأزرار التي تحمل كلاس theme-toggle
       const themeToggleBtns = document.querySelectorAll(".theme-toggle");
