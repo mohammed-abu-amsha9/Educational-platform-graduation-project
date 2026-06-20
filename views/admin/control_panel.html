@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>منصة صمود - لوحة تحكم الإدارة - نظرة عامة</title>
-    <link rel="stylesheet" href="../../public/css/output.css"/>
+    <link rel="icon" type="image/png" href="../../public/img/Logo.png" />
+    <link rel="stylesheet" href="../../public/css/output.css" />
     <link
       rel="stylesheet"
       href="../../public/fontawesome-free-7.2.0-web/css/all.min.css"
@@ -20,9 +21,13 @@
       >
         <div class="flex items-center gap-3">
           <div
-            class="w-11 h-11 bg-teal-700 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-md shadow-teal-700/10"
+            class="w-11 h-11 bg-teal-700 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-md shadow-teal-700/10 overflow-hidden"
           >
-            ص
+            <img
+              src="../../public/img/Logo.png"
+              alt="لوجو منصة صمود"
+              class="w-full h-full object-cover rounded-full"
+            />
           </div>
           <div class="">
             <h1
@@ -43,27 +48,160 @@
         >
           <a
             href="control_panel.html"
-            class="px-5 py-2 rounded-lg text-sm font-semibold  bg-teal-700 text-white shadow-sm dark:text-zinc-100"
+            class="px-5 py-2 rounded-lg text-sm font-semibold bg-teal-700 text-white shadow-sm dark:text-zinc-100"
             >لوحة الإدارة</a
           >
           <a
             href="../teatcher/control_panel.html"
-            class="px-5 py-2 rounded-lg text-sm font-semibold text-gray-600  hover:text-teal-700 dark:text-zinc-100"
+            class="px-5 py-2 rounded-lg text-sm font-semibold text-gray-600 hover:text-teal-700 dark:text-zinc-100"
             >بوابة المعلم</a
           >
           <a
             href="../student/control_panel.html"
-            class="px-5 py-2 rounded-lg text-sm font-semibold text-gray-600  hover:text-teal-700 dark:text-zinc-100"
+            class="px-5 py-2 rounded-lg text-sm font-semibold text-gray-600 hover:text-teal-700 dark:text-zinc-100"
             >بوابة الطالب</a
           >
         </nav>
 
         <div class="hidden md:flex items-center gap-4">
-          <button
-            class="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center text-gray-500 hover:text-teal-700 hover:bg-gray-200 dark:bg-slate-950 dark:text-zinc-100 dark:hover:bg-slate-800"
-          >
-            <i class="fa-regular fa-bell text-lg"></i>
-          </button>
+          <div class="relative inline-block text-right">
+            <button
+              id="notification-btn"
+              class="relative p-2 text-slate-600 dark:text-zinc-300 hover:bg-gray-100 dark:hover:bg-slate-800 rounded-xl transition-colors cursor-pointer"
+            >
+              <i class="fa-regular fa-bell text-lg"></i>
+              <span class="absolute top-1.5 left-1.5 flex h-2 w-2">
+                <span
+                  class="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"
+                ></span>
+                <span
+                  class="relative inline-flex rounded-full h-2 w-2 bg-rose-500"
+                ></span>
+              </span>
+            </button>
+
+            <div
+              id="notification-dropdown"
+              class="hidden absolute left-0 mt-2 w-72 bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-2xl shadow-xl z-50 overflow-hidden animate-scale-up"
+              dir="rtl"
+            >
+              <div
+                class="p-3 bg-gray-50/50 dark:bg-slate-950/40 border-b border-gray-100 dark:border-slate-800 flex items-center justify-between"
+              >
+                <span
+                  class="font-black text-slate-800 dark:text-zinc-100 text-xs"
+                  >🔔 الإشعارات الحديثة</span
+                >
+                <span
+                  class="bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 text-[9px] px-2 py-0.5 rounded-md font-bold"
+                  >5 جديدة</span
+                >
+              </div>
+
+              <div
+                class="divide-y divide-gray-50 dark:divide-slate-800/60 max-h-[225px] overflow-y-auto scrollbar-thin"
+              >
+                <a
+                  href="#"
+                  class="block p-3 hover:bg-gray-50 dark:hover:bg-slate-950/40 transition-colors"
+                >
+                  <div class="flex gap-2">
+                    <div
+                      class="w-2 h-2 rounded-full bg-indigo-600 mt-1.5 shrink-0"
+                    ></div>
+                    <div class="space-y-0.5">
+                      <p
+                        class="font-bold text-slate-800 dark:text-zinc-200 text-[11px]"
+                      >
+                        تم إضافة واجب جديد في اللغة العربية
+                      </p>
+                      <p class="text-gray-400 text-[9px]">
+                        منذ 10 دقائق • الأستاذة سارة
+                      </p>
+                    </div>
+                  </div>
+                </a>
+
+                <a
+                  href="#"
+                  class="block p-3 hover:bg-gray-50 dark:hover:bg-slate-950/40 transition-colors"
+                >
+                  <div class="flex gap-2">
+                    <div
+                      class="w-2 h-2 rounded-full bg-emerald-500 mt-1.5 shrink-0"
+                    ></div>
+                    <div class="space-y-0.5">
+                      <p
+                        class="font-bold text-slate-800 dark:text-zinc-200 text-[11px]"
+                      >
+                        رصد درجة اختبار الكيمياء: حصلتِ على 4/4
+                      </p>
+                      <p class="text-gray-400 text-[9px]">
+                        منذ ساعتين • الإدارة المدرسية
+                      </p>
+                    </div>
+                  </div>
+                </a>
+
+                <a
+                  href="#"
+                  class="block p-3 hover:bg-gray-50 dark:hover:bg-slate-950/40 transition-colors"
+                >
+                  <div class="flex gap-2">
+                    <div
+                      class="w-2 h-2 rounded-full bg-amber-500 mt-1.5 shrink-0"
+                    ></div>
+                    <div class="space-y-0.5">
+                      <p
+                        class="font-bold text-slate-800 dark:text-zinc-200 text-[11px]"
+                      >
+                        تعديل موعد اختبار الرياضيات القادم
+                      </p>
+                      <p class="text-gray-400 text-[9px]">اليوم، 10:30 ص</p>
+                    </div>
+                  </div>
+                </a>
+
+                <a
+                  href="#"
+                  class="block p-3 hover:bg-gray-50 dark:hover:bg-slate-950/40 transition-colors"
+                >
+                  <div class="flex gap-2">
+                    <div
+                      class="w-2 h-2 rounded-full bg-slate-400 mt-1.5 shrink-0"
+                    ></div>
+                    <div class="space-y-0.5">
+                      <p
+                        class="font-bold text-slate-800 dark:text-zinc-200 text-[11px]"
+                      >
+                        تم قبول عذر الغياب ليوم الخميس الماضي
+                      </p>
+                      <p class="text-gray-400 text-[9px]">أمس، 4:15 م</p>
+                    </div>
+                  </div>
+                </a>
+
+                <a
+                  href="#"
+                  class="block p-3 hover:bg-gray-50 dark:hover:bg-slate-950/40 transition-colors"
+                >
+                  <div class="flex gap-2">
+                    <div
+                      class="w-2 h-2 rounded-full bg-indigo-600 mt-1.5 shrink-0"
+                    ></div>
+                    <div class="space-y-0.5">
+                      <p
+                        class="font-bold text-slate-800 dark:text-zinc-200 text-[11px]"
+                      >
+                        نشاط صفي جديد: مسابقة الخط العربي السنوية
+                      </p>
+                      <p class="text-gray-400 text-[9px]">قبل يومين</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
           <button
             class="theme-toggle w-9 h-9 rounded-xl bg-gray-50 flex items-center justify-center text-gray-500 hover:text-teal-700 hover:bg-gray-200 dark:bg-slate-950 dark:text-zinc-100 dark:hover:text-amber-400 dark:hover:bg-slate-800 -colors"
           >
@@ -75,7 +213,7 @@
           <div class="relative inline-block text-right">
             <button
               id="user-menu-btn"
-              class="flex items-center gap-3 p-1.5 rounded-xl  cursor-pointer focus:outline-none hover:bg-gray-50 dark:hover:bg-slate-700"
+              class="flex items-center gap-3 p-1.5 rounded-xl cursor-pointer focus:outline-none hover:bg-gray-50 dark:hover:bg-slate-700"
             >
               <div
                 class="w-10 h-10 bg-teal-700 rounded-3xl flex items-center justify-center text-zinc-100 font-bold text-lg shrink-0 dark:text-zinc-100 dark:bg-teal-700"
@@ -101,7 +239,7 @@
               <a
                 style="color: #dc2626"
                 href="../login.html"
-                class="flex items-center gap-2.5 px-4 py-2.5 text-sm  font-bold"
+                class="flex items-center gap-2.5 px-4 py-2.5 text-sm font-bold"
               >
                 <i class="fa-solid fa-arrow-right-from-bracket text-base"></i>
                 <span>تسجيل الخروج</span>
@@ -131,19 +269,19 @@
         >
         <a
           href="../teatcher/control_panel.html"
-          class="block px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-600  hover:text-teal-700 dark:text-zinc-300 dark:hover:text-teal-400"
+          class="block px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-600 hover:text-teal-700 dark:text-zinc-300 dark:hover:text-teal-400"
           >بوابة المعلم</a
         >
         <a
           href="../student/control_panel.html"
-          class="block px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-600  hover:text-teal-700 dark:text-zinc-300 dark:hover:text-teal-400"
+          class="block px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-600 hover:text-teal-700 dark:text-zinc-300 dark:hover:text-teal-400"
           >بوابة الطالب</a
         >
 
         <div class="border-t border-gray-200 dark:border-slate-700 my-2 pt-2">
           <button
             id="mobile-user-menu-btn"
-            class="w-full flex justify-between items-center px-4 py-2 rounded-xl hover:bg-gray-50 dark:hover:bg-slate-700  cursor-pointer focus:outline-none"
+            class="w-full flex justify-between items-center px-4 py-2 rounded-xl hover:bg-gray-50 dark:hover:bg-slate-700 cursor-pointer focus:outline-none"
           >
             <div class="flex items-center gap-3">
               <div
@@ -173,7 +311,7 @@
 
           <div class="flex justify-end gap-2 mt-3 px-4">
             <button
-              class="w-9 h-9 rounded-xl bg-gray-50 dark:bg-slate-950 flex items-center justify-center text-gray-500 dark:text-zinc-400 hover:bg-gray-100 dark:hover:bg-slate-900 "
+              class="w-9 h-9 rounded-xl bg-gray-50 dark:bg-slate-950 flex items-center justify-center text-gray-500 dark:text-zinc-400 hover:bg-gray-100 dark:hover:bg-slate-900"
             >
               <i class="fa-regular fa-bell"></i>
             </button>
@@ -221,7 +359,7 @@
         >
           <a
             href="control_panel.html"
-            class="flex items-center justify-center sm:justify-start gap-2.5 px-6 py-3 rounded-xl text-sm font-bold  whitespace-nowrap bg-teal-700 text-white shadow-md shadow-teal-700/10"
+            class="flex items-center justify-center sm:justify-start gap-2.5 px-6 py-3 rounded-xl text-sm font-bold whitespace-nowrap bg-teal-700 text-white shadow-md shadow-teal-700/10"
           >
             <i class="fa-solid fa-chart-pie text-base"></i>
             <span>نظرة عامة</span>
@@ -229,48 +367,40 @@
 
           <a
             href="students.html"
-            class="flex items-center justify-center sm:justify-start gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold  whitespace-nowrap dark:text-zinc-100 text-gray-600 hover:text-teal-700"
+            class="flex items-center justify-center sm:justify-start gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold whitespace-nowrap dark:text-zinc-100 text-gray-600 hover:text-teal-700"
           >
-            <i
-              class="fa-solid fa-graduation-cap text-base "
-            ></i>
+            <i class="fa-solid fa-graduation-cap text-base"></i>
             <span>الطلاب</span>
           </a>
 
           <a
             href="teatchers.html"
-            class="flex items-center justify-center sm:justify-start gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold  whitespace-nowrap dark:text-zinc-100 text-gray-600 hover:text-teal-700"
+            class="flex items-center justify-center sm:justify-start gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold whitespace-nowrap dark:text-zinc-100 text-gray-600 hover:text-teal-700"
           >
-            <i
-              class="fa-solid fa-chalkboard-user text-base "
-            ></i>
+            <i class="fa-solid fa-chalkboard-user text-base"></i>
             <span>المعلمون</span>
           </a>
 
           <a
             href="fees.html"
-            class="flex items-center justify-center sm:justify-start gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold  whitespace-nowrap dark:text-zinc-100 text-gray-600 hover:text-teal-700"
+            class="flex items-center justify-center sm:justify-start gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold whitespace-nowrap dark:text-zinc-100 text-gray-600 hover:text-teal-700"
           >
-            <i
-              class="fa-solid fa-wallet text-base "
-            ></i>
+            <i class="fa-solid fa-wallet text-base"></i>
             <span>الرسوم</span>
           </a>
 
           <a
             href="role_permistions.html"
-            class="flex items-center justify-center sm:justify-start gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold  whitespace-nowrap dark:text-zinc-100 text-gray-600 hover:text-teal-700"
+            class="flex items-center justify-center sm:justify-start gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold whitespace-nowrap dark:text-zinc-100 text-gray-600 hover:text-teal-700"
           >
-            <i
-              class="fa-solid fa-shield-halved text-base "
-            ></i>
+            <i class="fa-solid fa-shield-halved text-base"></i>
             <span>الأدوار والصلاحيات</span>
           </a>
         </div>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
         <div
-          class="relative overflow-hidden bg-white dark:bg-slate-900 border border-gray-100  hover:border-emerald-400 dark:border-slate-800/80 rounded-2xl p-6 shadow-sm hover:shadow-md flex flex-col justify-between min-h-[140px]"
+          class="relative overflow-hidden bg-white dark:bg-slate-900 border border-gray-100 hover:border-emerald-400 dark:border-slate-800/80 rounded-2xl p-6 shadow-sm hover:shadow-md flex flex-col justify-between min-h-[140px]"
         >
           <div
             class="absolute -top-10 -left-10 w-28 h-28 bg-blue-500/10 rounded-full blur-2xl pointer-events-none hidden dark:block"
@@ -794,7 +924,7 @@
                 class="flex items-center justify-between p-3.5 bg-gray-50/50 hover:bg-gray-50 hover:border-teal-200 dark:hover:border-slate-700 dark:bg-slate-800/40 dark:hover:bg-slate-800 border border-gray-100/70 dark:border-slate-800 rounded-xl active:scale-[0.98] group"
               >
                 <div
-                  class="w-9 h-9 rounded-lg bg-teal-50 dark:bg-teal-950/40 flex items-center justify-center text-teal-600 dark:text-teal-400 shadow-sm group-hover:scale-105 "
+                  class="w-9 h-9 rounded-lg bg-teal-50 dark:bg-teal-950/40 flex items-center justify-center text-teal-600 dark:text-teal-400 shadow-sm group-hover:scale-105"
                 >
                   <i class="fa-solid fa-graduation-cap text-base"></i>
                 </div>
@@ -815,7 +945,7 @@
                 class="flex items-center justify-between p-3.5 bg-gray-50/50 hover:bg-gray-50 hover:border-teal-200 dark:hover:border-slate-700 dark:bg-slate-800/40 dark:hover:bg-slate-800 border border-gray-100/70 dark:border-slate-800 rounded-xl active:scale-[0.98] group"
               >
                 <div
-                  class="w-9 h-9 rounded-lg bg-blue-50 dark:bg-blue-950/40 flex items-center justify-center text-blue-600 dark:text-blue-400 shadow-sm group-hover:scale-105 "
+                  class="w-9 h-9 rounded-lg bg-blue-50 dark:bg-blue-950/40 flex items-center justify-center text-blue-600 dark:text-blue-400 shadow-sm group-hover:scale-105"
                 >
                   <i class="fa-solid fa-chalkboard-user text-base"></i>
                 </div>
@@ -836,7 +966,7 @@
                 class="flex items-center justify-between p-3.5 bg-gray-50/50 hover:bg-gray-50 hover:border-teal-200 dark:hover:border-slate-700 dark:bg-slate-800/40 dark:hover:bg-slate-800 border border-gray-100/70 dark:border-slate-800 rounded-xl active:scale-[0.98] group"
               >
                 <div
-                  class="w-9 h-9 rounded-lg bg-amber-50 dark:bg-amber-950/40 flex items-center justify-center text-amber-600 dark:text-amber-400 shadow-sm group-hover:scale-105 "
+                  class="w-9 h-9 rounded-lg bg-amber-50 dark:bg-amber-950/40 flex items-center justify-center text-amber-600 dark:text-amber-400 shadow-sm group-hover:scale-105"
                 >
                   <i class="fa-solid fa-hand-holding-dollar text-base"></i>
                 </div>
@@ -857,7 +987,7 @@
                 class="flex items-center justify-between p-3.5 bg-gray-50/50 hover:bg-gray-50 hover:border-teal-200 dark:hover:border-slate-700 dark:bg-slate-800/40 dark:hover:bg-slate-800 border border-gray-100/70 dark:border-slate-800 rounded-xl active:scale-[0.98] group"
               >
                 <div
-                  class="w-9 h-9 rounded-lg bg-purple-50 dark:bg-purple-950/40 flex items-center justify-center text-purple-600 dark:text-purple-400 shadow-sm group-hover:scale-105 "
+                  class="w-9 h-9 rounded-lg bg-purple-50 dark:bg-purple-950/40 flex items-center justify-center text-purple-600 dark:text-purple-400 shadow-sm group-hover:scale-105"
                 >
                   <i class="fa-solid fa-shield-halved text-base"></i>
                 </div>
@@ -1112,7 +1242,7 @@
       </div>
     </main>
     <footer
-      class="w-full bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800/80 py-5  "
+      class="w-full bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800/80 py-5"
     >
       <div
         class="max-w-7xl mx-auto px-6 flex items-center justify-center dir-rtl"
@@ -1209,6 +1339,34 @@
         // تدوير السهم الصغير بزاوية 180 درجة لإعطاء حركة تفاعلية
         mobileArrow.classList.toggle("rotate-180");
       });
+    </script>
+    <script>
+      // ==========================================
+      // إدارة قائمة الإشعارات المنسدلة
+      // ==========================================
+      const notifBtn = document.getElementById("notification-btn");
+      const notifDropdown = document.getElementById("notification-dropdown");
+
+      if (notifBtn && notifDropdown) {
+        // عند الضغط على الجرس: اظهر أو اخفي القائمة
+        notifBtn.addEventListener("click", (e) => {
+          e.stopPropagation(); // يمنع انتشار الضغطة
+          notifDropdown.classList.toggle("hidden");
+
+          // إخفاء قائمة المستخدم إذا كانت مفتوحة لعدم التداخل
+          document.getElementById("user-dropdown")?.classList.add("hidden");
+        });
+
+        // إغلاق قائمة الإشعارات تلقائياً إذا ضغط المستخدم في أي مكان خارجها
+        document.addEventListener("click", (e) => {
+          if (
+            !notifDropdown.contains(e.target) &&
+            !notifBtn.contains(e.target)
+          ) {
+            notifDropdown.classList.add("hidden");
+          }
+        });
+      }
     </script>
   </body>
 </html>

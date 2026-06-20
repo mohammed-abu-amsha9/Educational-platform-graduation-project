@@ -392,7 +392,7 @@
 
           <a
             href="materials.html"
-            class="flex items-center gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold whitespace-nowrap bg-teal-700 text-white shadow-md shadow-teal-700/10"
+            class="flex items-center gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold whitespace-nowrap text-gray-600 hover:text-teal-700 dark:text-zinc-300 dark:hover:text-teal-400"
           >
             <i class="fa-solid fa-book-open text-base"></i>
             <span>المواد</span>
@@ -408,7 +408,7 @@
 
           <a
             href="tasks_and_duties.html"
-            class="flex items-center gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold whitespace-nowrap text-gray-600 hover:text-teal-700 dark:text-zinc-300 dark:hover:text-teal-400"
+            class="flex items-center gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold whitespace-nowrap bg-teal-700 text-white shadow-md shadow-teal-700/10"
           >
             <i class="fa-solid fa-chalkboard-user text-base"></i>
             <span>المهام والواجبات</span>
@@ -432,243 +432,251 @@
         </div>
       </div>
 
-      <div class="w-full space-y-6 text-xs" dir="rtl">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          <div
-            id="student-card-arabic"
-            class="bg-white dark:bg-slate-900 border-2 border-teal-500 p-5 rounded-3xl shadow-xs flex flex-col justify-between space-y-4"
-          >
-            <div class="flex items-start justify-between gap-3">
-              <div class="space-y-1">
-                <span
-                  class="bg-teal-50 dark:bg-teal-950 text-teal-600 text-[10px] font-black px-2 py-0.5 rounded"
-                  >إلزامي</span
-                >
-                <h4
-                  class="font-black text-slate-800 dark:text-zinc-100 text-xs pt-1"
-                >
-                  اللغة العربية والشرعية
-                </h4>
-                <p class="text-[10px] text-gray-400 font-medium">
-                  المعلم المشرف: أ. أحمد محمد
-                </p>
-              </div>
-              <div
-                class="w-10 h-10 rounded-2xl bg-teal-50 dark:bg-teal-950/40 flex items-center justify-center text-teal-600 shrink-0"
-              >
-                <i class="fa-solid fa-book-open text-base"></i>
-              </div>
-            </div>
-
-            <div
-              class="pt-3 border-t border-gray-100 dark:border-slate-800/60 flex items-center justify-between"
-            >
-              <span class="text-gray-400 font-bold"
-                ><i class="fa-solid fa-circle-play ml-0.5 text-teal-600"></i> 2
-                محتوى تعليمي نشط</span
-              >
-              <button
-                onclick="
-                  viewStudentSubject('arabic', 'اللغة العربية والشرعية', this)
-                "
-                class="stud-subject-btn bg-teal-600 text-white font-bold px-3 py-1.5 rounded-xl cursor-pointer shadow-xs flex items-center gap-1"
-              >
-                <span>مفتوح الآن</span>
-                <i class="fa-solid fa-folder-open text-[10px]"></i>
-              </button>
-            </div>
-          </div>
-
-          <div
-            id="student-card-math"
-            class="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 p-5 rounded-3xl shadow-xs flex flex-col justify-between space-y-4 hover:border-teal-500"
-          >
-            <div class="flex items-start justify-between gap-3">
-              <div class="space-y-1">
-                <span
-                  class="bg-teal-50 dark:bg-teal-950 text-teal-600 text-[10px] font-black px-2 py-0.5 rounded"
-                  >إلزامي</span
-                >
-                <h4
-                  class="font-black text-slate-800 dark:text-zinc-100 text-xs pt-1"
-                >
-                  الرياضيات والجبر
-                </h4>
-                <p class="text-[10px] text-gray-400 font-medium">
-                  المعلم المشرف: أ. محمود عبد الرحمن
-                </p>
-              </div>
-              <div
-                class="w-10 h-10 rounded-2xl bg-indigo-50 dark:bg-indigo-950/40 flex items-center justify-center text-indigo-600 shrink-0"
-              >
-                <i class="fa-solid fa-calculator text-base"></i>
-              </div>
-            </div>
-
-            <div
-              class="pt-3 border-t border-gray-100 dark:border-slate-800/60 flex items-center justify-between"
-            >
-              <span class="text-gray-400 font-bold"
-                ><i class="fa-solid fa-circle-play ml-0.5 text-indigo-500"></i>
-                2 محتوى تعليمي نشط</span
-              >
-              <button
-                class="stud-subject-btn bg-slate-800 dark:bg-slate-700 hover:bg-teal-600 text-white font-bold px-3 py-1.5 rounded-xl cursor-pointer shadow-xs flex items-center gap-1"
-              >
-                <span>عرض المحتوى</span>
-                <i class="fa-solid fa-chevron-left text-[10px]"></i>
-              </button>
-            </div>
+      <div class="w-full space-y-6 text-xs text-right" dir="rtl">
+        <div
+          class="flex items-center justify-between pb-2 border-b border-gray-100 dark:border-slate-800"
+        >
+          <div class="flex items-center gap-2">
+            <span
+              class="w-1.5 h-3 bg-indigo-600 rounded-full animate-pulse"
+            ></span>
+            <h3 class="font-black text-slate-800 dark:text-zinc-100 text-sm">
+              📚 المهام والواجبات الدراسية
+            </h3>
           </div>
         </div>
 
-        <div
-          class="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-3xl p-5 shadow-sm space-y-5"
-        >
-          <div
-            class="flex items-center gap-2 pb-2 border-b border-gray-50 dark:border-slate-800"
-          >
-            <span
-              class="w-1.5 h-3 bg-teal-600 rounded-full animate-pulse"
-            ></span>
-            <h3 class="font-black text-slate-800 dark:text-zinc-100 text-xs">
-              المحتوى والدروس المتاحة لمادة:
-              <span id="studSubjectTitle" class="text-teal-600"
-                >اللغة العربية والشرعية</span
-              >
-            </h3>
-          </div>
+        <div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+          <div class="xl:col-span-2 space-y-4">
+            <h4
+              class="font-black text-slate-800 dark:text-zinc-200 px-1 flex items-center gap-1.5"
+            >
+              <span>⏳ واجبات قادمة ومطلوبة</span>
+            </h4>
 
-          <div
-            id="stud-lessons-arabic"
-            class="stud-content-block space-y-4 block"
-          >
             <div
-              class="p-4 border border-gray-100 dark:border-slate-800/60 bg-gray-50/20 dark:bg-slate-950/20 rounded-2xl space-y-3"
+              id="assignment-card-1"
+              class="bg-white dark:bg-slate-900 border border-gray-100 hover:border-teal-400 dark:border-slate-800/80 p-5 rounded-3xl shadow-sm hover:shadow-xl space-y-4"
             >
               <div
-                class="flex flex-col sm:flex-row sm:items-center justify-between gap-3"
+                class="flex flex-col sm:flex-row sm:items-start justify-between gap-3"
               >
-                <div class="flex items-center gap-3">
-                  <div
-                    class="w-9 h-9 rounded-xl bg-amber-50 text-amber-600 dark:bg-amber-950/40 flex items-center justify-center text-sm shrink-0"
+                <div class="space-y-1.5">
+                  <div class="flex items-center gap-2 flex-wrap">
+                    <span
+                      class="bg-indigo-50 dark:bg-indigo-950 text-indigo-600 text-[10px] font-black px-2.5 py-0.5 rounded-lg"
+                      >اللغة العربية والشرعية</span
+                    >
+                    <span
+                      id="badge-status-1"
+                      class="bg-amber-50 dark:bg-amber-950/60 text-amber-600 text-[10px] font-bold px-2 py-0.5 rounded-lg flex items-center gap-1"
+                    >
+                      <i class="fa-solid fa-hourglass-half text-[9px]"></i>
+                      متبقي 3 أيام
+                    </span>
+                  </div>
+                  <h5
+                    class="font-black text-slate-800 dark:text-zinc-100 text-xs"
                   >
-                    <i class="fa-solid fa-video"></i>
-                  </div>
-                  <div>
-                    <h5 class="font-bold text-slate-800 dark:text-zinc-200">
-                      فيديو شرح: أحكام الفاعل والمفعول به بالتفصيل
-                    </h5>
-                    <p class="text-[10px] text-gray-400">
-                      نوع المحتوى: محاضرة مرئية • مدة المقطع: 25 دقيقة • تم
-                      النشر بواسطة المعلم منذ يومين
-                    </p>
-                  </div>
+                    واجب: إعراب الجملة الفعلية والأفعال الخمسة
+                  </h5>
+                  <p
+                    class="text-gray-400 font-medium text-[11px] leading-relaxed"
+                  >
+                    توصيف المهمة: قم بحل التمارين الموجودة في الصفحة 42 من كتاب
+                    الأنشطة، وصوّر الحل بصيغة PDF واضحة ثم ارفعه هنا لتدقيق
+                    المعلم وتصحيحه.
+                  </p>
                 </div>
-                <button
-                  class="bg-teal-600 hover:bg-teal-700 text-white font-bold px-3 py-1.5 rounded-xl shadow-2xs w-fit cursor-pointer"
+                <div
+                  class="bg-slate-50 dark:bg-slate-950 p-2.5 rounded-2xl border border-gray-100 dark:border-slate-800 text-center shrink-0 min-w-[100px]"
                 >
-                  <i class="fa-solid fa-play ml-1"></i> تشغيل المحاضرة
+                  <p class="text-gray-400 text-[9px] font-bold">
+                    آخر موعد للتسليم
+                  </p>
+                  <p class="font-black text-rose-500 text-[11px] mt-0.5">
+                    23 يونيو، 11:59 م
+                  </p>
+                </div>
+              </div>
+
+              <div
+                class="flex items-center justify-between pt-3 border-t border-dashed border-gray-100 dark:border-slate-800"
+              >
+                <span class="text-gray-400 font-medium text-[10px]"
+                  ><i class="fa-solid fa-award text-indigo-600 ml-0.5"></i>
+                  الوزن: 10 درجات</span
+                >
+                <button
+                  id="submit-btn-1"
+                  onclick="
+                    openSubmitModal(
+                      'واجب: إعراب الجملة الفعلية والأفعال الخمسة',
+                      'assignment-card-1',
+                      'badge-status-1',
+                      'submit-btn-1',
+                    )
+                  "
+                  class="bg-indigo-600 hover:bg-indigo-700 text-white font-black px-4 py-2 rounded-xl shadow-3xs cursor-pointer"
+                >
+                  إرفاق وتسليم الواجب
+                  <i class="fa-solid fa-upload mr-1 text-[10px]"></i>
                 </button>
               </div>
             </div>
+          </div>
 
-            <div
-              class="p-4 border border-gray-100 dark:border-slate-800/60 bg-gray-50/20 dark:bg-slate-950/20 rounded-2xl"
-            >
-              <div
-                class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 w-full"
+          <div class="space-y-6">
+            <div class="space-y-3">
+              <h4
+                class="font-black text-emerald-600 dark:text-emerald-500 px-1 flex items-center gap-1"
               >
-                <div class="flex items-start gap-3 flex-1">
-                  <div
-                    class="w-10 h-10 rounded-xl bg-rose-50 text-rose-500 dark:bg-rose-950/40 flex items-center justify-center text-sm shrink-0 mt-0.5"
-                  >
-                    <i class="fa-solid fa-file-pdf text-base"></i>
-                  </div>
-                  <div class="space-y-1 min-w-0">
-                    <h5
-                      class="font-bold text-slate-800 dark:text-zinc-200 text-xs leading-normal break-words"
-                    >
-                      ملخص الشرح PDF: كبسولة مراجعة الجملة الفعلية والأوزان
-                    </h5>
-                    <p class="text-[10px] text-gray-400 leading-relaxed">
-                      نوع المحتوى: مستند PDF ملخص • الحجم: 1.8 MB • يحتوي على
-                      تطبيقات محلولة وشاملة
-                    </p>
-                  </div>
-                </div>
-
+                <span>✓ سجل التسليمات والتصحيح</span>
+              </h4>
+              <div id="submissionHistoryLog" class="space-y-3">
                 <div
-                  class="flex items-center gap-2 shrink-0 w-full md:w-fit justify-end border-t md:border-t-0 pt-3 md:pt-0 border-gray-100 dark:border-slate-800"
+                  class="text-center p-6 bg-gray-50/50 dark:bg-slate-900/40 border border-dashed border-gray-200 dark:border-slate-800 rounded-3xl text-gray-700 dark:text-gray-400 text-[13px]"
                 >
-                  <button
-                    onclick="
-                      openClassroomPdf(
-                        'https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/web/compressed.tracemonkey-pldi-09.pdf',
-                        'ملخص الشرح PDF: كبسولة مراجعة الجملة الفعلية',
-                      )
-                    "
-                    class="bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 font-bold px-3 py-1.5 rounded-xl text-slate-700 dark:text-zinc-300 hover:bg-gray-50 dark:hover:bg-slate-700 shadow-2xs text-center cursor-pointer flex items-center gap-1 text-[11px] whitespace-nowrap"
-                  >
-                    <i class="fa-solid fa-eye text-teal-600"></i>
-                    <span>عرض الملف هنا</span>
-                  </button>
-
-                  <a
-                    href="#"
-                    onclick="
-                      alert('جاري تحميل الملف...');
-                      return false;
-                    "
-                    class="bg-slate-800 dark:bg-teal-700 hover:bg-teal-600 dark:hover:bg-teal-600 font-bold px-3 py-1.5 rounded-xl text-white shadow-2xs text-center cursor-pointer flex items-center gap-1 text-[11px] whitespace-nowrap"
-                  >
-                    <i class="fa-solid fa-download"></i>
-                    <span>تحميل</span>
-                  </a>
+                  لم تقم بتسليم أي واجب في هذه الجلسة بعد.
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
 
-            <div
-              id="classroomPdfModal"
-              class="fixed inset-0 z-50 hidden bg-slate-900/80 backdrop-blur-xs items-center justify-center p-4 md:p-10"
-              dir="rtl"
-            >
+      <div
+        id="submitAssignmentModal"
+        class="fixed inset-0 z-50 hidden bg-slate-900/80 backdrop-blur-xs items-center justify-center p-4"
+        dir="rtl"
+      >
+        <div
+          class="bg-white dark:bg-slate-900 w-full max-w-lg rounded-3xl shadow-2xl border border-emerald-400 flex flex-col overflow-hidden animate-scale-up"
+        >
+          <div
+            class="p-4 border-b border-gray-100 dark:border-slate-800 flex items-center justify-between bg-gray-50/50 dark:bg-slate-950/40"
+          >
+            <div class="flex items-center gap-2">
               <div
-                class="bg-white dark:bg-slate-900 w-full max-w-5xl h-[85vh] rounded-3xl shadow-2xl border border-gray-200 dark:border-slate-800 flex flex-col overflow-hidden animate-scale-up"
+                class="w-7 h-7 bg-indigo-50 text-indigo-600 dark:bg-indigo-950/50 rounded-lg flex items-center justify-center text-xs"
               >
-                <div
-                  class="p-4 border-b border-gray-100 dark:border-slate-800 flex items-center justify-between bg-gray-50/50 dark:bg-slate-950/40 shrink-0"
+                <i class="fa-solid fa-file-arrow-up"></i>
+              </div>
+              <div>
+                <h4
+                  class="font-black text-slate-800 dark:text-zinc-100 text-xs"
                 >
-                  <div class="flex items-center gap-2">
-                    <i class="fa-solid fa-file-pdf text-rose-500 text-sm"></i>
-                    <h4
-                      id="modalFileTitle"
-                      class="font-black text-slate-800 dark:text-zinc-100 text-xs truncate max-w-md"
-                    >
-                      معاينة الملف التعليمي
-                    </h4>
-                  </div>
-                  <button
-                    onclick="closePdfViewer()"
-                    class="bg-gray-200 dark:bg-slate-800 hover:bg-rose-500 hover:text-white dark:hover:bg-rose-600 text-slate-700 dark:text-zinc-300 w-7 h-7 rounded-xl flex items-center justify-center font-bold cursor-pointer shrink-0"
-                  >
-                    <i class="fa-solid fa-xmark text-xs"></i>
-                  </button>
-                </div>
-
-                <div
-                  class="flex-1 bg-slate-100 dark:bg-slate-950 w-full h-full min-h-0 relative"
+                  إرسال ملفات الواجب الدراسي
+                </h4>
+                <p
+                  id="targetAssignmentTitle"
+                  class="text-[10px] text-gray-400 font-medium truncate max-w-[280px] mt-0.5"
                 >
-                  <iframe
-                    id="pdfFrameElement"
-                    src=""
-                    class="w-full h-full absolute inset-0 border-0"
-                    style="height: 100%; width: 100%"
-                  ></iframe>
-                </div>
+                  اسم الواجب المختار
+                </p>
               </div>
             </div>
+            <button
+              onclick="closeSubmitModal()"
+              class="bg-gray-200 dark:bg-slate-800 hover:bg-rose-500 hover:text-white dark:hover:bg-rose-600 text-slate-700 dark:text-zinc-300 w-6 h-6 rounded-lg flex items-center justify-center font-bold cursor-pointer"
+            >
+              <i class="fa-solid fa-xmark text-xs"></i>
+            </button>
+          </div>
+
+          <div class="p-5 space-y-4">
+            <div
+              class="border-2 border-dashed border-gray-200 dark:border-slate-800 hover:border-indigo-500/50 rounded-2xl p-6 text-center cursor-pointer relative bg-gray-50/30 dark:bg-slate-950/10"
+            >
+              <input
+                type="file"
+                id="assignmentFileInput"
+                onchange="handleFileSelection()"
+                class="absolute inset-0 opacity-0 w-full h-full cursor-pointer"
+              />
+
+              <div id="uploadPromptZone" class="space-y-2">
+                <div
+                  class="w-12 h-12 bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 rounded-full flex items-center justify-center text-base mx-auto"
+                >
+                  <i class="fa-solid fa-cloud-arrow-up"></i>
+                </div>
+                <p class="font-bold text-slate-700 dark:text-zinc-200 text-xs">
+                  اضغط هنا للاختيار أو اسحب ملف الواجب
+                </p>
+                <p class="text-[9px] text-gray-400 font-medium">
+                  يدعم صيغ (PDF, JPG, PNG) بحد أقصى 10MB
+                </p>
+              </div>
+
+              <div id="fileSelectedZone" class="hidden space-y-1">
+                <div
+                  class="w-12 h-12 bg-emerald-50 dark:bg-emerald-950 text-emerald-500 rounded-full flex items-center justify-center text-lg mx-auto animate-bounce"
+                >
+                  <i class="fa-solid fa-file-circle-check"></i>
+                </div>
+                <p
+                  id="selectedFileName"
+                  class="font-black text-emerald-600 text-xs dir-ltr truncate max-w-xs mx-auto"
+                >
+                  file_name.pdf
+                </p>
+                <p class="text-[9px] text-gray-400">
+                  جاهز للتسليم، اضغط لتغييره
+                </p>
+              </div>
+            </div>
+
+            <div class="space-y-1.5">
+              <label
+                class="font-bold text-slate-700 dark:text-zinc-300 text-[10px]"
+                >💬 إضافة ملاحظة أو سؤال للأستاذ (اختياري):</label
+              >
+              <textarea
+                id="studentSubmissionComment"
+                rows="3"
+                placeholder="اكتب هنا أي تفاصيل تود إطلاع معلم المادة عليها..."
+                class="w-full bg-white dark:bg-slate-950 border border-gray-200 dark:border-slate-800 text-slate-800 dark:text-zinc-200 rounded-xl p-2.5 outline-none font-medium text-xs placeholder-gray-400 resize-none"
+              ></textarea>
+            </div>
+
+            <div id="uploadLoaderBar" class="hidden space-y-1.5 pt-1">
+              <div
+                class="flex justify-between text-[9px] font-bold text-indigo-600"
+              >
+                <span>جاري رفع وتشفير الملفات...</span>
+                <span id="uploadPercentText">0%</span>
+              </div>
+              <div
+                class="w-full bg-gray-100 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden"
+              >
+                <div
+                  id="uploadProgressBarFill"
+                  class="bg-indigo-600 h-full"
+                  style="width: 0%"
+                ></div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="p-4 bg-gray-50 dark:bg-slate-950/40 border-t border-gray-100 dark:border-slate-800 flex items-center justify-end gap-2"
+          >
+            <button
+              onclick="closeSubmitModal()"
+              class="bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 text-slate-700 dark:text-zinc-300 font-bold px-4 py-2 rounded-xl hover:bg-gray-50 cursor-pointer"
+            >
+              إلغاء
+            </button>
+            <button
+              id="confirmUploadBtn"
+              onclick="executeFakeUpload()"
+              disabled
+              class="bg-indigo-600 disabled:opacity-40 disabled:cursor-notowed hover:bg-indigo-700 text-white font-black px-5 py-2 rounded-xl shadow-xs cursor-pointer"
+            >
+              تأكيد تسليم الواجب
+              <i class="fa-solid fa-paper-plane mr-1 text-[10px]"></i>
+            </button>
           </div>
         </div>
       </div>
@@ -692,7 +700,9 @@
       </div>
     </footer>
     <script>
-      // 1. منطق تبديل الوضع الليلي والنهاري (Dark/Light Mode)
+      // ==========================================
+      // 1. إدارة الوضع الليلي (Dark/Light Mode)
+      // ==========================================
       const themeToggleBtns = document.querySelectorAll(".theme-toggle");
       const htmlElement = document.documentElement;
 
@@ -710,8 +720,7 @@
         });
       }
 
-      const currentTheme = localStorage.getItem("theme");
-      if (currentTheme === "dark") {
+      if (localStorage.getItem("theme") === "dark") {
         htmlElement.classList.add("dark");
         updateThemeUI(true);
       } else {
@@ -727,47 +736,39 @@
         });
       });
 
-      // 2. تفعيل القائمة الجانبية للموبايل
-      const menuBtn = document.getElementById("mobile-menu-btn");
-      const mobileMenu = document.getElementById("mobile-menu");
+      // ==========================================
+      // 2. إدارة القوائم المنسدلة والتجاوب
+      // ==========================================
+      document
+        .getElementById("mobile-menu-btn")
+        ?.addEventListener("click", () => {
+          document.getElementById("mobile-menu")?.classList.toggle("hidden");
+        });
 
-      menuBtn.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
-      });
-
-      // 3. التحكم بقائمة المستخدم المنسدلة (Desktop Dropdown)
       const userMenuBtn = document.getElementById("user-menu-btn");
       const userDropdown = document.getElementById("user-dropdown");
+      if (userMenuBtn && userDropdown) {
+        userMenuBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          userDropdown.classList.toggle("hidden");
+        });
+        document.addEventListener("click", (e) => {
+          if (
+            !userDropdown.contains(e.target) &&
+            !userMenuBtn.contains(e.target)
+          ) {
+            userDropdown.classList.add("hidden");
+          }
+        });
+      }
 
-      userMenuBtn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        userDropdown.classList.toggle("hidden");
-      });
-
-      document.addEventListener("click", (e) => {
-        if (
-          !userDropdown.contains(e.target) &&
-          !userMenuBtn.contains(e.target)
-        ) {
-          userDropdown.classList.add("hidden");
-        }
-      });
-
-      // 4. التحكم بقائمة المستخدم للموبايل (Mobile User Dropdown)
-      const mobileUserMenuBtn = document.getElementById("mobile-user-menu-btn");
-      const mobileUserDropdown = document.getElementById(
-        "mobile-user-dropdown",
-      );
-      const mobileArrow = document.getElementById("mobile-arrow");
-
-      mobileUserMenuBtn.addEventListener("click", () => {
-        mobileUserDropdown.classList.toggle("hidden");
-        mobileArrow.classList.toggle("rotate-180");
-      });
-
+      // ==========================================
+      // 3. نظام التنبيهات الموحد (Toasts)
+      // ==========================================
       function showToast(message, type = "success") {
         const container = document.getElementById("toast-container");
         if (!container) return;
+
         const toast = document.createElement("div");
         toast.className = `p-4 rounded-xl text-xs font-bold text-white shadow-lg   transform translate-y-2 opacity-0 flex items-center gap-2 ${
           type === "success"
@@ -776,7 +777,15 @@
               ? "bg-rose-600"
               : "bg-amber-500"
         }`;
-        toast.innerHTML = `<i class="fa-solid ${type === "success" ? "fa-circle-check" : "fa-circle-xmark"}"></i> <span>${message}</span>`;
+
+        const icon =
+          type === "success"
+            ? "fa-circle-check"
+            : type === "error"
+              ? "fa-circle-xmark"
+              : "fa-triangle-exclamation";
+        toast.innerHTML = `<i class="fa-solid ${icon}"></i> <span>${message}</span>`;
+
         container.appendChild(toast);
         setTimeout(
           () => toast.classList.remove("translate-y-2", "opacity-0"),
@@ -788,161 +797,198 @@
         }, 3500);
       }
 
-      // --- 4. منطق المحاكاة والمزامنة الفعلي في صفحة المزامنة ---
-      let isOnline = true;
-      let pendingCount = 1; // نفترض وجود عملية واحدة معلقة بالصفحة
+      // ==========================================
+      // 4. منطق نافذة تسليم وإرفاق الواجبات
+      // ==========================================
+      let currentTargetCardId = "";
+      let currentTargetBadgeId = "";
+      let currentTargetBtnId = "";
+
+      function openSubmitModal(assignmentTitle, cardId, badgeId, btnId) {
+        // تخزين المعرفات للتعامل معها بعد انتهاء الرفع
+        currentTargetCardId = cardId;
+        currentTargetBadgeId = badgeId;
+        currentTargetBtnId = btnId;
+
+        // تعيين اسم الواجب بالنافذة
+        const titleEl = document.getElementById("targetAssignmentTitle");
+        if (titleEl) titleEl.innerText = assignmentTitle;
+
+        // إعادة تهيئة حقول النافذة المودال لشكلها الأصلي
+        document.getElementById("assignmentFileInput").value = "";
+        document.getElementById("studentSubmissionComment").value = "";
+        document.getElementById("uploadPromptZone").classList.remove("hidden");
+        document.getElementById("fileSelectedZone").classList.add("hidden");
+        document.getElementById("uploadLoaderBar").classList.add("hidden");
+        document.getElementById("confirmUploadBtn").disabled = true;
+
+        // إظهار المودال وتغيير الـ display
+        const modal = document.getElementById("submitAssignmentModal");
+        if (modal) {
+          modal.classList.remove("hidden");
+          modal.classList.add("flex");
+        }
+      }
+
+      function closeSubmitModal() {
+        const modal = document.getElementById("submitAssignmentModal");
+        if (modal) {
+          modal.classList.add("hidden");
+          modal.classList.remove("flex");
+        }
+      }
+
+      function handleFileSelection() {
+        const fileInput = document.getElementById("assignmentFileInput");
+        const uploadPromptZone = document.getElementById("uploadPromptZone");
+        const fileSelectedZone = document.getElementById("fileSelectedZone");
+        const selectedFileName = document.getElementById("selectedFileName");
+        const confirmUploadBtn = document.getElementById("confirmUploadBtn");
+
+        if (fileInput.files.length > 0) {
+          // إظهار اسم الملف المختار وتفعيل زر التأكيد
+          selectedFileName.innerText = fileInput.files[0].name;
+          uploadPromptZone.classList.add("hidden");
+          fileSelectedZone.classList.remove("hidden");
+          confirmUploadBtn.disabled = false;
+        }
+      }
+
+      function executeFakeUpload() {
+        if (!isConnected) {
+          showToast("فشل رفع الملف! أنت غير متصل بالشبكة حالياً.", "error");
+          return;
+        }
+
+        const loaderBar = document.getElementById("uploadLoaderBar");
+        const percentText = document.getElementById("uploadPercentText");
+        const barFill = document.getElementById("uploadProgressBarFill");
+        const confirmBtn = document.getElementById("confirmUploadBtn");
+
+        confirmBtn.disabled = true;
+        loaderBar.classList.remove("hidden");
+
+        let progress = 0;
+        const interval = setInterval(() => {
+          progress += 25;
+          percentText.innerText = `${progress}%`;
+          barFill.style.width = `${progress}%`;
+
+          if (progress >= 100) {
+            clearInterval(interval);
+
+            // إتمام التسليم وتحديث حالة الكرت المختار بنجاح
+            finalizeAssignmentSubmission();
+          }
+        }, 300);
+      }
+
+      function finalizeAssignmentSubmission() {
+        closeSubmitModal();
+        showToast("تم رفع ملفات الواجب وتسليمها للمدرس بنجاح!", "success");
+
+        // 1. تحديث البادج داخل الكرت ليصبح "تم التسليم" باللون الأخضر
+        const badge = document.getElementById(currentTargetBadgeId);
+        if (badge) {
+          badge.className =
+            "bg-emerald-50 dark:bg-emerald-950 text-emerald-600 text-[10px] font-bold px-2 py-0.5 rounded-lg flex items-center gap-1";
+          badge.innerHTML = `<i class="fa-solid fa-circle-check text-[9px]"></i> تم التسليم`;
+        }
+
+        // 2. تغيير شكل زر الإرسال ليصبح معطلاً ومكتوب عليه تم التسليم
+        const btn = document.getElementById(currentTargetBtnId);
+        if (btn) {
+          btn.disabled = true;
+          btn.className =
+            "bg-gray-100 dark:bg-slate-800 text-gray-400 dark:text-zinc-500 font-black px-4 py-2 rounded-xl cursor-notowed text-xs";
+          btn.innerHTML = `تم تسليم الواجب بنجاح <i class="fa-solid fa-check mr-1 text-[10px]"></i>`;
+        }
+
+        // 3. إضافة سجل جديد في عمود التسليمات والتصحيح الجانبي بدلاً من جملة "لم تقم بتسليم"
+        const historyLog = document.getElementById("submissionHistoryLog");
+        const titleText = document.getElementById(
+          "targetAssignmentTitle",
+        ).innerText;
+
+        if (historyLog) {
+          const newLog = document.createElement("div");
+          newLog.className =
+            "p-4 bg-white dark:bg-slate-900 border border-emerald-100 dark:border-emerald-950/40 rounded-2xl space-y-2 shadow-3xs border-r-[4px] border-r-emerald-500 animate-scale-up";
+          newLog.innerHTML = `
+        <div class="flex items-center justify-between">
+          <span class="font-bold text-slate-800 dark:text-zinc-200 text-[11px] truncate max-w-[180px]">${titleText}</span>
+          <span class="bg-amber-50 dark:bg-amber-950/40 text-amber-600 text-[9px] px-2 py-0.5 rounded font-bold">⏳ بانتظار التصحيح</span>
+        </div>
+        <p class="text-gray-400 text-[10px]">تاريخ التسليم: اليوم، منذ قليل</p>
+      `;
+
+          // إذا كان يوجد إشعار "لم تقم بالتسليم" نقوم بتصفيره أولاً
+          if (historyLog.innerHTML.includes("لم تقم بتسليم")) {
+            historyLog.innerHTML = "";
+          }
+          historyLog.appendChild(newLog);
+        }
+      }
+
+      // ==========================================
+      // 5. محاكاة الاتصال والمزامنة (شريط الحالة)
+      // ==========================================
+      let isConnected = true;
 
       function toggleConnection() {
-        isOnline = !isOnline;
+        isConnected = !isConnected;
         const statusBar = document.getElementById("status-bar");
-        const statusBadge = document.getElementById("status-badge");
-        const badgeText = document.getElementById("badge-text");
         const toggleIcon = document.getElementById("toggle-icon");
         const toggleText = document.getElementById("toggle-text");
-        const syncDetails = document.getElementById("status-details");
+        const statusDetails = document.getElementById("status-details");
+        const statusBadge = document.getElementById("status-badge");
+        const badgeText = document.getElementById("badge-text");
 
         if (!statusBar) return;
 
-        if (isOnline) {
-          statusBar.className =
-            "w-full bg-white border border-emerald-400 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-4 shadow-sm   dark:bg-slate-900 dark:border-emerald-500/40";
-          statusBadge.className =
-            "bg-emerald-50 text-emerald-700 border border-emerald-200 px-4 py-1.5 rounded-full text-sm font-semibold flex items-center gap-2  dark:bg-emerald-950/30 dark:text-emerald-400 dark:border-emerald-800/50";
-          badgeText.innerText = "متصل";
-          toggleIcon.className =
-            "fa-solid fa-toggle-off text-orange-500 text-base";
-          toggleText.innerText = "محاكاة عدم الاتصال";
-          if (syncDetails)
-            syncDetails.innerHTML = `<span class="text-gray-700 dark:text-zinc-200">✓ متزامن</span>`;
-          showToast("تم إعادة الاتصال بالخادم بنجاح.", "success");
-        } else {
+        if (!isConnected) {
           statusBar.className =
             "w-full bg-white border border-rose-400 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-4 shadow-sm   dark:bg-slate-900 dark:border-rose-500/40";
-          statusBadge.className =
-            "bg-rose-50 text-rose-700 border border-rose-200 px-4 py-1.5 rounded-full text-sm font-semibold flex items-center gap-2  dark:bg-rose-950/30 dark:text-rose-400 dark:border-rose-800/50";
-          badgeText.innerText = "غير متصل";
-          toggleIcon.className =
-            "fa-solid fa-toggle-on text-emerald-500 text-base";
-          toggleText.innerText = "محاكاة الاتصال";
-          if (syncDetails)
-            syncDetails.innerHTML = `<span class="text-amber-600 dark:text-amber-400 font-bold">⚠ معلق</span>`;
+          if (toggleIcon)
+            toggleIcon.className =
+              "fa-solid fa-toggle-on text-emerald-500 text-base";
+          if (toggleText) toggleText.innerText = "محاكاة الاتصال";
+          if (statusDetails)
+            statusDetails.innerHTML = `<span class="text-amber-600 dark:text-amber-400 font-bold">⚠️ معلق في الانتظار</span>`;
+          if (statusBadge)
+            statusBadge.className =
+              "bg-rose-50 text-rose-700 border border-rose-200 px-4 py-1.5 rounded-full text-sm font-semibold flex items-center gap-2  dark:bg-rose-950/30 dark:text-rose-400 dark:border-rose-800/50";
+          if (badgeText) badgeText.innerText = "غير متصل";
           showToast("تم قطع الاتصال محاكاةً. البيانات ستحفظ محلياً.", "error");
+        } else {
+          statusBar.className =
+            "w-full bg-white border border-emerald-400 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-4 shadow-sm   dark:bg-slate-900 dark:border-emerald-500/40";
+          if (toggleIcon)
+            toggleIcon.className =
+              "fa-solid fa-toggle-off text-orange-500 text-base";
+          if (toggleText) toggleText.innerText = "محاكاة عدم الاتصال";
+          if (statusDetails)
+            statusDetails.innerHTML = `<span class="text-gray-700 dark:text-zinc-200">✓ متزامن</span>`;
+          if (statusBadge)
+            statusBadge.className =
+              "bg-emerald-50 text-emerald-700 border border-emerald-200 px-4 py-1.5 rounded-full text-sm font-semibold flex items-center gap-2  dark:bg-emerald-950/30 dark:text-emerald-400 dark:border-emerald-800/50";
+          if (badgeText) badgeText.innerText = "متصل";
+          showToast("تم إعادة الاتصال بالخادم بنجاح.", "success");
         }
       }
 
       function triggerSync() {
-        if (!isOnline) {
+        if (!isConnected) {
           showToast(
             "فشلت المزامنة! يرجى تفعيل الاتصال بالإنترنت أولاً.",
             "error",
           );
           return;
         }
-
-        showToast("جاري إرسال البيانات المعلقة وتحديث السجلات...", "amber");
-
-        // عمل تأثير تحميل بسيط لمدة ثانية
+        showToast("جاري إرسال البيانات المعلقة وتحديث السجلات...", "warning");
         setTimeout(() => {
-          // 1. تحديث العدادات الرقمية بالصفحة (إذا كانت موجودة)
-          const pendingCounterEl = document.getElementById("pending-count"); // استهداف العداد المعلق
-          const successCounterEl = document.getElementById("success-count"); // استهداف عداد الناجح
-
-          if (pendingCounterEl) pendingCounterEl.innerText = "0";
-          if (successCounterEl) successCounterEl.innerText = "1";
-
-          // 2. تحديث حالة كروت المزامنة (تغيير الأيقونة من ساعة انتظار إلى صح أخضر)
-          const syncStatusBadge = document.getElementById("sync-status-badge");
-          if (syncStatusBadge) {
-            syncStatusBadge.className =
-              "bg-emerald-50 text-emerald-700 border border-emerald-200 px-3 py-1 rounded-full flex items-center gap-1.5 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800/60";
-            syncStatusBadge.innerHTML = `<i class="fa-solid fa-circle-check text-xs"></i> <span>مكتملة</span>`;
-          }
-
-          showToast(
-            "تمت المزامنة بنجاح وتحديث كافة البيانات المدرسية!",
-            "success",
-          );
+          showToast("تمت المزامنة بنجاح وتحديث كافة البيانات!", "success");
         }, 1200);
-      }
-    </script>
-    <script>
-      function viewStudentSubject(subjectId, subjectName, btnElement) {
-        // 1. تحديث نص عنوان صندوق الدروس الحالي بالأسفل
-        document.getElementById("studSubjectTitle").innerText = subjectName;
-
-        // 2. إخفاء جميع كتل الدروس المفتوحة
-        const blocks = document.querySelectorAll(".stud-content-block");
-        blocks.forEach((b) => {
-          b.classList.add("hidden");
-          b.classList.remove("block");
-        });
-
-        // 3. إظهار دروس المادة المختارة
-        const targetBlock = document.getElementById(
-          "stud-lessons-" + subjectId,
-        );
-        if (targetBlock) {
-          targetBlock.classList.remove("hidden");
-          targetBlock.classList.add("block");
-        }
-
-        // 4. إعادة كروت المواد لشكلها غير النشط
-        const cards = ["student-card-arabic", "student-card-math"];
-        cards.forEach((c) => {
-          let cardEl = document.getElementById(c);
-          if (cardEl) {
-            cardEl.className =
-              "bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 p-5 rounded-3xl shadow-xs flex flex-col justify-between space-y-4 hover:border-teal-500 ";
-          }
-        });
-
-        // 5. تمييز الكرت الحالي النشط بإطار ملون واضح
-        const targetCard = document.getElementById("student-card-" + subjectId);
-        if (targetCard) {
-          targetCard.className =
-            "bg-white dark:bg-slate-900 border-2 border-teal-500 p-5 rounded-3xl shadow-xs flex flex-col justify-between space-y-4 ";
-        }
-
-        // 6. تصفير وإعادة تهيئة أزرار التصفح لتبدو طبيعية
-        const buttons = document.querySelectorAll(".stud-subject-btn");
-        buttons.forEach((btn) => {
-          btn.className =
-            "stud-subject-btn bg-slate-800 dark:bg-slate-700 hover:bg-teal-600 text-white font-bold px-3 py-1.5 rounded-xl  cursor-pointer shadow-xs flex items-center gap-1";
-          btn.innerHTML =
-            '<span>عرض المحتوى</span> <i class="fa-solid fa-chevron-left text-[10px]"></i>';
-        });
-
-        // تمييز الزر الحالي ليدل على الفتح النشط
-        btnElement.className =
-          "stud-subject-btn bg-teal-600 text-white font-bold px-3 py-1.5 rounded-xl  cursor-pointer shadow-xs flex items-center gap-1";
-        btnElement.innerHTML =
-          '<span>مفتوح الآن</span> <i class="fa-solid fa-folder-open text-[10px]"></i>';
-      }
-    </script>
-    <script>
-      function openClassroomPdf(fileUrl, fileTitle) {
-        document.getElementById("modalFileTitle").innerText = fileTitle;
-
-        // استخدام قارئ مستندات أوفيس/جوجل الرسمي والمستقر جداً للمعاينة الحية بدون تحميل
-        const viewerUrl =
-          "https://docs.google.com/gview?url=" +
-          encodeURIComponent(fileUrl) +
-          "&embedded=true";
-
-        const frame = document.getElementById("pdfFrameElement");
-        frame.src = viewerUrl;
-
-        // إظهار المودال بالكامل
-        const modal = document.getElementById("classroomPdfModal");
-        modal.classList.remove("hidden");
-        modal.classList.add("flex");
-      }
-
-      function closePdfViewer() {
-        const modal = document.getElementById("classroomPdfModal");
-        modal.classList.add("hidden");
-        modal.classList.remove("flex");
-        document.getElementById("pdfFrameElement").src = "";
       }
     </script>
     <script>

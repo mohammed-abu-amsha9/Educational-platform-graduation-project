@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>منصة صمود - لوحة بوابة المعلم - رفع الواجبات وتصحيحها</title>
+    <link rel="icon" type="image/png" href="../../public/img/Logo.png" />
     <link rel="stylesheet" href="../../public/css/output.css" />
     <link
       rel="stylesheet"
@@ -20,9 +21,13 @@
       >
         <div class="flex items-center gap-3">
           <div
-            class="w-11 h-11 bg-teal-700 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-md shadow-teal-700/10"
+            class="w-11 h-11 bg-teal-700 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-md shadow-teal-700/10 overflow-hidden"
           >
-            ص
+            <img
+              src="../../public/img/Logo.png"
+              alt="لوجو منصة صمود"
+              class="w-full h-full object-cover rounded-full"
+            />
           </div>
           <div class="">
             <h1
@@ -59,11 +64,113 @@
         </nav>
 
         <div class="hidden md:flex items-center gap-4">
-          <button
-            class="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center text-gray-500 hover:text-teal-700 hover:bg-gray-200 dark:bg-slate-950 dark:text-zinc-100 dark:hover:bg-slate-800"
-          >
-            <i class="fa-regular fa-bell text-lg"></i>
-          </button>
+          <div class="relative inline-block text-right">
+            <button
+              id="notification-btn"
+              class="relative p-2 text-slate-600 dark:text-zinc-300 hover:bg-gray-100 dark:hover:bg-slate-800 rounded-xl transition-colors cursor-pointer"
+            >
+              <i class="fa-regular fa-bell text-lg"></i>
+              <span class="absolute top-1.5 left-1.5 flex h-2 w-2">
+                <span
+                  class="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"
+                ></span>
+                <span
+                  class="relative inline-flex rounded-full h-2 w-2 bg-rose-500"
+                ></span>
+              </span>
+            </button>
+
+            <div
+              id="notification-dropdown"
+              class="hidden absolute left-0 mt-2 w-72 bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-2xl shadow-xl z-50 overflow-hidden animate-scale-up"
+              dir="rtl"
+            >
+              <div
+                class="p-3 bg-gray-50/50 dark:bg-slate-950/40 border-b border-gray-100 dark:border-slate-800 flex items-center justify-between"
+              >
+                <span
+                  class="font-black text-slate-800 dark:text-zinc-100 text-xs"
+                  >🔔 الإشعارات الحديثة</span
+                >
+                <span
+                  class="bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 text-[9px] px-2 py-0.5 rounded-md font-bold"
+                  >3 جديدة</span
+                >
+              </div>
+
+              <div
+                class="divide-y divide-gray-50 dark:divide-slate-800/60 max-h-64 overflow-y-auto"
+              >
+                <a
+                  href="#"
+                  class="block p-3 hover:bg-gray-50 dark:hover:bg-slate-950/40 transition-colors"
+                >
+                  <div class="flex gap-2">
+                    <div
+                      class="w-2 h-2 rounded-full bg-indigo-600 mt-1.5 shrink-0"
+                    ></div>
+                    <div class="space-y-0.5">
+                      <p
+                        class="font-bold text-slate-800 dark:text-zinc-200 text-[11px]"
+                      >
+                        تم إضافة واجب جديد في اللغة العربية
+                      </p>
+                      <p class="text-gray-400 text-[9px]">
+                        منذ 10 دقائق • الأستاذة سارة
+                      </p>
+                    </div>
+                  </div>
+                </a>
+
+                <a
+                  href="#"
+                  class="block p-3 hover:bg-gray-50 dark:hover:bg-slate-950/40 transition-colors"
+                >
+                  <div class="flex gap-2">
+                    <div
+                      class="w-2 h-2 rounded-full bg-emerald-500 mt-1.5 shrink-0"
+                    ></div>
+                    <div class="space-y-0.5">
+                      <p
+                        class="font-bold text-slate-800 dark:text-zinc-200 text-[11px]"
+                      >
+                        رصد درجة اختبار الكيمياء: حصلتِ على 4/4
+                      </p>
+                      <p class="text-gray-400 text-[9px]">
+                        منذ ساعتين • الإدارة المدرسية
+                      </p>
+                    </div>
+                  </div>
+                </a>
+
+                <a
+                  href="#"
+                  class="block p-3 hover:bg-gray-50 dark:hover:bg-slate-950/40 transition-colors"
+                >
+                  <div class="flex gap-2">
+                    <div
+                      class="w-2 h-2 rounded-full bg-amber-500 mt-1.5 shrink-0"
+                    ></div>
+                    <div class="space-y-0.5">
+                      <p
+                        class="font-bold text-slate-800 dark:text-zinc-200 text-[11px]"
+                      >
+                        تعديل موعد اختبار الرياضيات القادم
+                      </p>
+                      <p class="text-gray-400 text-[9px]">اليوم، 10:30 ص</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+
+              <a
+                href="#"
+                class="block text-center p-2.5 bg-gray-50 dark:bg-slate-950/20 border-t border-gray-100 dark:border-slate-800 text-[10px] font-bold text-teal-600 dark:text-teal-400 hover:underline"
+              >
+                عرض كافة الإشعارات
+              </a>
+            </div>
+          </div>
           <button
             class="theme-toggle w-9 h-9 rounded-xl bg-gray-50 flex items-center justify-center text-gray-500 hover:text-teal-700 hover:bg-gray-200 dark:bg-slate-950 dark:text-zinc-100 dark:hover:text-amber-400 dark:hover:bg-slate-800 transition-colors"
           >
@@ -80,16 +187,16 @@
               <div
                 class="w-10 h-10 bg-teal-700 rounded-3xl flex items-center justify-center text-zinc-100 font-bold text-lg shrink-0 dark:text-zinc-100 dark:bg-teal-700"
               >
-                د
+                خ
               </div>
               <div class="text-right hidden sm:block">
                 <p
                   class="font-bold text-sm text-gray-900 leading-tight dark:text-zinc-100"
                 >
-                  د. أحمد الصبور
+                  خالد النجار
                 </p>
                 <p class="text-xs text-gray-500 mt-0.5 dark:text-zinc-100">
-                  مدير النظام
+                  معلم
                 </p>
               </div>
             </button>
@@ -228,15 +335,23 @@
         >
           <a
             href="control_panel.html"
-            class="flex items-center justify-center sm:justify-start gap-2.5 px-6 py-3 rounded-xl text-sm font-bold transition whitespace-nowrap dark:text-zinc-100 text-gray-600 hover:text-teal-700"
+            class="flex items-center justify-center sm:justify-start gap-1.5 px-4 py-3 rounded-xl text-sm font-bold transition whitespace-nowrap dark:text-zinc-100 text-gray-600 hover:text-teal-700"
           >
             <i class="fa-solid fa-gauge-high text-base"></i>
             <span>لوحة المعلم</span>
           </a>
 
           <a
+            href="lessons.html"
+            class="flex items-center justify-center sm:justify-start gap-1.5 px-4 py-3 rounded-xl text-sm font-bold whitespace-nowrap dark:text-zinc-100 text-gray-600 hover:text-teal-700"
+          >
+            <i class="fa-solid fa-gauge-high text-base"></i>
+            <span>الدروس</span>
+          </a>
+
+          <a
             href="attendance.html"
-            class="flex items-center justify-center sm:justify-start gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold transition whitespace-nowrap dark:text-zinc-100 text-gray-600 hover:text-teal-700"
+            class="flex items-center justify-center sm:justify-start gap-1.5 px-4 py-3 rounded-xl text-sm font-semibold transition whitespace-nowrap dark:text-zinc-100 text-gray-600 hover:text-teal-700"
           >
             <i class="fa-solid fa-user-check text-base"></i>
             <span>الحضور</span>
@@ -244,7 +359,7 @@
 
           <a
             href="questions.html"
-            class="flex items-center justify-center sm:justify-start gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold transition whitespace-nowrap dark:text-zinc-100 text-gray-600 hover:text-teal-700"
+            class="flex items-center justify-center sm:justify-start gap-1.5 px-4 py-3 rounded-xl text-sm font-semibold transition whitespace-nowrap dark:text-zinc-100 text-gray-600 hover:text-teal-700"
           >
             <i class="fa-solid fa-clipboard-question text-base"></i>
             <span>بنك الأسألة</span>
@@ -252,7 +367,7 @@
 
           <a
             href="test_generator.html"
-            class="flex items-center justify-center sm:justify-start gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold transition whitespace-nowrap dark:text-zinc-100 text-gray-600 hover:text-teal-700"
+            class="flex items-center justify-center sm:justify-start gap-1.5 px-4 py-3 rounded-xl text-sm font-semibold transition whitespace-nowrap dark:text-zinc-100 text-gray-600 hover:text-teal-700"
           >
             <i class="fa-solid fa-file-pen text-base"></i>
             <span>مولد الإختبارات</span>
@@ -260,7 +375,7 @@
 
           <a
             href="exams_manage.html"
-            class="flex items-center justify-center sm:justify-start gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold transition whitespace-nowrap dark:text-zinc-100 text-gray-600 hover:text-teal-700"
+            class="flex items-center justify-center sm:justify-start gap-1.5 px-4 py-3 rounded-xl text-sm font-semibold transition whitespace-nowrap dark:text-zinc-100 text-gray-600 hover:text-teal-700"
           >
             <i class="fa-solid fa-file-waveform text-base"></i>
             <span>رصد الاختبارات</span>
@@ -268,7 +383,7 @@
 
           <a
             href="tasks_manage.html"
-            class="flex items-center justify-center sm:justify-start gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold transition whitespace-nowrap bg-teal-700 text-white shadow-md shadow-teal-700/10"
+            class="flex items-center justify-center sm:justify-start gap-1.5 px-4 py-3 rounded-xl text-sm font-semibold transition whitespace-nowrap bg-teal-700 text-white shadow-md shadow-teal-700/10"
           >
             <i class="fa-solid fa-file-signature text-base"></i>
             <span>رفع الواجبات وتصحيحها</span>
@@ -276,7 +391,7 @@
 
           <a
             href="chats.html"
-            class="flex items-center justify-center sm:justify-start gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold transition whitespace-nowrap dark:text-zinc-100 text-gray-600 hover:text-teal-700"
+            class="flex items-center justify-center sm:justify-start gap-1.5 px-4 py-3 rounded-xl text-sm font-semibold transition whitespace-nowrap dark:text-zinc-100 text-gray-600 hover:text-teal-700"
           >
             <i class="fa-solid fa-envelope text-base"></i>
             <span>صندوق المراسلة</span>
@@ -914,6 +1029,34 @@
         // تدوير السهم الصغير بزاوية 180 درجة لإعطاء حركة تفاعلية
         mobileArrow.classList.toggle("rotate-180");
       });
+    </script>
+    <script>
+      // ==========================================
+      // إدارة قائمة الإشعارات المنسدلة
+      // ==========================================
+      const notifBtn = document.getElementById("notification-btn");
+      const notifDropdown = document.getElementById("notification-dropdown");
+
+      if (notifBtn && notifDropdown) {
+        // عند الضغط على الجرس: اظهر أو اخفي القائمة
+        notifBtn.addEventListener("click", (e) => {
+          e.stopPropagation(); // يمنع انتشار الضغطة
+          notifDropdown.classList.toggle("hidden");
+
+          // إخفاء قائمة المستخدم إذا كانت مفتوحة لعدم التداخل
+          document.getElementById("user-dropdown")?.classList.add("hidden");
+        });
+
+        // إغلاق قائمة الإشعارات تلقائياً إذا ضغط المستخدم في أي مكان خارجها
+        document.addEventListener("click", (e) => {
+          if (
+            !notifDropdown.contains(e.target) &&
+            !notifBtn.contains(e.target)
+          ) {
+            notifDropdown.classList.add("hidden");
+          }
+        });
+      }
     </script>
   </body>
 </html>

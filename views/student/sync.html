@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>منصة صمود - لوحة بوابة الطالب - الرئيسية</title>
-
+    <link rel="icon" type="image/png" href="../../public/img/Logo.png" />
     <link rel="stylesheet" href="../../public/css/output.css" />
     <link rel="stylesheet" href="../../public/css/join_style.css" />
     <link
@@ -17,16 +17,20 @@
     class="bg-gray-50 text-gray-800 dark:bg-slate-950 dark:text-zinc-100 min-h-screen font-['Cairo']"
   >
     <header
-      class="bg-white border-b border-gray-100 sticky top-0 z-50 shadow-sm dark:bg-slate-900 dark:border-slate-800 transition-colors"
+      class="bg-white border-b border-gray-100 sticky top-0 z-50 shadow-sm dark:bg-slate-900 dark:border-slate-800"
     >
       <div
         class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between"
       >
         <div class="flex items-center gap-3">
           <div
-            class="w-11 h-11 bg-teal-700 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-md shadow-teal-700/10"
+            class="w-11 h-11 bg-teal-700 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-md shadow-teal-700/10 overflow-hidden"
           >
-            ص
+            <img
+              src="../../public/img/Logo.png"
+              alt="لوجو منصة صمود"
+              class="w-full h-full object-cover rounded-full"
+            />
           </div>
           <div>
             <h1
@@ -45,12 +49,12 @@
         >
           <a
             href="../admin/control_panel.html"
-            class="px-5 py-2 rounded-lg text-sm font-semibold text-gray-600 transition hover:text-teal-700 dark:text-zinc-300 dark:hover:text-teal-400"
+            class="px-5 py-2 rounded-lg text-sm font-semibold text-gray-600 hover:text-teal-700 dark:text-zinc-300 dark:hover:text-teal-400"
             >لوحة الإدارة</a
           >
           <a
             href="../teatcher/control_panel.html"
-            class="px-5 py-2 rounded-lg text-sm font-semibold text-gray-600 transition hover:text-teal-700 dark:text-zinc-300 dark:hover:text-teal-400"
+            class="px-5 py-2 rounded-lg text-sm font-semibold text-gray-600 hover:text-teal-700 dark:text-zinc-300 dark:hover:text-teal-400"
             >بوابة المعلم</a
           >
           <a
@@ -61,14 +65,147 @@
         </nav>
 
         <div class="hidden md:flex items-center gap-4">
-          <button
-            class="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center text-gray-500 hover:text-teal-700 hover:bg-gray-100 dark:bg-slate-800 dark:text-zinc-300 dark:hover:bg-slate-700 transition"
-          >
-            <i class="fa-regular fa-bell text-lg"></i>
-          </button>
+          <div class="relative inline-block text-right">
+            <button
+              id="notification-btn"
+              class="relative p-2 text-slate-600 dark:text-zinc-300 hover:bg-gray-100 dark:hover:bg-slate-800 rounded-xl transition-colors cursor-pointer"
+            >
+              <i class="fa-regular fa-bell text-lg"></i>
+              <span class="absolute top-1.5 left-1.5 flex h-2 w-2">
+                <span
+                  class="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"
+                ></span>
+                <span
+                  class="relative inline-flex rounded-full h-2 w-2 bg-rose-500"
+                ></span>
+              </span>
+            </button>
+
+            <div
+              id="notification-dropdown"
+              class="hidden absolute left-0 mt-2 w-72 bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-2xl shadow-xl z-50 overflow-hidden animate-scale-up"
+              dir="rtl"
+            >
+              <div
+                class="p-3 bg-gray-50/50 dark:bg-slate-950/40 border-b border-gray-100 dark:border-slate-800 flex items-center justify-between"
+              >
+                <span
+                  class="font-black text-slate-800 dark:text-zinc-100 text-xs"
+                  >🔔 الإشعارات الحديثة</span
+                >
+                <span
+                  class="bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 text-[9px] px-2 py-0.5 rounded-md font-bold"
+                  >5 جديدة</span
+                >
+              </div>
+
+              <div
+                class="divide-y divide-gray-50 dark:divide-slate-800/60 max-h-[225px] overflow-y-auto scrollbar-thin"
+              >
+                <a
+                  href="#"
+                  class="block p-3 hover:bg-gray-50 dark:hover:bg-slate-950/40 transition-colors"
+                >
+                  <div class="flex gap-2">
+                    <div
+                      class="w-2 h-2 rounded-full bg-indigo-600 mt-1.5 shrink-0"
+                    ></div>
+                    <div class="space-y-0.5">
+                      <p
+                        class="font-bold text-slate-800 dark:text-zinc-200 text-[11px]"
+                      >
+                        تم إضافة واجب جديد في اللغة العربية
+                      </p>
+                      <p class="text-gray-400 text-[9px]">
+                        منذ 10 دقائق • الأستاذة سارة
+                      </p>
+                    </div>
+                  </div>
+                </a>
+
+                <a
+                  href="#"
+                  class="block p-3 hover:bg-gray-50 dark:hover:bg-slate-950/40 transition-colors"
+                >
+                  <div class="flex gap-2">
+                    <div
+                      class="w-2 h-2 rounded-full bg-emerald-500 mt-1.5 shrink-0"
+                    ></div>
+                    <div class="space-y-0.5">
+                      <p
+                        class="font-bold text-slate-800 dark:text-zinc-200 text-[11px]"
+                      >
+                        رصد درجة اختبار الكيمياء: حصلتِ على 4/4
+                      </p>
+                      <p class="text-gray-400 text-[9px]">
+                        منذ ساعتين • الإدارة المدرسية
+                      </p>
+                    </div>
+                  </div>
+                </a>
+
+                <a
+                  href="#"
+                  class="block p-3 hover:bg-gray-50 dark:hover:bg-slate-950/40 transition-colors"
+                >
+                  <div class="flex gap-2">
+                    <div
+                      class="w-2 h-2 rounded-full bg-amber-500 mt-1.5 shrink-0"
+                    ></div>
+                    <div class="space-y-0.5">
+                      <p
+                        class="font-bold text-slate-800 dark:text-zinc-200 text-[11px]"
+                      >
+                        تعديل موعد اختبار الرياضيات القادم
+                      </p>
+                      <p class="text-gray-400 text-[9px]">اليوم، 10:30 ص</p>
+                    </div>
+                  </div>
+                </a>
+
+                <a
+                  href="#"
+                  class="block p-3 hover:bg-gray-50 dark:hover:bg-slate-950/40 transition-colors"
+                >
+                  <div class="flex gap-2">
+                    <div
+                      class="w-2 h-2 rounded-full bg-slate-400 mt-1.5 shrink-0"
+                    ></div>
+                    <div class="space-y-0.5">
+                      <p
+                        class="font-bold text-slate-800 dark:text-zinc-200 text-[11px]"
+                      >
+                        تم قبول عذر الغياب ليوم الخميس الماضي
+                      </p>
+                      <p class="text-gray-400 text-[9px]">أمس، 4:15 م</p>
+                    </div>
+                  </div>
+                </a>
+
+                <a
+                  href="#"
+                  class="block p-3 hover:bg-gray-50 dark:hover:bg-slate-950/40 transition-colors"
+                >
+                  <div class="flex gap-2">
+                    <div
+                      class="w-2 h-2 rounded-full bg-indigo-600 mt-1.5 shrink-0"
+                    ></div>
+                    <div class="space-y-0.5">
+                      <p
+                        class="font-bold text-slate-800 dark:text-zinc-200 text-[11px]"
+                      >
+                        نشاط صفي جديد: مسابقة الخط العربي السنوية
+                      </p>
+                      <p class="text-gray-400 text-[9px]">قبل يومين</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
 
           <button
-            class="theme-toggle w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center text-gray-500 hover:text-teal-700 hover:bg-gray-100 dark:bg-slate-800 dark:text-zinc-300 dark:hover:bg-slate-700 transition"
+            class="theme-toggle w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center text-gray-500 hover:text-teal-700 hover:bg-gray-100 dark:bg-slate-800 dark:text-zinc-300 dark:hover:bg-slate-700"
           >
             <i class="theme-icon fa-regular fa-moon text-lg"></i>
           </button>
@@ -78,21 +215,21 @@
           <div class="relative inline-block text-right">
             <button
               id="user-menu-btn"
-              class="flex items-center gap-3 p-1.5 rounded-xl transition cursor-pointer focus:outline-none hover:bg-gray-50 dark:hover:bg-slate-800"
+              class="flex items-center gap-3 p-1.5 rounded-xl cursor-pointer focus:outline-none hover:bg-gray-50 dark:hover:bg-slate-800"
             >
               <div
                 class="w-10 h-10 bg-teal-700 rounded-full flex items-center justify-center text-zinc-100 font-bold text-lg shrink-0"
               >
-                د
+                م
               </div>
               <div class="text-right hidden sm:block">
                 <p
                   class="font-bold text-sm text-gray-900 leading-tight dark:text-zinc-100"
                 >
-                  د. أحمد الصبور
+                  مريم أحمد يوسف
                 </p>
                 <p class="text-xs text-gray-500 mt-0.5 dark:text-zinc-400">
-                  مدير النظام
+                  طالب
                 </p>
               </div>
             </button>
@@ -103,7 +240,7 @@
             >
               <a
                 href="../login.html"
-                class="flex items-center gap-2.5 px-4 py-2.5 text-sm transition font-bold text-red-600 hover:bg-red-50 dark:hover:bg-red-950/3"
+                class="flex items-center gap-2.5 px-4 py-2.5 text-sm font-bold text-red-600 hover:bg-red-50 dark:hover:bg-red-950/3"
               >
                 <i class="fa-solid fa-arrow-right-from-bracket text-base"></i>
                 <span>تسجيل الخروج</span>
@@ -128,12 +265,12 @@
       >
         <a
           href="../admin/control_panel.html"
-          class="block px-4 py-2.5 rounded-xl text-sm font-bold text-gray-600 transition hover:text-teal-700 dark:text-zinc-300 dark:hover:text-teal-400"
+          class="block px-4 py-2.5 rounded-xl text-sm font-bold text-gray-600 hover:text-teal-700 dark:text-zinc-300 dark:hover:text-teal-400"
           >لوحة الإدارة</a
         >
         <a
           href="../teatcher/control_panel.html"
-          class="block px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-600 transition hover:text-teal-700 dark:text-zinc-300 dark:hover:text-teal-400"
+          class="block px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-600 hover:text-teal-700 dark:text-zinc-300 dark:hover:text-teal-400"
           >بوابة المعلم</a
         >
         <a
@@ -145,7 +282,7 @@
         <div class="border-t border-gray-200 dark:border-slate-800 my-2 pt-2">
           <button
             id="mobile-user-menu-btn"
-            class="w-full flex justify-between items-center px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-slate-800 transition cursor-pointer focus:outline-none"
+            class="w-full flex justify-between items-center px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-slate-800 cursor-pointer focus:outline-none"
           >
             <div class="flex items-center gap-3">
               <div
@@ -159,7 +296,7 @@
             </div>
             <i
               id="mobile-arrow"
-              class="fa-solid fa-chevron-down text-xs text-gray-400 transition-transform duration-200"
+              class="fa-solid fa-chevron-down text-xs text-gray-400 -transform duration-200"
             ></i>
           </button>
 
@@ -178,12 +315,12 @@
 
           <div class="flex justify-end gap-2 mt-3 px-4">
             <button
-              class="w-9 h-9 rounded-xl bg-gray-100 dark:bg-slate-800 flex items-center justify-center text-gray-500 dark:text-zinc-400 hover:bg-gray-200 transition"
+              class="w-9 h-9 rounded-xl bg-gray-100 dark:bg-slate-800 flex items-center justify-center text-gray-500 dark:text-zinc-400 hover:bg-gray-200"
             >
               <i class="fa-regular fa-bell"></i>
             </button>
             <button
-              class="theme-toggle w-9 h-9 rounded-xl bg-gray-100 dark:bg-slate-800 flex items-center justify-center text-gray-500 dark:text-zinc-400 hover:bg-gray-200 transition"
+              class="theme-toggle w-9 h-9 rounded-xl bg-gray-100 dark:bg-slate-800 flex items-center justify-center text-gray-500 dark:text-zinc-400 hover:bg-gray-200"
             >
               <i class="theme-icon fa-regular fa-moon"></i>
             </button>
@@ -197,12 +334,12 @@
     >
       <div
         id="status-bar"
-        class="w-full bg-white border border-emerald-400 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-4 shadow-sm transition-all duration-300 dark:bg-slate-900 dark:border-emerald-500/40"
+        class="w-full bg-white border border-emerald-400 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-4 shadow-sm dark:bg-slate-900 dark:border-emerald-500/40"
       >
         <div class="flex items-center gap-4">
           <div
             id="status-badge"
-            class="bg-emerald-50 text-emerald-700 border border-emerald-200 px-4 py-1.5 rounded-full text-sm font-semibold flex items-center gap-2 transition-all dark:bg-emerald-950/30 dark:text-emerald-400 dark:border-emerald-800/50"
+            class="bg-emerald-50 text-emerald-700 border border-emerald-200 px-4 py-1.5 rounded-full text-sm font-semibold flex items-center gap-2 dark:bg-emerald-950/30 dark:text-emerald-400 dark:border-emerald-800/50"
           >
             <span
               class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"
@@ -220,7 +357,7 @@
           <button
             id="toggle-connection-btn"
             onclick="toggleConnection()"
-            class="bg-white hover:bg-gray-50 border border-gray-200 text-gray-700 font-medium text-sm px-3.5 py-2 rounded-xl flex items-center gap-2 shadow-sm transition-all active:scale-95 dark:bg-slate-800 dark:border-slate-700 dark:text-zinc-200 dark:hover:bg-slate-700"
+            class="bg-white hover:bg-gray-50 border border-gray-200 text-gray-700 font-medium text-sm px-3.5 py-2 rounded-xl flex items-center gap-2 shadow-sm active:scale-95 dark:bg-slate-800 dark:border-slate-700 dark:text-zinc-200 dark:hover:bg-slate-700"
           >
             <i
               id="toggle-icon"
@@ -231,7 +368,7 @@
 
           <button
             onclick="triggerSync()"
-            class="bg-teal-700 hover:bg-teal-800 text-white font-medium text-sm px-3.5 py-2 rounded-xl flex items-center gap-2 shadow-sm transition-all active:scale-95"
+            class="bg-teal-700 hover:bg-teal-800 text-white font-medium text-sm px-3.5 py-2 rounded-xl flex items-center gap-2 shadow-sm active:scale-95"
           >
             <i class="fa-solid fa-arrows-rotate text-xs"></i>
             <span>المزامنة الآن</span>
@@ -247,15 +384,15 @@
         >
           <a
             href="control_panel.html"
-            class="flex items-center gap-2.5 px-6 py-3 rounded-xl text-sm font-bold transition whitespace-nowrap  text-gray-600 hover:text-teal-700 dark:text-zinc-300 dark:hover:text-teal-400"
+            class="flex items-center gap-2.5 px-6 py-3 rounded-xl text-sm font-bold whitespace-nowrap text-gray-600 hover:text-teal-700 dark:text-zinc-300 dark:hover:text-teal-400"
           >
-            <i class="fa-solid fa-gauge-high text-base "></i>
+            <i class="fa-solid fa-gauge-high text-base"></i>
             <span>الرئيسية</span>
           </a>
 
           <a
             href="materials.html"
-            class="flex items-center gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold transition whitespace-nowrap   text-gray-600 hover:text-teal-700 dark:text-zinc-300 dark:hover:text-teal-400"
+            class="flex items-center gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold whitespace-nowrap text-gray-600 hover:text-teal-700 dark:text-zinc-300 dark:hover:text-teal-400"
           >
             <i class="fa-solid fa-book-open text-base"></i>
             <span>المواد</span>
@@ -263,23 +400,23 @@
 
           <a
             href="tests.html"
-            class="flex items-center gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold transition whitespace-nowrap  text-gray-600 hover:text-teal-700 dark:text-zinc-300 dark:hover:text-teal-400"
+            class="flex items-center gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold whitespace-nowrap text-gray-600 hover:text-teal-700 dark:text-zinc-300 dark:hover:text-teal-400"
           >
             <i class="fa-solid fa-clipboard-question text-base"></i>
             <span>الإختبارات</span>
           </a>
 
           <a
-            href="lessons.html"
-            class="flex items-center gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold transition whitespace-nowrap  text-gray-600 hover:text-teal-700 dark:text-zinc-300 dark:hover:text-teal-400"
+            href="tasks_and_duties.html"
+            class="flex items-center gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold whitespace-nowrap text-gray-600 hover:text-teal-700 dark:text-zinc-300 dark:hover:text-teal-400"
           >
             <i class="fa-solid fa-chalkboard-user text-base"></i>
-            <span>الدروس</span>
+            <span>المهام والواجبات</span>
           </a>
 
           <a
             href="chats.html"
-            class="flex items-center gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold transition whitespace-nowrap  text-gray-600 hover:text-teal-700 dark:text-zinc-300 dark:hover:text-teal-400"
+            class="flex items-center gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold whitespace-nowrap text-gray-600 hover:text-teal-700 dark:text-zinc-300 dark:hover:text-teal-400"
           >
             <i class="fa-solid fa-comments text-base"></i>
             <span>الدردشة</span>
@@ -287,11 +424,215 @@
 
           <a
             href="sync.html"
-            class="flex items-center gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold transition whitespace-nowrap bg-teal-700 text-white shadow-md shadow-teal-700/10"
+            class="flex items-center gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold whitespace-nowrap bg-teal-700 text-white shadow-md shadow-teal-700/10"
           >
             <i class="fa-solid fa-cloud-arrow-up text-base"></i>
             <span>المزامنة</span>
           </a>
+        </div>
+      </div>
+
+      <div class="w-full space-y-6 text-xs text-right" dir="rtl">
+        <div
+          class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200"
+        >
+          <div>
+            <h3
+              class="font-black text-gray-700 dark:text-white text-base flex items-center gap-2"
+            >
+              <i class="fa-solid fa-rotate text-cyan-500 animate-spin-slow"></i>
+              قائمة المزامنة
+            </h3>
+            <p class="text-gray-700 dark:text-gray-400 text-[11px] mt-1">
+              إدارة البيانات المحفوظة محلياً في انتظار الاتصال بالشبكة
+            </p>
+          </div>
+
+          <div class="flex items-center gap-2.5">
+            <button
+              onclick="triggerSync()"
+              class="bg-cyan-600 hover:bg-cyan-700 text-white font-black px-4 py-2 rounded-xl shadow-md flex items-center gap-1.5 cursor-pointer"
+            >
+              <i class="fa-solid fa-cloud-arrow-up text-[10px]"></i> المزامنة
+              الآن
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div
+            class="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 hover:border-teal-500 p-4 rounded-2xl text-center space-y-1"
+          >
+            <p
+              class="text-gray-700 dark:text-gray-400 font-semibold text-[13px]"
+            >
+              إجمالي العمليات
+            </p>
+            <p id="totalSyncCount" class="font-black text-xl text-cyan-400">
+              3
+            </p>
+          </div>
+          <div
+            class="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 hover:border-teal-500 p-4 rounded-2xl text-center space-y-1"
+          >
+            <p
+              class="text-gray-700 dark:text-gray-400 font-semibold text-[13px]"
+            >
+              تمت المزامنة
+            </p>
+            <p
+              id="successSyncCount"
+              class="font-black text-xl text-emerald-400"
+            >
+              2
+            </p>
+          </div>
+          <div
+            class="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 hover:border-teal-500 p-4 rounded-2xl text-center space-y-1"
+          >
+            <p
+              class="text-gray-700 dark:text-gray-400 font-semibold text-[13px]"
+            >
+              في انتظار المزامنة
+            </p>
+            <p id="pendingSyncCount" class="font-black text-xl text-amber-500">
+              1
+            </p>
+          </div>
+        </div>
+
+        <div class="space-y-3">
+          <h4 class="font-black text-amber-500 px-1 flex items-center gap-1.5">
+            <i class="fa-solid fa-hourglass-start text-[11px]"></i> في انتظار
+            المزامنة (<span id="pendingLabelCount">1</span>)
+          </h4>
+
+          <div id="pendingContainer" class="space-y-2.5">
+            <div
+              id="pendingItem-1"
+              class="bg-white dark:bg-slate-900/60 border border-amber-500/20 p-4 rounded-2xl flex items-center justify-between gap-4"
+            >
+              <div class="flex items-start gap-3">
+                <div
+                  class="w-8 h-8 rounded-xl bg-amber-950/60 text-amber-500 border border-amber-500/20 flex items-center justify-center shrink-0"
+                >
+                  <i class="fa-solid fa-file-signature text-xs"></i>
+                </div>
+                <div class="space-y-1">
+                  <h5 class="font-bold text-gray-700 dark:text-white">
+                    نتيجة اختبار: اختبار العلوم - الكيمياء الأساسية (3/4)
+                  </h5>
+                  <p class="text-[11px] text-gray-600 dark:text-gray-400">
+                    تم الحفظ محلياً: 2026-06-19 • 03:15 م
+                  </p>
+                </div>
+              </div>
+              <span
+                class="bg-amber-950/80 text-amber-500 border border-amber-500/20 text-[9px] font-black px-2 py-1 rounded-lg shrink-0"
+              >
+                بانتظار شبكة
+                <i class="fa-solid fa-wifi-slash mr-0.5 text-[8px]"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-3">
+          <h4
+            class="font-black text-emerald-400 px-1 flex items-center gap-1.5"
+          >
+            <i class="fa-solid fa-circle-check text-[11px]"></i> تمت مزامنتها
+            (<span id="successLabelCount">2</span>)
+          </h4>
+
+          <div class="space-y-2.5">
+            <div
+              class="bg-white dark:bg-slate-900/40 border border-slate-400 p-4 rounded-2xl flex items-center justify-between gap-4 opacity-85"
+            >
+              <div class="flex items-start gap-3">
+                <div
+                  class="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-400 flex items-center justify-center shrink-0"
+                >
+                  <i class="fa-solid fa-square-poll-vertical text-xs"></i>
+                </div>
+                <div class="space-y-1">
+                  <h5 class="font-bold text-gray-700 dark:text-white">
+                    نتيجة اختبار: اختبار التربية الإسلامية (2/3)
+                  </h5>
+                  <p class="text-[11px] text-gray-600 dark:text-gray-400">
+                    تمت المزامنة: 2026-06-15 • 02:44 م
+                  </p>
+                </div>
+              </div>
+              <span
+                class="bg-emerald-100 text-emerald-400 border border-emerald-500/20 text-[9px] font-bold px-2 py-1 rounded-lg shrink-0"
+              >
+                تمت المزامنة <i class="fa-solid fa-check text-[8px]"></i>
+              </span>
+            </div>
+
+            <div
+              class="bg-white dark:bg-slate-900/40 border border-slate-400 p-4 rounded-2xl flex items-center justify-between gap-4 opacity-85"
+            >
+              <div class="flex items-start gap-3">
+                <div
+                  class="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-400 flex items-center justify-center shrink-0"
+                >
+                  <i class="fa-solid fa-envelope text-xs"></i>
+                </div>
+                <div class="space-y-1">
+                  <h5 class="font-bold text-gray-700 dark:text-white">
+                    رسالة جديدة مبعوثة للأستاذ: ورقة عمل الرياضيات
+                  </h5>
+                  <p class="text-[10px] text-gray-500">
+                    تمت المزامنة: 2026-06-15 • 02:54 م
+                  </p>
+                </div>
+              </div>
+              <span
+                class="bg-emerald-100 text-emerald-400 border border-emerald-500/20 text-[9px] font-bold px-2 py-1 rounded-lg shrink-0"
+              >
+                تمت المزامنة <i class="fa-solid fa-check text-[8px]"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 hover:border-teal-500 rounded-2xl p-4 space-y-4"
+        >
+          <h4
+            class="font-black text-gray-700 dark:text-white flex items-center gap-1.5"
+          >
+            <i class="fa-solid fa-database text-cyan-500 text-[11px]"></i> إدارة
+            البيانات المحلية
+          </h4>
+
+          <div
+            class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-3 bg-slate-900 border border-slate-800 rounded-xl"
+          >
+            <div class="space-y-0.5">
+              <p class="font-bold text-zinc-300 text-xs">
+                حجم البيانات المخزنة محلياً
+              </p>
+              <p class="text-[10px] text-gray-400">
+                تشمل الكاش المؤقت للاختبارات، التوصيفات، والنصوص المكتوبة
+                غيابياً
+              </p>
+            </div>
+            <div
+              class="font-black text-zinc-100 text-sm dir-ltr bg-slate-950 px-3 py-1.5 rounded-lg border border-slate-800"
+            >
+              74.8 KB
+            </div>
+          </div>
+
+          <button
+            class="w-full bg-rose-100 dark:bg-rose-950/40 hover:bg-rose-700/70 hover:text-white text-rose-400 border border-rose-900/50 font-black py-3 rounded-xl shadow-xs cursor-pointer text-center flex items-center justify-center gap-1.5"
+          >
+            <i class="fa-solid fa-trash-can text-[11px]"></i> مسح جميع البيانات
+            المحلية وإعادة المزامنة الصفرية
+          </button>
         </div>
       </div>
     </main>
@@ -300,9 +641,21 @@
       id="toast-container"
       class="fixed bottom-5 left-5 z-50 flex flex-col gap-3 pointer-events-none"
     ></div>
-
+    <footer
+      class="w-full bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800/80 py-5"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 flex items-center justify-center dir-rtl"
+      >
+        <p
+          class="text-xs sm:text-sm font-medium text-slate-500 dark:text-zinc-400 text-center tracking-wide"
+        >
+          منصة صمود التعليمية - نظام التعلم الهجين - © 2026 جميع الحقوق محفوظة
+        </p>
+      </div>
+    </footer>
     <script>
-      // 1. منطق تبديل الوضع الليلي والنهاري (Dark/Light Mode)
+      // --- 1. إدارة الوضع الليلي (Dark Mode) ---
       const themeToggleBtns = document.querySelectorAll(".theme-toggle");
       const htmlElement = document.documentElement;
 
@@ -320,8 +673,7 @@
         });
       }
 
-      const currentTheme = localStorage.getItem("theme");
-      if (currentTheme === "dark") {
+      if (localStorage.getItem("theme") === "dark") {
         htmlElement.classList.add("dark");
         updateThemeUI(true);
       } else {
@@ -337,120 +689,157 @@
         });
       });
 
-      // 2. تفعيل القائمة الجانبية للموبايل
-      const menuBtn = document.getElementById("mobile-menu-btn");
-      const mobileMenu = document.getElementById("mobile-menu");
+      // --- 2. إدارة القوائم المنسدلة والموبايل ---
+      document
+        .getElementById("mobile-menu-btn")
+        ?.addEventListener("click", () => {
+          document.getElementById("mobile-menu")?.classList.toggle("hidden");
+        });
 
-      menuBtn.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
-      });
-
-      // 3. التحكم بقائمة المستخدم المنسدلة (Desktop Dropdown)
       const userMenuBtn = document.getElementById("user-menu-btn");
       const userDropdown = document.getElementById("user-dropdown");
+      if (userMenuBtn && userDropdown) {
+        userMenuBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          userDropdown.classList.toggle("hidden");
+        });
+        document.addEventListener("click", (e) => {
+          if (
+            !userDropdown.contains(e.target) &&
+            !userMenuBtn.contains(e.target)
+          ) {
+            userDropdown.classList.add("hidden");
+          }
+        });
+      }
 
-      userMenuBtn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        userDropdown.classList.toggle("hidden");
-      });
+      // --- 3. إدارة التنبيهات (Toasts) ---
+      function showToast(message, type = "success") {
+        const container = document.getElementById("toast-container");
+        if (!container) return;
+        const toast = document.createElement("div");
+        toast.className = `p-4 rounded-xl text-xs font-bold text-white shadow-lg   transform translate-y-2 opacity-0 flex items-center gap-2 ${
+          type === "success"
+            ? "bg-emerald-600"
+            : type === "error"
+              ? "bg-rose-600"
+              : "bg-amber-500"
+        }`;
+        toast.innerHTML = `<i class="fa-solid ${type === "success" ? "fa-circle-check" : "fa-circle-xmark"}"></i> <span>${message}</span>`;
+        container.appendChild(toast);
+        setTimeout(
+          () => toast.classList.remove("translate-y-2", "opacity-0"),
+          10,
+        );
+        setTimeout(() => {
+          toast.classList.add("opacity-0", "translate-y-2");
+          setTimeout(() => toast.remove(), 300);
+        }, 3500);
+      }
 
-      document.addEventListener("click", (e) => {
-        if (
-          !userDropdown.contains(e.target) &&
-          !userMenuBtn.contains(e.target)
-        ) {
-          userDropdown.classList.add("hidden");
-        }
-      });
-
-      // 4. التحكم بقائمة المستخدم للموبايل (Mobile User Dropdown)
-      const mobileUserMenuBtn = document.getElementById("mobile-user-menu-btn");
-      const mobileUserDropdown = document.getElementById(
-        "mobile-user-dropdown",
-      );
-      const mobileArrow = document.getElementById("mobile-arrow");
-
-      mobileUserMenuBtn.addEventListener("click", () => {
-        mobileUserDropdown.classList.toggle("hidden");
-        mobileArrow.classList.toggle("rotate-180");
-      });
-
-      // 5. محاكاة حالة الاتصال وبث الإشعارات التفاعلية (Sync & Toast System)
-      let isConnected = true;
+      // --- 4. منطق المحاكاة والمزامنة الفعلي في صفحة المزامنة ---
+      let isOnline = true;
+      let pendingCount = 1; // نفترض وجود عملية واحدة معلقة بالصفحة
 
       function toggleConnection() {
-        isConnected = !isConnected;
-
+        isOnline = !isOnline;
         const statusBar = document.getElementById("status-bar");
-        const toggleIcon = document.getElementById("toggle-icon");
-        const toggleText = document.getElementById("toggle-text");
-        const statusDetails = document.getElementById("status-details");
         const statusBadge = document.getElementById("status-badge");
         const badgeText = document.getElementById("badge-text");
+        const toggleIcon = document.getElementById("toggle-icon");
+        const toggleText = document.getElementById("toggle-text");
+        const syncDetails = document.getElementById("status-details");
 
-        if (!isConnected) {
+        if (!statusBar) return;
+
+        if (isOnline) {
           statusBar.className =
-            "w-full bg-white border border-teal-200 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-4 shadow-sm transition-all duration-300 dark:bg-slate-900 dark:border-slate-800";
-          toggleIcon.className = "fa-solid fa-chart-simple text-blue-500";
-          toggleText.innerText = "العودة للاتصال";
-          statusDetails.innerHTML = `⏳ يحفظ محلياً - في قائمة الانتظار: <span class="font-bold text-gray-800 dark:text-zinc-200 mr-1">0</span>`;
+            "w-full bg-white border border-emerald-400 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-4 shadow-sm   dark:bg-slate-900 dark:border-emerald-500/40";
           statusBadge.className =
-            "bg-red-50 text-red-700 border border-red-200 px-4 py-1.5 rounded-full text-sm font-semibold flex items-center gap-2 transition-all dark:bg-red-950/30 dark:text-red-400 dark:border-red-900/50";
-          statusBadge.querySelector("span").className =
-            "w-2 h-2 rounded-full bg-red-500";
-          badgeText.innerText = "غير متصل";
-
-          showToast(
-            "تم التبديل إلى وضع عدم الاتصال",
-            "يتم حفظ البيانات محلياً",
-            "border-amber-500",
-          );
+            "bg-emerald-50 text-emerald-700 border border-emerald-200 px-4 py-1.5 rounded-full text-sm font-semibold flex items-center gap-2  dark:bg-emerald-950/30 dark:text-emerald-400 dark:border-emerald-800/50";
+          badgeText.innerText = "متصل";
+          toggleIcon.className =
+            "fa-solid fa-toggle-off text-orange-500 text-base";
+          toggleText.innerText = "محاكاة عدم الاتصال";
+          if (syncDetails)
+            syncDetails.innerHTML = `<span class="text-gray-700 dark:text-zinc-200">✓ متزامن</span>`;
+          showToast("تم إعادة الاتصال بالخادم بنجاح.", "success");
         } else {
           statusBar.className =
-            "w-full bg-white border border-emerald-400 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-4 shadow-sm transition-all duration-300 dark:bg-slate-900 dark:border-emerald-500/40";
-          toggleIcon.className = "fa-solid fa-toggle-off text-orange-500";
-          toggleText.innerText = "محاكاة عدم الاتصال";
-          statusDetails.innerHTML = `<span class="text-gray-700 dark:text-zinc-200">✓ متزامن</span>`;
+            "w-full bg-white border border-rose-400 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-4 shadow-sm   dark:bg-slate-900 dark:border-rose-500/40";
           statusBadge.className =
-            "bg-emerald-50 text-emerald-700 border border-emerald-200 px-4 py-1.5 rounded-full text-sm font-semibold flex items-center gap-2 transition-all dark:bg-emerald-950/30 dark:text-emerald-400 dark:border-emerald-800/50";
-          statusBadge.querySelector("span").className =
-            "w-2 h-2 rounded-full bg-emerald-500 animate-pulse";
-          badgeText.innerText = "متصل";
-
-          showToast(
-            "تم التبديل إلى وضع الاتصال",
-            "جاري المزامنة...",
-            "border-emerald-500",
-          );
+            "bg-rose-50 text-rose-700 border border-rose-200 px-4 py-1.5 rounded-full text-sm font-semibold flex items-center gap-2  dark:bg-rose-950/30 dark:text-rose-400 dark:border-rose-800/50";
+          badgeText.innerText = "غير متصل";
+          toggleIcon.className =
+            "fa-solid fa-toggle-on text-emerald-500 text-base";
+          toggleText.innerText = "محاكاة الاتصال";
+          if (syncDetails)
+            syncDetails.innerHTML = `<span class="text-amber-600 dark:text-amber-400 font-bold">⚠ معلق</span>`;
+          showToast("تم قطع الاتصال محاكاةً. البيانات ستحفظ محلياً.", "error");
         }
       }
 
       function triggerSync() {
-        showToast("تمت المزامنة", "لا توجد عناصر معلقة", "border-emerald-500");
+        if (!isOnline) {
+          showToast(
+            "فشلت المزامنة! يرجى تفعيل الاتصال بالإنترنت أولاً.",
+            "error",
+          );
+          return;
+        }
+
+        showToast("جاري إرسال البيانات المعلقة وتحديث السجلات...", "amber");
+
+        // عمل تأثير تحميل بسيط لمدة ثانية
+        setTimeout(() => {
+          // 1. تحديث العدادات الرقمية بالصفحة (إذا كانت موجودة)
+          const pendingCounterEl = document.getElementById("pending-count"); // استهداف العداد المعلق
+          const successCounterEl = document.getElementById("success-count"); // استهداف عداد الناجح
+
+          if (pendingCounterEl) pendingCounterEl.innerText = "0";
+          if (successCounterEl) successCounterEl.innerText = "1";
+
+          // 2. تحديث حالة كروت المزامنة (تغيير الأيقونة من ساعة انتظار إلى صح أخضر)
+          const syncStatusBadge = document.getElementById("sync-status-badge");
+          if (syncStatusBadge) {
+            syncStatusBadge.className =
+              "bg-emerald-50 text-emerald-700 border border-emerald-200 px-3 py-1 rounded-full flex items-center gap-1.5 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800/60";
+            syncStatusBadge.innerHTML = `<i class="fa-solid fa-circle-check text-xs"></i> <span>مكتملة</span>`;
+          }
+
+          showToast(
+            "تمت المزامنة بنجاح وتحديث كافة البيانات المدرسية!",
+            "success",
+          );
+        }, 1200);
       }
+    </script>
+    <script>
+      // ==========================================
+      // إدارة قائمة الإشعارات المنسدلة
+      // ==========================================
+      const notifBtn = document.getElementById("notification-btn");
+      const notifDropdown = document.getElementById("notification-dropdown");
 
-      function showToast(title, subtitle, borderColorClass) {
-        const container = document.getElementById("toast-container");
-        const toast = document.createElement("div");
-        toast.className = `pointer-events-auto bg-white dark:bg-slate-900 rounded-2xl shadow-xl border-l-[6px] ${borderColorClass} p-4 w-72 transform translate-y-[120%] opacity-0 transition-all duration-500 ease-out flex flex-col gap-1 border-t border-r border-b border-gray-100 dark:border-slate-800`;
+      if (notifBtn && notifDropdown) {
+        // عند الضغط على الجرس: اظهر أو اخفي القائمة
+        notifBtn.addEventListener("click", (e) => {
+          e.stopPropagation(); // يمنع انتشار الضغطة
+          notifDropdown.classList.toggle("hidden");
 
-        toast.innerHTML = `
-          <h4 class="text-slate-800 dark:text-zinc-100 font-bold text-base text-right">${title}</h4>
-          <p class="text-slate-500 dark:text-zinc-400 text-xs text-right font-medium">${subtitle}</p>
-        `;
+          // إخفاء قائمة المستخدم إذا كانت مفتوحة لعدم التداخل
+          document.getElementById("user-dropdown")?.classList.add("hidden");
+        });
 
-        container.appendChild(toast);
-
-        setTimeout(() => {
-          toast.classList.remove("translate-y-[120%]", "opacity-0");
-        }, 50);
-
-        setTimeout(() => {
-          toast.classList.add("translate-y-[120%]", "opacity-0");
-          setTimeout(() => {
-            toast.remove();
-          }, 500);
-        }, 3500);
+        // إغلاق قائمة الإشعارات تلقائياً إذا ضغط المستخدم في أي مكان خارجها
+        document.addEventListener("click", (e) => {
+          if (
+            !notifDropdown.contains(e.target) &&
+            !notifBtn.contains(e.target)
+          ) {
+            notifDropdown.classList.add("hidden");
+          }
+        });
       }
     </script>
   </body>
