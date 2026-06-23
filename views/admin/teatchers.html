@@ -547,36 +547,25 @@
                   <div>
                     <label
                       class="block text-[11px] font-black text-slate-700 dark:text-zinc-300 mb-1.5 uppercase"
-                      >الصلاحيات</label
                     >
-                    <div
-                      class="border border-gray-100 dark:border-slate-800 rounded-xl p-3 max-h-32 overflow-y-auto space-y-2 text-xs custom-scroll bg-slate-50/50 dark:bg-slate-800/30"
-                    >
-                      <label class="flex items-center justify-between"
-                        ><span class="text-gray-600 dark:text-zinc-300"
-                          >تسجيل الحضور</span
-                        ><input type="checkbox" checked class="accent-blue-600"
-                      /></label>
-                      <label class="flex items-center justify-between"
-                        ><span class="text-gray-600 dark:text-zinc-300"
-                          >رفع ملفات</span
-                        ><input type="checkbox" checked class="accent-blue-600"
-                      /></label>
-                      <label class="flex items-center justify-between"
-                        ><span class="text-gray-600 dark:text-zinc-300"
-                          >إنشاء اختبارات</span
-                        ><input type="checkbox" checked class="accent-blue-600"
-                      /></label>
-                      <label class="flex items-center justify-between"
-                        ><span class="text-gray-600 dark:text-zinc-300"
-                          >تعديل الدرجات</span
-                        ><input type="checkbox" checked class="accent-blue-600"
-                      /></label>
-                      <label class="flex items-center justify-between"
-                        ><span class="text-gray-600 dark:text-zinc-300"
-                          >الرد على رسائل الطلاب</span
-                        ><input type="checkbox" checked class="accent-blue-600"
-                      /></label>
+                      الدور الوظيفي (الصلاحيات)
+                    </label>
+                    <div class="relative">
+                      <select
+                        name="role_id"
+                        class="w-full border border-gray-100 dark:border-slate-800 rounded-xl p-3 text-xs bg-slate-50/50 dark:bg-slate-800/30 text-gray-600 dark:text-zinc-300 focus:outline-none focus:border-blue-500 appearance-none cursor-pointer"
+                      >
+                        <option value="" disabled selected>
+                          اختر الدور المرتبط بالمعلم...
+                        </option>
+                        <option value="1">معلم لغة عربية</option>
+                        <option value="2">معلم رياضيات</option>
+                        <option value="3">معلم لغة إنجليزية</option>
+                        <option value="4">مساعد إداري</option>
+                      </select>
+                      <div
+                        class="pointer-events-none absolute inset-y-0 left-0 flex items-center px-3 text-gray-400"
+                      ></div>
                     </div>
                   </div>
 
@@ -1130,37 +1119,26 @@
 
             <div>
               <label
-                class="block text-[11px] font-black text-slate-500 mb-1.5 uppercase"
-                >الصلاحيات</label
+                class="block text-[11px] font-black text-slate-700 dark:text-zinc-300 mb-1.5 uppercase"
               >
-              <div
-                class="border border-gray-100 dark:border-slate-800 rounded-xl p-3 max-h-32 overflow-y-auto space-y-2 text-xs custom-scroll bg-slate-50/50 dark:bg-slate-800/30"
-              >
-                <label class="flex items-center justify-between"
-                  ><span class="text-gray-600 dark:text-zinc-300"
-                    >تسجيل الحضور</span
-                  ><input type="checkbox" checked class="accent-blue-600"
-                /></label>
-                <label class="flex items-center justify-between"
-                  ><span class="text-gray-600 dark:text-zinc-300"
-                    >رفع ملفات</span
-                  ><input type="checkbox" checked class="accent-blue-600"
-                /></label>
-                <label class="flex items-center justify-between"
-                  ><span class="text-gray-600 dark:text-zinc-300"
-                    >إنشاء اختبارات</span
-                  ><input type="checkbox" checked class="accent-blue-600"
-                /></label>
-                <label class="flex items-center justify-between"
-                  ><span class="text-gray-600 dark:text-zinc-300"
-                    >تعديل الدرجات</span
-                  ><input type="checkbox" checked class="accent-blue-600"
-                /></label>
-                <label class="flex items-center justify-between"
-                  ><span class="text-gray-600 dark:text-zinc-300"
-                    >الرد على رسائل الطلاب</span
-                  ><input type="checkbox" checked class="accent-blue-600"
-                /></label>
+                الدور الوظيفي (الصلاحيات)
+              </label>
+              <div class="relative">
+                <select
+                  name="role_id"
+                  class="w-full border border-gray-100 dark:border-slate-800 rounded-xl p-3 text-xs bg-slate-50/50 dark:bg-slate-800/30 text-gray-600 dark:text-zinc-300 focus:outline-none focus:border-blue-500 appearance-none cursor-pointer"
+                >
+                  <option value="" disabled selected>
+                    اختر الدور المرتبط بالمعلم...
+                  </option>
+                  <option value="1">معلم لغة عربية</option>
+                  <option value="2">معلم رياضيات</option>
+                  <option value="3">معلم لغة إنجليزية</option>
+                  <option value="4">مساعد إداري</option>
+                </select>
+                <div
+                  class="pointer-events-none absolute inset-y-0 left-0 flex items-center px-3 text-gray-400"
+                ></div>
               </div>
             </div>
 

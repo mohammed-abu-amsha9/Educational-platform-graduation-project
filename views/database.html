@@ -1,0 +1,615 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>قاموس قاعدة البيانات التفصيلي - منصة صمود التعليمية</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 20mm 15mm;
+            @bottom-left {
+                content: "صفحة " counter(page) " من " counter(pages);
+                font-family: 'Arial', sans-serif;
+                font-size: 9pt;
+                color: #718096;
+            }
+            @bottom-right {
+                content: "منصة صمود التعليمية - مشروع التخرج 2026";
+                font-family: 'Arial', sans-serif;
+                font-size: 9pt;
+                color: #718096;
+            }
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #2d3748;
+            background-color: #ffffff;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .cover-page {
+            text-align: center;
+            padding-top: 50px;
+            page-break-after: always;
+        }
+
+        .cover-title {
+            font-size: 26pt;
+            color: #1a365d;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .cover-subtitle {
+            font-size: 16pt;
+            color: #4a5568;
+            margin-bottom: 40px;
+        }
+
+        .cover-meta {
+            margin-top: 100px;
+            font-size: 12pt;
+            color: #718096;
+            line-height: 2;
+        }
+
+        .section-title {
+            font-size: 16pt;
+            color: #1a365d;
+            border-bottom: 2px solid #2b6cb0;
+            padding-bottom: 6px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            page-break-after: avoid;
+        }
+
+        .table-description {
+            font-size: 11pt;
+            color: #4a5568;
+            margin-bottom: 12px;
+            background-color: #ebf8ff;
+            padding: 10px;
+            border-right: 4px solid #3182ce;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 25px;
+            font-size: 10pt;
+            page-break-inside: avoid;
+        }
+
+        th {
+            background-color: #2b6cb0;
+            color: white;
+            font-weight: bold;
+            text-align: right;
+            padding: 10px;
+            border: 1px solid #cbd5e0;
+        }
+
+        td {
+            padding: 8px;
+            border: 1px solid #cbd5e0;
+            text-align: right;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f7fafc;
+        }
+
+        .badge-pk {
+            background-color: #e2e8f0;
+            color: #2d3748;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 8.5pt;
+        }
+
+        .badge-fk {
+            background-color: #feebc8;
+            color: #c05621;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 8.5pt;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- صفحة الغلاف -->
+    <div class="cover-page">
+        <br><br><br>
+        <div class="cover-title">قاموس ومواصفات قاعدة البيانات الشامل (20 جدولاً)</div>
+        <div class="cover-subtitle">منصة صمود التعليمية - نظام التعلم الهجين</div>
+        <hr style="width: 50%; border: 1px solid #2b6cb0; margin: 0 auto;">
+        <div class="cover-meta">
+            <strong>نوع الوثيقة:</strong> وثيقة التحليل الهيكلي الفعلي (Data Dictionary)<br>
+            <strong>مشروع التخرج المعتمد:</strong> مطابق للتصاميم عالية الجودة وبنية العلاقات<br>
+            <strong>تاريخ التحديث:</strong> يونيو 2026<br>
+            <strong>الحالة:</strong> مكتمل ومحدث بالكامل بناءً على مخطط الـ ERD النهائي
+        </div>
+    </div>
+
+    <!-- القسم الأول -->
+    <div class="section-title">1. حسابات المستخدمين، الصلاحيات والأمور المالية</div>
+    
+    <div class="table-description">
+        <strong>1. جدول بيانات الطلاب (student):</strong> يخزن الملف الشخصي والأكاديمي الشامل لكل طالب، ويرتبط بالحالة المالية وحسابات أولياء الأمور.
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 20%;">اسم الحقل</th>
+                <th style="width: 20%;">نوع البيانات</th>
+                <th style="width: 15%;">نوع المفتاح</th>
+                <th>الوصف والوظيفة البرمجية</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>id</td><td>INT AUTO_INCREMENT</td><td><span class="badge-pk">Primary Key</span></td><td>المفتاح الأساسي والمعرف الفريد لكل طالب.</td></tr>
+            <tr><td>full_name</td><td>VARCHAR(150)</td><td>Standard</td><td>الاسم الكامل للطالب المستخدم في القوائم والشهادات.</td></tr>
+            <tr><td>student_code</td><td>VARCHAR(50) UNIQUE</td><td>Standard</td><td>الرقم التسلسلي الفريد والخاص بالطالب داخل المنصة.</td></tr>
+            <tr><td>academic_level</td><td>VARCHAR(50)</td><td>Standard</td><td>الصف أو المستوى الدراسي الحالي للطالب.</td></tr>
+            <tr><td>parent_id</td><td>INT</td><td><span class="badge-fk">Foreign Key</span></td><td>يربط الطالب بحساب ولي أمره لتمكينه من المتابعة.</td></tr>
+            <tr><td>parent_phone</td><td>VARCHAR(20)</td><td>Standard</td><td>رقم التواصل الأساسي لولي الأمر.</td></tr>
+            <tr><td>parent_backup_phone</td><td>VARCHAR(20)</td><td>Standard</td><td>رقم الهاتف الاحتياطي لولي الأمر في حالات الطوارئ.</td></tr>
+            <tr><td>account_status</td><td>VARCHAR(20)</td><td>Standard</td><td>حالة حساب الطالب (نشط أو معطل إدارياً).</td></tr>
+        </tbody>
+    </table>
+
+    <div class="table-description">
+        <strong>2. جدول الرسوم والمطالبات الشهرية (student_monthly_fees):</strong> إدارة وتتبع الشؤون المالية والمدفوعات لكل طالب لضمان انتظام الأقساط.
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 20%;">اسم الحقل</th>
+                <th style="width: 20%;">نوع البيانات</th>
+                <th style="width: 15%;">نوع المفتاح</th>
+                <th>الوصف والوظيفة البرمجية</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>id</td><td>INT AUTO_INCREMENT</td><td><span class="badge-pk">Primary Key</span></td><td>المفتاح الأساسي للسجل المالي الفرعي.</td></tr>
+            <tr><td>student_id</td><td>INT</td><td><span class="badge-fk">Foreign Key</span></td><td>يربط الحركة بالطالب المستحق عليه القسط المالي.</td></tr>
+            <tr><td>billing_month</td><td>VARCHAR(20)</td><td>Standard</td><td>الشهر والسنة المستحق فيها القسط (مثل: 06-2026).</td></tr>
+            <tr><td>monthly_amount</td><td>DECIMAL(10,2)</td><td>Standard</td><td>قيمة القسط الشهري الإجمالي المطلوب دفعه.</td></tr>
+            <tr><td>paid_amount</td><td>DECIMAL(10,2)</td><td>Standard</td><td>المبلغ الذي تم سداده فعلياً من قسط هذا الشهر.</td></tr>
+            <tr><td>payment_method</td><td>VARCHAR(50)</td><td>Standard</td><td>طريقة آخر دفعة تمت لهذا الشهر (كاش، بطاقة، إلخ).</td></tr>
+        </tbody>
+    </table>
+
+    <div class="table-description">
+        <strong>3. جدول المعلمين (teachers):</strong> إدارة الحسابات الشخصية والمهنية لأعضاء الهيئة التدريسية وتفاصيل موادهم.
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 20%;">اسم الحقل</th>
+                <th style="width: 20%;">نوع البيانات</th>
+                <th style="width: 15%;">نوع المفتاح</th>
+                <th>الوصف والوظيفة البرمجية</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>id</td><td>INT AUTO_INCREMENT</td><td><span class="badge-pk">Primary Key</span></td><td>المفتاح الأساسي والمعرف الفريد للمعلم.</td></tr>
+            <tr><td>full_name</td><td>VARCHAR(150)</td><td>Standard</td><td>الاسم الكامل للأستاذ الظاهر في واجهات المناهج.</td></tr>
+            <tr><td>teacher_code</td><td>VARCHAR(50) UNIQUE</td><td>Standard</td><td>الرقم الوظيفي التسلسلي الخاص بالمعلم.</td></tr>
+            <tr><td>phone_number</td><td>VARCHAR(20)</td><td>Standard</td><td>رقم هاتف المعلم للتواصل الإداري والتنسيق.</td></tr>
+            <tr><td>subject</td><td>VARCHAR(100)</td><td>Standard</td><td>المادة الأساسية الموكلة للأستاذ لتدريسها.</td></tr>
+            <tr><td>role_id</td><td>INT</td><td><span class="badge-fk">Foreign Key</span></td><td>يربط المعلم بجدول الصلاحيات والأدوار المسموحة له.</td></tr>
+        </tbody>
+    </table>
+
+    <div class="table-description">
+        <strong>4. جدول الأدوار والصلاحيات (roles_permissions):</strong> تطبيق نظام الحماية والتحكم بالصلاحيات القائم على الأدوار (RBAC) للمعلمين والمشرفين.
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 20%;">اسم الحقل</th>
+                <th style="width: 20%;">نوع البيانات</th>
+                <th style="width: 15%;">نوع المفتاح</th>
+                <th>الوصف والوظيفة البرمجية</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>id</td><td>INT AUTO_INCREMENT</td><td><span class="badge-pk">Primary Key</span></td><td>المفتاح الأساسي لتعريف الدور الصلاحياتي.</td></tr>
+            <tr><td>role_name</td><td>VARCHAR(50)</td><td>Standard</td><td>اسم الدور الممنوح (معلم، مشرف، مدير، إلخ).</td></tr>
+            <tr><td>can_manage_attendance</td><td>BOOLEAN</td><td>Standard</td><td>مؤشر منح أو حجب صلاحية أخذ الحضور والغياب.</td></tr>
+            <tr><td>can_upload_files</td><td>BOOLEAN</td><td>Standard</td><td>صلاحية رفع ملفات المناهج والمحاضرات للطلاب.</td></tr>
+            <tr><td>can_create_exams</td><td>BOOLEAN</td><td>Standard</td><td>صلاحية إنشاء وإعداد امتحانات إلكترونية من البنك.</td></tr>
+            <tr><td>can_edit_grades</td><td>BOOLEAN</td><td>Standard</td><td>صلاحية رصد وتعديل علامات ودرجات الطلاب.</td></tr>
+            <tr><td>can_reply_messages</td><td>BOOLEAN</td><td>Standard</td><td>صلاحية فتح غرف الشات والرد على رسائل أولياء الأمور.</td></tr>
+        </tbody>
+    </table>
+
+    <div class="table-description">
+        <strong>5. جدول صفوف المعلمين (teacher_academic_levels):</strong> جدول وسيط لربط المعلم بالصفوف الأكاديمية المختلفة التي يقوم بتدريسها (كسر علاقة M:N).
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 20%;">اسم الحقل</th>
+                <th style="width: 20%;">نوع البيانات</th>
+                <th style="width: 15%;">نوع المفتاح</th>
+                <th>الوصف والوظيفة البرمجية</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>id</td><td>INT AUTO_INCREMENT</td><td><span class="badge-pk">Primary Key</span></td><td>المعرف الفريد لسجل الربط.</td></tr>
+            <tr><td>teacher_id</td><td>INT</td><td><span class="badge-fk">Foreign Key</span></td><td>يرتبط بالمعلم المعني بالصف الدراسي.</td></tr>
+            <tr><td>academic_level</td><td>VARCHAR(50)</td><td>Standard</td><td>الصف الأكاديمي المسند تدريسه للمعلم.</td></tr>
+        </tbody>
+    </table>
+
+    <div class="table-description">
+        <strong>6. جدول المستخدمين الموحد (users):</strong> إدارة بيانات تسجيل الدخول وتوثيق الهوية الرقمية لكافة حسابات أطراف المنصة.
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 20%;">اسم الحقل</th>
+                <th style="width: 20%;">نوع البيانات</th>
+                <th style="width: 15%;">نوع المفتاح</th>
+                <th>الوصف والوظيفة البرمجية</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>identity_number</td><td>VARCHAR(50)</td><td><span class="badge-pk">Primary Key</span></td><td>رقم الهوية الشخصي الفريد للمستخدم كمفتاح دخول.</td></tr>
+            <tr><td>name</td><td>VARCHAR(150)</td><td>Standard</td><td>الاسم المستخدم عند تسجيل الدخول للنظام.</td></tr>
+            <tr><td>password</td><td>VARCHAR(255)</td><td>Standard</td><td>كلمة المرور السرية المخزنة مشفرة ومؤمنة بالكامل.</td></tr>
+            <tr><td>role</td><td>VARCHAR(30)</td><td>Standard</td><td>فئة وصلاحية الحساب لتوجيه الواجهات (admin/student/teacher).</td></tr>
+        </tbody>
+    </table>
+
+    <!-- القسم الثاني -->
+    <div class="section-title" style="page-break-before: always;">2. منظومة الدروس والمحاضرات الرقمية والتفاعلية</div>
+
+    <div class="table-description">
+        <strong>7. جدول الدروس والمواد التعليمية (lessons):</strong> مستودع المحاضرات الرقمية والمواد الإثرائية المرفوعة من المعلمين للطلاب.
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 20%;">اسم الحقل</th>
+                <th style="width: 20%;">نوع البيانات</th>
+                <th style="width: 15%;">نوع المفتاح</th>
+                <th>الوصف والوظيفة البرمجية</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>id</td><td>INT AUTO_INCREMENT</td><td><span class="badge-pk">Primary Key</span></td><td>المفتاح الأساسي للدرس أو المحاضرة.</td></tr>
+            <tr><td>teacher_id</td><td>INT</td><td><span class="badge-fk">Foreign Key</span></td><td>يربط الدرس بالمعلم الناشر والمعد للمادة الشارحة.</td></tr>
+            <tr><td>subject_name</td><td>VARCHAR(100)</td><td>Standard</td><td>اسم المادة التعليمية التابع لها المحتوى.</td></tr>
+            <tr><td>title</td><td>VARCHAR(200)</td><td>Standard</td><td>عنوان المحاضرة (مثل: الكيمياء الأساسية وعناصر الجدول الدوري).</td></tr>
+            <tr><td>file_type</td><td>VARCHAR(50)</td><td>Standard</td><td>نوع الملف المرفق لدعم الواجهة (فيديو شرح، ملف PDF).</td></tr>
+            <tr><td>file_url</td><td>VARCHAR(255)</td><td>Standard</td><td>المسار السحابي أو رابط تخزين الملف على خوادم المنصة.</td></tr>
+            <tr><td>views_count</td><td>INT DEFAULT 0</td><td>Standard</td><td>عداد إجمالي عدد المشاهدات والزيارات للدرس من الطلاب.</td></tr>
+            <tr><td>downloads_count</td><td>INT DEFAULT 0</td><td>Standard</td><td>عداد لتتبع عدد مرات تحميل الملف النصي المرفق.</td></tr>
+            <tr><td>created_at</td><td>TIMESTAMP</td><td>Standard</td><td>تاريخ ووقت نشر وإتاحة المحتوى على لوحة الطالب.</td></tr>
+        </tbody>
+    </table>
+
+    <div class="table-description">
+        <strong>8. جدول شعب الدروس (lesson_sections):</strong> يربط الدروس بالشعب المستهدفة لضمان ظهور الدرس للفئة الدراسية المستهدفة فقط.
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 20%;">اسم الحقل</th>
+                <th style="width: 20%;">نوع البيانات</th>
+                <th style="width: 15%;">نوع المفتاح</th>
+                <th>الوصف والوظيفة البرمجية</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>id</td><td>INT AUTO_INCREMENT</td><td><span class="badge-pk">Primary Key</span></td><td>المعرف الفريد لحركة الربط للشعبة.</td></tr>
+            <tr><td>lesson_id</td><td>INT</td><td><span class="badge-fk">Foreign Key</span></td><td>يرتبط بالدرس المستهدف نشره لعدة شعب.</td></tr>
+            <tr><td>section_name</td><td>VARCHAR(20)</td><td>Standard</td><td>اسم الشعبة المخول لطلابها مشاهدة الدرس (مثل: شعبة أ).</td></tr>
+        </tbody>
+    </table>
+
+    <div class="table-description">
+        <strong>9. جدول الحضور والغياب اليومي (attendance_logs):</strong> تتبع ومتابعة انضباط الطلاب ورصد حالات حضورهم اليومية في الحصص المختلفة.
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 20%;">اسم الحقل</th>
+                <th style="width: 20%;">نوع البيانات</th>
+                <th style="width: 15%;">نوع المفتاح</th>
+                <th>الوصف والوظيفة البرمجية</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>id</td><td>INT AUTO_INCREMENT</td><td><span class="badge-pk">Primary Key</span></td><td>المفتاح الأساسي لسجل رصد الانضباط اليومي.</td></tr>
+            <tr><td>student_id</td><td>INT</td><td><span class="badge-fk">Foreign Key</span></td><td>يربط الحركة بالطالب المرصود حضورياً.</td></tr>
+            <tr><td>teacher_id</td><td>INT</td><td><span class="badge-fk">Foreign Key</span></td><td>يرتبط بالمعلم الذي قام بمراجعة ورصد الحضور والغياب.</td></tr>
+            <tr><td>date</td><td>DATE</td><td>Standard</td><td>التاريخ الفعلي والرسمي لليوم الدراسي الحاضر.</td></tr>
+            <tr><td>status</td><td>VARCHAR(30)</td><td>Standard</td><td>حالة الانضباط المرصودة للطالب (حاضر - غائب - متأخر).</td></tr>
+        </tbody>
+    </table>
+
+    <!-- القسم الثالث -->
+    <div class="section-title" style="page-break-before: always;">3. منظومة بنك الأسئلة، الاختبارات الذكية، ورصد النتائج الفورية</div>
+
+    <div class="table-description">
+        <strong>10. جدول الامتحانات (Exams):</strong> يمثل الغلاف والرأس الكلي للاختبار متضمناً الضوابط والوقت المقيد للطالب لإنهاء التقييم.
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 20%;">اسم الحقل</th>
+                <th style="width: 20%;">نوع البيانات</th>
+                <th style="width: 15%;">نوع المفتاح</th>
+                <th>الوصف والوظيفة البرمجية</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>id</td><td>INT AUTO_INCREMENT</td><td><span class="badge-pk">Primary Key</span></td><td>المفتاح الأساسي للاختبار المولد من البنك.</td></tr>
+            <tr><td>teacher_id</td><td>INT</td><td><span class="badge-fk">Foreign Key</span></td><td>المعلم منشئ الامتحان والمسؤول الأول عن نشر تقييمه.</td></tr>
+            <tr><td>title</td><td>VARCHAR(150)</td><td>Standard</td><td>عنوان الامتحان ومسمى المادة (مثل: اختبار الكيمياء النصفي).</td></tr>
+            <tr><td>academic_level_subject</td><td>VARCHAR(150)</td><td>Standard</td><td>تخزين وتحديد المادة والصف الدراسي التابع له الامتحان.</td></tr>
+            <tr><td>duration_minutes</td><td>INT</td><td>Standard</td><td>مدة الاختبار بالدقائق لضبط ساعة العداد التنازلي البرمجي.</td></tr>
+            <tr><td>total_questions</td><td>INT</td><td>Standard</td><td>عدد الأسئلة الإجمالي التي سيتعرض لها الطالب في الامتحان.</td></tr>
+            <tr><td>created_at</td><td>TIMESTAMP</td><td>Standard</td><td>وقت وتاريخ إصدار ونشر الامتحان للطلاب على المنصة.</td></tr>
+        </tbody>
+    </table>
+
+    <div class="table-description">
+        <strong>11. جدول أسئلة الامتحانات الوسيط (Exam_Questions):</strong> يربط الاختبار بالأسئلة المسحوبة له من بنك الأسئلة لتمكين تدوير وإعادة استخدام الأسئلة.
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 20%;">اسم الحقل</th>
+                <th style="width: 20%;">نوع البيانات</th>
+                <th style="width: 15%;">نوع المفتاح</th>
+                <th>الوصف والوظيفة البرمجية</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>id</td><td>INT AUTO_INCREMENT</td><td><span class="badge-pk">Primary Key</span></td><td>معرف فريد يمثل وجود سؤال معين بداخل امتحان معين.</td></tr>
+            <tr><td>exam_id</td><td>INT</td><td><span class="badge-fk">Foreign Key</span></td><td>المفتاح الأجنبي المرتبط بجدول الامتحانات الرأسية.</td></tr>
+            <tr><td>questions_bank_id</td><td>INT</td><td><span class="badge-fk">Foreign Key</span></td><td>المفتاح الأجنبي المرتبط بالسؤال الأصلي المستدعى من البنك.</td></tr>
+        </tbody>
+    </table>
+
+    <div class="table-description">
+        <strong>12. جدول الأسئلة المركزي (questions_bank):</strong> مخزن الأسئلة الشامل للمنصة، المصنف حسب الصفوف والمواد ومستويات الصعوبة والأنواع.
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 20%;">اسم الحقل</th>
+                <th style="width: 20%;">نوع البيانات</th>
+                <th style="width: 15%;">نوع المفتاح</th>
+                <th>الوصف والوظيفة البرمجية</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>id</td><td>INT AUTO_INCREMENT</td><td><span class="badge-pk">Primary Key</span></td><td>المفتاح الأساسي لكل سؤال بداخل مستودع الأسئلة.</td></tr>
+            <tr><td>teacher_id</td><td>INT</td><td><span class="badge-fk">Foreign Key</span></td><td>المعلم معد ومبتكر هذا السؤال البرمجي.</td></tr>
+            <tr><td>academic_level_subject</td><td>VARCHAR(150)</td><td>Standard</td><td>تصنيف وتحديد الصف والمادة التابع لها السؤال لغايات الفلترة.</td></tr>
+            <tr><td>question_text</td><td>TEXT</td><td>Standard</td><td>نص ومضمون السؤال التعليمي الظاهر للطلاب أثناء تقديم التقييم.</td></tr>
+            <tr><td>question_type</td><td>VARCHAR(30)</td><td>Standard</td><td>نوع طبيعة السؤال البرمجية (الاختيار من متعدد mcq / صح وخطأ true_false).</td></tr>
+            <tr><td>difficulty_level</td><td>VARCHAR(30)</td><td>Standard</td><td>مستوى الصعوبة المعتمد للمولد الذكي للامتحانات (easy/medium/hard).</td></tr>
+        </tbody>
+    </table>
+
+    <div class="table-description">
+        <strong>13. جدول خيارات الأسئلة (question_options):</strong> يحتوي على الخيارات الأربعة المتاحة لأسئلة الاختيار من متعدد مع تحديد الإجابة النموذجية.
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 20%;">اسم الحقل</th>
+                <th style="width: 20%;">نوع البيانات</th>
+                <th style="width: 15%;">نوع المفتاح</th>
+                <th>الوصف والوظيفة البرمجية</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>id</td><td>INT AUTO_INCREMENT</td><td><span class="badge-pk">Primary Key</span></td><td>المفتاح الأساسي التعريفي للخيار الفرعي للسؤال.</td></tr>
+            <tr><td>questions_bank_id</td><td>INT</td><td><span class="badge-fk">Foreign Key</span></td><td>يربط مجموعة الخيارات المتعددة بالسؤال الأم التابعة له في البنك.</td></tr>
+            <tr><td>option_text</td><td>VARCHAR(255)</td><td>Standard</td><td>النص أو الحقل الرقمي المعروض كخيار للحل أمام الطالب.</td></tr>
+            <tr><td>is_correct</td><td>BOOLEAN</td><td>Standard</td><td>علم منطقي (true/false) يعتمد الإجابة الصحيحة للتصحيح الفوري تلقائياً.</td></tr>
+        </tbody>
+    </table>
+
+    <div class="table-description">
+        <strong>14. جدول تفاصيل إجابات الطلاب (student_exam_answers):</strong> يسجل بشكل مفصل خيارات الطلاب أثناء تأدية الامتحان، مما يتيح للمعلمين مراجعة آلية تفكير الطالب وتحليل الأخطاء الشائعة.
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 20%;">اسم الحقل</th>
+                <th style="width: 20%;">نوع البيانات</th>
+                <th style="width: 15%;">نوع المفتاح</th>
+                <th>الوصف والوظيفة البرمجية</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>id</td><td>INT AUTO_INCREMENT</td><td><span class="badge-pk">Primary Key</span></td><td>المعرف الفريد لحركة حل وضغط زر الطالب بداخل الامتحان.</td></tr>
+            <tr><td>student_id</td><td>INT</td><td><span class="badge-fk">Foreign Key</span></td><td>يرتبط بالطالب الفرد الذي يقوم بتقديم الإجابة حالياً.</td></tr>
+            <tr><td>exam_id</td><td>INT</td><td><span class="badge-fk">Foreign Key</span></td><td>رقم الامتحان الإجمالي المحلول داخله السؤال.</td></tr>
+            <tr><td>questions_bank_id</td><td>INT</td><td><span class="badge-fk">Foreign Key</span></td><td>معرف السؤال الدقيق الذي تتم الإجابة عليه الآن من الطالب.</td></tr>
+            <tr><td>selected_option_id</td><td>INT</td><td><span class="badge-fk">Foreign Key</span></td><td>رقم الخيار الدقيق والمحفوظ الذي ضغط عليه الطالب كحل للسؤال.</td></tr>
+        </tbody>
+    </table>
+
+    <div class="table-description">
+        <strong>15. جدول نتائج وعلامات الطلاب (student_exam_results):</strong> الرصيد النهائي لعلامات الطلاب الكلية في الاختبارات وتوثيق طرق تقديمهم للامتحانات.
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 20%;">اسم الحقل</th>
+                <th style="width: 20%;">نوع البيانات</th>
+                <th style="width: 15%;">نوع المفتاح</th>
+                <th>الوصف والوظيفة البرمجية</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>id</td><td>INT AUTO_INCREMENT</td><td><span class="badge-pk">Primary Key</span></td><td>رقم وثيقة الرصد الكلي للعلامة والدرجة النهائية للطالب.</td></tr>
+            <tr><td>student_id</td><td>INT</td><td><span class="badge-fk">Foreign Key</span></td><td>يربط العلامة النهائية الكلية بالطالب صاحب التقييم.</td></tr>
+            <tr><td>exam_id</td><td>INT</td><td><span class="badge-fk">Foreign Key</span></td><td>يربط النتيجة بالامتحان الإجمالي الذي تم رصده وتصحيحه.</td></tr>
+            <tr><td>score_obtained</td><td>INT</td><td>Standard</td><td>الدرجة الرقمية الكلية المحصلة والمستحقة للطالب فور إنهاء الحل.</td></tr>
+            <tr><td>status</td><td>VARCHAR(50)</td><td>Standard</td><td>حالة رصد النتيجة وتدقيقها (مصحح تلقائياً، تم رصده، غياب تلقائي).</td></tr>
+            <tr><td>submission_method</td><td>VARCHAR(100)</td><td>Standard</td><td>طريقة تقديم الطالب للامتحان (حساب الطالب الإلكتروني أو لم يدخل).</td></tr>
+        </tbody>
+    </table>
+
+    <!-- القسم الرابع -->
+    <div class="section-title" style="page-break-before: always;">4. منظومة الواجبات المنزلية، التكليفات والتسليمات المرفوعة</div>
+
+    <div class="table-description">
+        <strong>16. جدول الواجبات المنشورة (assignments):</strong> إدارة الواجبات المنزلية والمهام المحددة من قِبل المعلمين ومواعيد تسليمها وضوابط الدرجات المتاحة.
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 20%;">اسم الحقل</th>
+                <th style="width: 20%;">نوع البيانات</th>
+                <th style="width: 15%;">نوع المفتاح</th>
+                <th>الوصف والوظيفة البرمجية</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>id</td><td>INT AUTO_INCREMENT</td><td><span class="badge-pk">Primary Key</span></td><td>المفتاح الأساسي والرقم التعريفي للواجب المنشور.</td></tr>
+            <tr><td>teacher_id</td><td>INT</td><td><span class="badge-fk">Foreign Key</span></td><td>المعلم صاحب المهمة والتكليف والمسؤول عن مراجعته وتصحيحه لاحقاً.</td></tr>
+            <tr><td>academic_level_subject</td><td>VARCHAR(150)</td><td>Standard</td><td>تحديد وحفظ المادة والصف الدراسي الموجه له الواجب الدراسي.</td></tr>
+            <tr><td>title</td><td>VARCHAR(200)</td><td>Standard</td><td>عنوان الواجب الرئيسي (مثل: واجب إعراب الجملة الفعلية والأفعال الخمسة).</td></tr>
+            <tr><td>due_date</td><td>DATETIME</td><td>Standard</td><td>آخر موعد وتاريخ محدد وصارم متاح أمام الطالب لإرسال حل الواجب.</td></tr>
+            <tr><td>description</td><td>TEXT</td><td>Standard</td><td>التوصيف والتوجيه النصي التفصيلي لمضمون وحل الواجب المطلوبة.</td></tr>
+            <tr><td>attachment_url</td><td>VARCHAR(255)</td><td>Standard</td><td>رابط أو مسار ملف الأسئلة الاختياري المرفق مع الواجب من المعلم.</td></tr>
+            <tr><td>created_at</td><td>TIMESTAMP</td><td>Standard</td><td>وقت إطلاق ونشر المهمة على لوحة تحكم حسابات الطلاب المعنيين.</td></tr>
+        </tbody>
+    </table>
+
+    <div class="table-description">
+        <strong>17. جدول تسليمات الواجبات (assignment_submissions):</strong> توثيق حلول الطلاب المرفوعة كملفات خارجية وتقييم ورصد المعلم لدرجاتها الفردية.
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 20%;">اسم الحقل</th>
+                <th style="width: 20%;">نوع البيانات</th>
+                <th style="width: 15%;">نوع المفتاح</th>
+                <th>الوصف والوظيفة البرمجية</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>id</td><td>INT AUTO_INCREMENT</td><td><span class="badge-pk">Primary Key</span></td><td>المفتاح الأساسي لسجل حركة تسليم ملف حل الطالب.</td></tr>
+            <tr><td>assignment_id</td><td>INT</td><td><span class="badge-fk">Foreign Key</span></td><td>يربط حركة التسليم بالواجب الأصلي المطلوب تسليمه.</td></tr>
+            <tr><td>student_id</td><td>INT</td><td><span class="badge-fk">Foreign Key</span></td><td>يرتبط بالطالب الذي قام بحل ورفع ملف الواجب للمنصة.</td></tr>
+            <tr><td>submitted_file_url</td><td>VARCHAR(255)</td><td>Standard</td><td>رابط ومسار ملف الحل المرفوع من الطالب (كراسة إجابة PDF أو صورة).</td></tr>
+            <tr><td>grade</td><td>INT NULL</td><td>Standard</td><td>الدرجة والعلامة المستحقة التي يضعها المعلم يدوياً بعد مراجعة ملف الحل.</td></tr>
+            <tr><td>status</td><td>VARCHAR(50)</td><td>Standard</td><td>حالة تصحيح التسليم الحالي لمتابعة الواجهات (لم يتم التصحيح، تم التصحيح).</td></tr>
+            <tr><td>submitted_at</td><td>TIMESTAMP</td><td>Standard</td><td>الوقت والتاريخ الدقيق والآلي لقيام الطالب بضغط زر إرسال للحل.</td></tr>
+        </tbody>
+    </table>
+
+    <!-- القسم الخامس -->
+    <div class="section-title" style="page-break-before: always;">5. منظومة المراسلة، الشات، الإشعارات السحابية وإدارة الأوفلاين بالمزامنة</div>
+
+    <div class="table-description">
+        <strong>18. جدول غرف المحادثات (chat_rooms):</strong> ينظم بيئة الدردشة والتواصل من خلال إنشاء قنوات تواصل فردية ومستقلة تجمع المعلم بالطالب.
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 20%;">اسم الحقل</th>
+                <th style="width: 20%;">نوع البيانات</th>
+                <th style="width: 15%;">نوع المفتاح</th>
+                <th>الوصف والوظيفة البرمجية</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>id</td><td>INT AUTO_INCREMENT</td><td><span class="badge-pk">Primary Key</span></td><td>المفتاح الأساسي لتعريف قناة وغرفة التواصل الفردية.</td></tr>
+            <tr><td>teacher_id</td><td>INT</td><td><span class="badge-fk">Foreign Key</span></td><td>المعلم المشترك بداخل هذه المحادثة الفردية الحالية.</td></tr>
+            <tr><td>student_id</td><td>INT</td><td><span class="badge-fk">Foreign Key</span></td><td>الطالب (أو حساب ولي أمره المتابع) المشترك في نفس الغرفة.</td></tr>
+            <tr><td>created_at</td><td>TIMESTAMP</td><td>Standard</td><td>تاريخ ووقت التأسيس الأولي لغرفة المحادثة والشات المباشر.</td></tr>
+        </tbody>
+    </table>
+
+    <div class="table-description">
+        <strong>19. جدول الرسائل (messages):</strong> تخزن تفاصيل الرسائل النصية والملفات المتبادلة داخل غرف المحادثة وحالة قراءتها وتوقيتها الفعلي.
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 20%;">اسم الحقل</th>
+                <th style="width: 20%;">نوع البيانات</th>
+                <th style="width: 15%;">نوع المفتاح</th>
+                <th>الوصف والوظيفة البرمجية</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>id</td><td>INT AUTO_INCREMENT</td><td><span class="badge-pk">Primary Key</span></td><td>المفتاح الأساسي لكل فقاعة ورسالة مبعوثة داخل الشات.</td></tr>
+            <tr><td>chat_room_id</td><td>INT</td><td><span class="badge-fk">Foreign Key</span></td><td>يربط الرسالة الحالية بغرفة المحادثة الشاملة التابعة لها.</td></tr>
+            <tr><td>sender_type</td><td>VARCHAR(20)</td><td>Standard</td><td>تحديد جهة فئة المرسل لحقن وترتيب الرسالة في الواجهات (teacher/student).</td></tr>
+            <tr><td>message_text</td><td>TEXT</td><td>Standard</td><td>المضمون والنص المكتوب والمتبادل بداخل الشات التعليمي المباشر.</td></tr>
+            <tr><td>attachment_url</td><td>VARCHAR(255) NULL</td><td>Standard</td><td>رابط أو مسار ملف أو صورة مرفقة بشكل اختياري بداخل حزمة الرسالة.</td></tr>
+            <tr><td>is_read</td><td>BOOLEAN DEFAULT FALSE</td><td>Standard</td><td>حقل منطقي لتفعيل علامة المقروئية والنقطة الزرقاء بواجهة التطبيق.</td></tr>
+            <tr><td>created_at</td><td>TIMESTAMP</td><td>Standard</td><td>وقت إرسال الرسالة بدقة متناهية لغايات ترتيب خط الدردشة الزمني.</td></tr>
+        </tbody>
+    </table>
+
+    <div class="table-description">
+        <strong>20. جدول الإعلانات - الإشعارات (Announcements):</strong> بث وتخزين التنبيهات الفورية والتحديثات الهامة للمستهدفين عند حدوث متغير تعليمي.
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 20%;">اسم الحقل</th>
+                <th style="width: 20%;">نوع البيانات</th>
+                <th style="width: 15%;">نوع المفتاح</th>
+                <th>الوصف والوظيفة البرمجية</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>id</td><td>INT AUTO_INCREMENT</td><td><span class="badge-pk">Primary Key</span></td><td>المفتاح الأساسي السحابي لكل إشعار وتنبيه منشور للمستخدمين.</td></tr>
+            <tr><td>user_id</td><td>INT</td><td>Standard</td><td>الرقم التعريفي للمستخدم المستهدف ببث التنبيه الحالي (معلم/طالب).</td></tr>
+            <tr><td>user_type</td><td>VARCHAR(20)</td><td>Standard</td><td>فئة نوع حساب المستخدم المستهدف لتوجيه الانتقال البرمجي الصحيح بالواجهة.</td></tr>
+            <tr><td>title</td><td>VARCHAR(150)</td><td>Standard</td><td>العنوان التنبيهي والمختصر الموجه (مثل: تم رصد علامة اختبار الرياضيات).</td></tr>
+            <tr><td>content</td><td>TEXT</td><td>Standard</td><td>النص والمضمون الكامل والشارح للإشعار المنشور على شاشة التنبيهات.</td></tr>
+            <tr><td>action_url</td><td>VARCHAR(255)</td><td>Standard</td><td>رابط انتقال سريع مدمج (Deep Link) ينقل المستخدم للشاشة المعنية عند النقر.</td></tr>
+            <tr><td>created_at</td><td>TIMESTAMP</td><td>Standard</td><td>وقت وتاريخ إصدار وبث الإعلان والتنبيه السحابي للمستخدم.</td></tr>
+            <tr><td>subject_tag</td><td>VARCHAR(100)</td><td>Standard</td><td>الوسم الملحق لتعريف اسم المادة أو المعلم صاحب مصدر الإشعار الحاضر.</td></tr>
+            <tr><td>is_read</td><td>BOOLEAN DEFAULT FALSE</td><td>Standard</td><td>حقل منطقي لتحديد قراءة التنبيه لإخفاء علامة النقطة التنبيهية الحمراء.</td></tr>
+        </tbody>
+    </table>
+
+    <div class="table-description">
+        <strong>💎 جدول العمليات المعلقة أوفلاين (Pending_Actions):</strong> قاعدة البيانات المحلية "الحصالة" داخل جهاز الطالب لحفظ عملياته مؤقتاً عند انقطاع الإنترنت ومزامنتها فوراً عند عودة الشبكة.
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 20%;">اسم الحقل</th>
+                <th style="width: 20%;">نوع البيانات</th>
+                <th style="width: 15%;">نوع المفتاح</th>
+                <th>الوصف والوظيفة البرمجية</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>id</td><td>INT AUTO_INCREMENT</td><td><span class="badge-pk">Primary Key</span></td><td>المعرف الفريد لكل عملية مخزنة محلياً بجهاز الطالب بانتظار المزامنة.</td></tr>
+            <tr><td>student_id</td><td>INT</td><td><span class="badge-fk">Foreign Key</span></td><td>رقم كود الطالب الذي أجرى تلك الحركة والإنترنت مقطوع عن جهازه.</td></tr>
+            <tr><td>action_type</td><td>VARCHAR(50)</td><td>Standard</td><td>نوع الإجراء المدخر محلياً لتفكيكه وفرزه (مثل: submit_exam أو send_message).</td></tr>
+            <tr><td>payload_json</td><td>TEXT</td><td>Standard</td><td>حزمة البيانات المدخرة بصيغة نصية مكثفة JSON لرفعها فوراً لخوادم السيرفر الرئيسي.</td></tr>
+            <tr><td>timestamp</td><td>TIMESTAMP</td><td>Standard</td><td>تاريخ ووقت تسجيل الحركة محلياً لفرز وترتيب واجهة طابور المزامنة المنتظر.</td></tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
